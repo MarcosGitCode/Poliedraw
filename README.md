@@ -20,3 +20,10 @@ A proposta é unir **criatividade**, **tecnologia** e **educação** em uma plat
 - **Back-end**: Node.js
 - **IA**: API de geração de imagens
 
+## 🐒 Membros
+- Guilherme Britto
+- Demetrius Damasio
+- Guilherme Calderan
+- Marcos Salles
+- Guilherme Nunes
+- Nikolas Figura
