@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("loginForm");
 
-  const User = "gui43";
-  const Pass = "4343";
+  const User = "a";
+  const Pass = "a";
 
   form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Evita o envio automático do form
+    event.preventDefault(); 
 
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
