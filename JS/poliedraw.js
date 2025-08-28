@@ -3,6 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleBtn = document.querySelector(".toggle-btn");
 
     toggleBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("closed"); // Alterna a classe "closed"
+        sidebar.classList.toggle("closed");
     });
 });
