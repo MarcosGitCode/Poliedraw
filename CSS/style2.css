@@ -1,3 +1,83 @@
 body{
-    background-color: rgb(26, 26, 26);
+    background-color: rgb(192, 192, 192);
+}
+
+.sidebar{
+    background-color: rgb(54, 54, 54);
+    width: 400px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 0 20px 20px 0;
+}
+
+.materias {
+    background-color: rgb(28, 181, 196);
+    width: 100px; 
+    height: 50px;
+    position: fixed; 
+    top: 70px; 
+    left: 20px; 
+    border-radius: 16px;
+    z-index: 10;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.estilo {
+    background-color: rgb(220, 20, 60);
+    width: 100px; 
+    height: 50px;
+    position: fixed; 
+    top: 70px; 
+    left: 140px; 
+    border-radius: 16px;
+    z-index: 10;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+    font-family: cursive; 
+}
+
+.detalhes {
+    background-color: rgb(255, 140, 0);
+    width: 100px; 
+    height: 50px;
+    position: fixed; 
+    top: 70px; 
+    left: 260px; 
+    border-radius: 16px;
+    z-index: 10; 
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.imagem{
+    background-color: rgb(255, 255, 255);
+    width: 600px;
+    height: 350px;
+    position: fixed;
+    border-radius: 16px;
+    top: 150px;
+    left: 650px;
+    z-index: 10;
+}
+
+.prompt{
+    background-color: rgb(54, 54, 54);
+    width: 600px;
+    height: 60px;
+    position: fixed;
+    border-radius: 16px;
+    top: 550px;
+    left: 650px;
+    z-index: 10;
 }
