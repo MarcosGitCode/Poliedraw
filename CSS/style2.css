@@ -2,7 +2,7 @@ body{
     background-color: rgb(192, 192, 192);
 }
 
-.sidebar{
+.sidebar {
     background-color: rgb(54, 54, 54);
     width: 400px;
     height: 100vh;
@@ -10,54 +10,168 @@ body{
     top: 0;
     left: 0;
     border-radius: 0 20px 20px 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
 }
 
-.materias {
+.sidebar.closed {
+    width: 50px;
+}
+
+/* Sidebar fechada */
+.sidebar.closed .materias-btn {
+    transform: translateX(-350px);
+    opacity: 0;
+    pointer-events: none;
+    transition: none, opacity 1;
+}
+
+.sidebar.closed .estilo-btn {
+    transform: translateX(-350px);
+    opacity: 0;
+    pointer-events: none;
+    transition: none, opacity 1;
+}
+
+.sidebar.closed .detalhes-btn {
+    transform: translateX(-350px);
+    opacity: 0;
+    pointer-events: none;
+    transition: none, opacity 1;
+}
+
+.sidebar .materias-btn,
+.sidebar .estilo-btn,
+.sidebar .detalhes-btn {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.3s ease;
+}
+
+/* Sidebar aberta */
+.sidebar .materias-btn,
+.sidebar .estilo-btn,
+.sidebar .detalhes-btn {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Botão tipo fita */
+.toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: -20px; /* Ajuste para posicionar fora da sidebar */
+    transform: translateY(-50%);
+    background-color: rgb(255, 255, 255); /* Cor da fita */
+    border: none;
+    border-radius: 0 5px 5px 0; /* Bordas arredondadas no lado direito */
+    width: 60px; /* Largura da fita */
+    height: 40px; /* Altura da fita */
+    color: rgb(54, 54, 54);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px; /* Centraliza o texto verticalmente */
+    transition: transform 0.3s ease;
+}
+/* Adiciona o triângulo da fita */
+.toggle-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10px; /* Ajuste para criar o triângulo */
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 10px 20px 0; /* Triângulo apontando para a esquerda */
+    border-color: transparent rgb(255, 255, 255) transparent transparent; /* Cor da fita */
+}
+
+/* Efeito de hover */
+.toggle-btn:hover {
+    background-color: rgb(192, 192, 192); /* Cor ao passar o mouse */
+}
+
+.toggle-btn:hover::before {
+    border-color: transparent rgb(192, 192, 192) transparent transparent; /* Cor do triângulo ao passar o mouse */
+}
+
+.materias-btn {
     background-color: rgb(28, 181, 196);
-    width: 100px; 
+    width: 100px;
     height: 50px;
-    position: fixed; 
-    top: 70px; 
-    left: 20px; 
-    border-radius: 16px;
+    position: fixed;
+    top: 70px;
+    left: 20px;
     z-index: 10;
-    color: white;
-    text-align: center;
-    line-height: 50px;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 16px;
     font-weight: bold;
-    font-family: cursive;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease;
 }
 
-.estilo {
+.materias-btn:hover {
+    background-color: rgb(20, 150, 170);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.estilo-btn {
     background-color: rgb(220, 20, 60);
-    width: 100px; 
+    width: 100px;
     height: 50px;
-    position: fixed; 
-    top: 70px; 
-    left: 140px; 
-    border-radius: 16px;
+    position: fixed;
+    top: 70px;
+    left: 140px;
     z-index: 10;
-    color: white;
-    text-align: center;
-    line-height: 50px;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 16px;
     font-weight: bold;
-    font-family: cursive; 
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease;
+}
+.estilo-btn:hover {
+    background-color: rgb(200, 0, 50);
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
-.detalhes {
+.detalhes-btn {
     background-color: rgb(255, 140, 0);
-    width: 100px; 
+    width: 100px;
     height: 50px;
-    position: fixed; 
-    top: 70px; 
-    left: 260px; 
+    position: fixed;
+    top: 70px;
+    left:260px;
+    z-index: 10;
+    color: rgb(255, 255, 255);
+    border: none;
     border-radius: 16px;
-    z-index: 10; 
-    color: white;
-    text-align: center;
-    line-height: 50px;
+    cursor: pointer;
+    font-size: 16px;
     font-weight: bold;
-    font-family: cursive;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease;
+}
+
+.detalhes-btn:hover {
+    background-color: rgb(230, 120, 0);
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
 .imagem{
