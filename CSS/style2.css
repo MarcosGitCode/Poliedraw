@@ -173,7 +173,7 @@ body{
 .imagem{
     background-color: rgb(255, 255, 255);
     width: 600px;
-    height: 350px;
+    height: 60vh;
     position: fixed;
     border-radius: 16px;
     top: 150px;
@@ -250,4 +250,19 @@ body.sidebar-closed .prompt {
     height: 80px;
     width: 1200px;
     transition: all 0.3s;
+}
+
+@media (max-width: 450px) {
+    .prompt {
+        max-width: 300px;
+        max-height: 100px;
+    }
+    .sidebar.closed{
+        max-width: 10px;
+        width: 10vw;
+    }
+    .imagem{
+        max-width: 300px;
+        max-height: 300px;
+    }
 }
