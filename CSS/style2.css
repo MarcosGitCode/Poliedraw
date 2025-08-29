@@ -190,4 +190,46 @@ body{
     top: 550px;
     left: 650px;
     z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.prompt input[type="texto"] {
+    flex: 1;
+    margin: 0;
+    background-color: rgb(54, 54, 54);
+    color: rgb(255, 255, 255);
+    width: 90%;
+    height: 36px;
+    margin: 12px 5%;
+    border: none;
+    border-radius: 8px;
+    padding: 0 12px;
+    font-size: 18px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.prompt .send-btn {
+    background: rgb(20, 150, 170);
+    border: none;
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.prompt .send-btn:hover {
+    background: rgb(192, 192, 192);
+}
+
+.prompt .send-btn svg {
+    display: block;
 }
