@@ -179,6 +179,7 @@ body{
     top: 150px;
     left: 650px;
     z-index: 10;
+    transition: all 0.3s;
 }
 
 .prompt{
@@ -194,6 +195,7 @@ body{
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
+    transition: all 0.3s;
 }
 
 .prompt input[type="texto"] {
