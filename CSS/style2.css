@@ -172,7 +172,7 @@ body{
 
 .imagem{
     background-color: rgb(255, 255, 255);
-    width: 600px;
+    width: 60vw;
     height: 60vh;
     position: fixed;
     border-radius: 16px;
@@ -184,7 +184,7 @@ body{
 
 .prompt{
     background-color: rgb(54, 54, 54);
-    width: 600px;
+    width: 600vw;
     height: 60px;
     position: fixed;
     border-radius: 16px;
@@ -252,17 +252,24 @@ body.sidebar-closed .prompt {
     transition: all 0.3s;
 }
 
-@media (max-width: 450px) {
+@media screen and (max-width: 768px) {
     .prompt {
-        max-width: 300px;
-        max-height: 100px;
+        padding: 10px 20px;
+        max-width: 60vw;
+        max-height: 10vh;
+        width: auto;
+        height: auto;
     }
     .sidebar.closed{
-        max-width: 10px;
+        max-width: 20px;
         width: 10vw;
     }
     .imagem{
-        max-width: 300px;
-        max-height: 300px;
+        padding: 3vw 3vh;
+        max-width: 60vw;
+        max-height: 400px;
+        width: auto;
+        height: auto;
+        top: 20vh;
     }
 }

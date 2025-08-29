@@ -83,7 +83,7 @@ body {
     background: #d94d1a;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 768px) {
     .caixaLogin {
         padding: 40px 20px;
         max-width: 98vw;
