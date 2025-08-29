@@ -233,3 +233,19 @@ body{
 .prompt .send-btn svg {
     display: block;
 }
+
+body.sidebar-closed .imagem {
+    left: 100px;
+    top: 50px;
+    width: 1200px;
+    height: 450px;
+    transition: all 0.3s;
+}
+
+body.sidebar-closed .prompt {
+    left: 100px;
+    top: 530px;
+    height: 80px;
+    width: 1200px;
+    transition: all 0.3s;
+}
