@@ -94,11 +94,11 @@ body{
 .toggle-btn svg {
     display: block;
     transition: transform 0.3s;
-    transform: rotate(180deg); /* Seta padrão aponta para a esquerda */
+    transform: rotate(180deg); 
 }
 
 .sidebar.closed .toggle-btn svg {
-    transform: rotate(0deg); /* Seta aponta para a direita quando sidebar fechada */
+    transform: rotate(0deg); 
 }
 
 .materias-btn {
@@ -182,7 +182,7 @@ body{
     position: fixed;
     border-radius: 16px;
     top: 120px;
-    left: 900px; /* Centraliza considerando a sidebar de 400px */
+    left: 900px; 
     transform: translateX(-50%);
     z-index: 10;
     transition: all 0.3s;
@@ -195,7 +195,7 @@ body{
     position: fixed;
     border-radius: 16px;
     top: 500px;
-    left: 900px; /* Centraliza considerando a sidebar de 400px */
+    left: 900px; 
     transform: translateX(-50%);
     z-index: 10;
     display: flex;
