@@ -170,26 +170,28 @@ body{
     transition: all 0.3s ease;
 }
 
-.imagem{
+.imagem {
     background-color: rgb(255, 255, 255);
-    width: 60vw;
-    height: 60vh;
+    width: 600px;
+    height: 350px;
     position: fixed;
     border-radius: 16px;
-    top: 150px;
-    left: 650px;
+    top: 120px;
+    left: 900px; /* Centraliza considerando a sidebar de 400px */
+    transform: translateX(-50%);
     z-index: 10;
     transition: all 0.3s;
 }
 
-.prompt{
+.prompt {
     background-color: rgb(54, 54, 54);
-    width: 600vw;
+    width: 600px;
     height: 60px;
     position: fixed;
     border-radius: 16px;
-    top: 550px;
-    left: 650px;
+    top: 500px;
+    left: 900px; /* Centraliza considerando a sidebar de 400px */
+    transform: translateX(-50%);
     z-index: 10;
     display: flex;
     align-items: center;
@@ -237,7 +239,7 @@ body{
 }
 
 body.sidebar-closed .imagem {
-    left: 100px;
+    left: 700px;
     top: 50px;
     width: 1200px;
     height: 450px;
@@ -245,7 +247,7 @@ body.sidebar-closed .imagem {
 }
 
 body.sidebar-closed .prompt {
-    left: 100px;
+    left: 700px;
     top: 530px;
     height: 80px;
     width: 1200px;
