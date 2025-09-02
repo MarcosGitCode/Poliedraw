@@ -39,6 +39,11 @@ body{
     transition: none, opacity 1;
 }
 
+.sidebar.closed .quimica-btn,
+.sidebar.closed .fisica-btn {
+    display: none !important;
+}
+
 .sidebar .materias-btn,
 .sidebar .estilo-btn,
 .sidebar .detalhes-btn {
@@ -258,6 +263,82 @@ body.sidebar-closed .prompt {
     width: 1200px;
     transition: all 0.3s;
 }
+
+.fisica-btn {
+    background: url(../assets/fisica.jpg) no-repeat center center;
+    width: 340px;
+    height: 200px;
+    position: absolute;
+    top: 150px;
+    left: 20px;
+    z-index: 10;
+    color: rgb(255, 255, 255);
+    border: white solid 1px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease;
+    padding: 0; /* Remova padding do botão */
+    overflow: hidden;
+}
+
+.fisica-label {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    margin: 0;
+    padding: 0;
+    pointer-events: none; /* opcional, se não quiser clicar no texto */
+}
+
+.fisica-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Adiciona um overlay branco semi-transparente */
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.quimica-btn {
+    background: url(../assets/quimica.jpg) no-repeat;
+    background-position: 80% 75%;
+    width: 340px;
+    height: 200px;
+    position: absolute;
+    top: 380px;
+    left: 20px;
+    z-index: 10;
+    color: rgb(255, 255, 255);
+    border: white solid 1px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all;
+}
+.quimica-label {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    margin: 0;
+    padding: 0;
+    pointer-events: none; 
+}
+.quimica-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 
 @media screen and (max-width: 768px) {
     .prompt {
