@@ -182,7 +182,7 @@ body{
 
 .imagem {
     background-color: rgb(255, 255, 255);
-    width: 50%;
+    width: 30%;
     aspect-ratio: 1 / 1;
     position: fixed;
     border-radius: 16px;
@@ -206,32 +206,26 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
     transition: all 0.3s;
 }
 
 .prompt input[type="texto"] {
-    flex: 1;
     margin: 0;
     background-color: rgb(54, 54, 54);
     color: rgb(255, 255, 255);
-    width: 90%;
-    height: 36px;
-    margin: 12px 5%;
+    margin: 3% 5%;
     border: none;
-    border-radius: 8px;
-    padding: 0 12px;
-    font-size: 18px;
+    font-size: 100%;
     outline: none;
-    box-sizing: border-box;
 }
 
 .prompt .send-btn {
     background: rgb(20, 150, 170);
     border: none;
     border-radius: 8px;
-    width: 44px;
-    height: 44px;
+    aspect-ratio: 1 / 1;
+    width: 5%;
+    height: auto;
     margin-left: 10px;
     display: flex;
     align-items: center;
@@ -250,7 +244,7 @@ body{
 
 body.sidebar-closed .imagem {
     background-color: rgb(255, 255, 255);
-    width: 50%;
+    width: 30%;
     aspect-ratio: 1 / 1;
     position: fixed;
     border-radius: 16px;
@@ -278,80 +272,80 @@ body.sidebar-closed .prompt {
     transition: all 0.3s;
 }
 
-.fisica-btn {
-    background: url(../assets/fisica.jpg) no-repeat center center;
-    width: 340px;
-    height: 200px;
-    position: absolute;
-    top: 150px;
-    left: 20px;
-    z-index: 10;
-    color: rgb(255, 255, 255);
-    border: white solid 1px;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    transition: all 0.3s ease;
-    padding: 0; 
-    overflow: hidden;
-}
+        .fisica-btn {
+            background: url(../assets/fisica.jpg) no-repeat center center;
+            width: 340px;
+            height: 200px;
+            position: absolute;
+            top: 150px;
+            left: 20px;
+            z-index: 10;
+            color: rgb(255, 255, 255);
+            border: white solid 1px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            transition: all 0.3s ease;
+            padding: 0; 
+            overflow: hidden;
+        }
 
-.fisica-label {
-    position: absolute;
-    top: 12px;
-    left: 16px;
-    color: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    font-family: inherit;
-    margin: 0;
-    padding: 0;
-    pointer-events: none; 
-}
+        .fisica-label {
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            color: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            font-family: inherit;
+            margin: 0;
+            padding: 0;
+            pointer-events: none; 
+        }
 
-.fisica-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2); 
-    transform: scale(1.05);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
+        .fisica-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2); 
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-.quimica-btn {
-    background: url(../assets/quimica.jpg) no-repeat;
-    background-position: 80% 75%;
-    width: 340px;
-    height: 200px;
-    position: absolute;
-    top: 380px;
-    left: 20px;
-    z-index: 10;
-    color: rgb(255, 255, 255);
-    border: white solid 1px;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    transition: all;
-}
-.quimica-label {
-    position: absolute;
-    top: 12px;
-    left: 16px;
-    color: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    font-family: inherit;
-    margin: 0;
-    padding: 0;
-    pointer-events: none; 
-}
-.quimica-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2); 
-    transform: scale(1.05);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
+        .quimica-btn {
+            background: url(../assets/quimica.jpg) no-repeat;
+            background-position: 80% 75%;
+            width: 340px;
+            height: 200px;
+            position: absolute;
+            top: 380px;
+            left: 20px;
+            z-index: 10;
+            color: rgb(255, 255, 255);
+            border: white solid 1px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            transition: all;
+        }
+        .quimica-label {
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            color: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            font-family: inherit;
+            margin: 0;
+            padding: 0;
+            pointer-events: none; 
+        }
+        .quimica-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2); 
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
 
 @media screen and (max-width: 768px) {
@@ -374,8 +368,33 @@ body.sidebar-closed .prompt {
     }
     body.sidebar-closed .prompt {
         display: flex !important;
+        background-color: rgb(54, 54, 54);
+        width: 80%;
+        aspect-ratio: 10 / 1;
+        position: fixed;
+        border-radius: 16px;
+        top: 80%;
+        left: 50%; 
+        transform: translateX(-50%);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        transition: all 0.3s;
+        height: 10%;
     }
     body.sidebar-closed .imagem {
         display: block !important;
+            background-color: rgb(255, 255, 255);
+        width: 80%;
+        aspect-ratio: 1 / 1;
+        position: fixed;
+        border-radius: 16px;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 0.3s;
+        height: auto;
     }
 }
