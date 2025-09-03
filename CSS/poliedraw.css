@@ -280,7 +280,7 @@ body.sidebar-closed .prompt {
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     transition: all 0.3s ease;
-    padding: 0; /* Remova padding do botão */
+    padding: 0; 
     overflow: hidden;
 }
 
@@ -294,11 +294,11 @@ body.sidebar-closed .prompt {
     font-family: inherit;
     margin: 0;
     padding: 0;
-    pointer-events: none; /* opcional, se não quiser clicar no texto */
+    pointer-events: none; 
 }
 
 .fisica-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Adiciona um overlay branco semi-transparente */
+    background-color: rgba(255, 255, 255, 0.2); 
     transform: scale(1.05);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
