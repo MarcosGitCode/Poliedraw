@@ -112,7 +112,7 @@ body{
     height: 7%;
     position: fixed;
     top: 10%;
-    left: 2%;
+    left: 1%;
     z-index: 10;
     color: rgb(255, 255, 255);
     border: none;
@@ -137,7 +137,7 @@ body{
     height: 7%;
     position: fixed;
     top: 10%;
-    left: 10%;
+    left: 9%;
     z-index: 10;
     color: rgb(255, 255, 255);
     border: none;
@@ -161,7 +161,7 @@ body{
     height: 7%;
     position: fixed;
     top: 10%;
-    left: 18%;
+    left: 17%;
     z-index: 10;
     color: rgb(255, 255, 255);
     border: none;
@@ -273,12 +273,12 @@ body.sidebar-closed .prompt {
 }
 
         .fisica-btn {
-            background: url(../assets/fisica.jpg) no-repeat center center;
-            width: 340px;
-            height: 200px;
+            background: url(../assets/fisica.png) no-repeat center center;
+            width: 80%;
+            height: 20%;
             position: absolute;
-            top: 150px;
-            left: 20px;
+            top: 25%;
+            left: 10%;
             z-index: 10;
             color: rgb(255, 255, 255);
             border: white solid 1px;
@@ -287,11 +287,25 @@ body.sidebar-closed .prompt {
             font-size: 16px;
             font-weight: bold;
             font-family: Arial, Helvetica, sans-serif;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(.4,0,.2,1), opacity 0.3s, transform 0.3s;
             padding: 0; 
             overflow: hidden;
+            opacity: 1;
+            transform: translateY(0);
         }
 
+        .fisica-btn.fade-in {
+            opacity: 1 !important;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .fisica-btn.fade-out {
+            opacity: 0 !important;
+            transform: translateY(30px) scale(0.95);
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+        }
         .fisica-label {
             position: absolute;
             top: 12px;
@@ -312,13 +326,13 @@ body.sidebar-closed .prompt {
         }
 
         .quimica-btn {
-            background: url(../assets/quimica.jpg) no-repeat;
+            background: url(../assets/quimica.png) no-repeat;
             background-position: 80% 75%;
-            width: 340px;
-            height: 200px;
+            width: 80%;
+            height: 20%;
             position: absolute;
-            top: 380px;
-            left: 20px;
+            top: 50%;
+            left: 10%;
             z-index: 10;
             color: rgb(255, 255, 255);
             border: white solid 1px;
@@ -327,7 +341,21 @@ body.sidebar-closed .prompt {
             font-size: 16px;
             font-weight: bold;
             font-family: Arial, Helvetica, sans-serif;
-            transition: all;
+            transition: all 0.3s cubic-bezier(.4,0,.2,1), opacity 0.3s, transform 0.3s;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .quimica-btn.fade-in {
+            opacity: 1 !important;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .quimica-btn.fade-out {
+            opacity: 0 !important;
+            transform: translateY(30px) scale(0.95);
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
         }
         .quimica-label {
             position: absolute;
@@ -396,5 +424,56 @@ body.sidebar-closed .prompt {
         transform: translateX(-50%);
         transition: all 0.3s;
         height: auto;
+    }
+    .materias-btn {
+    background-color: rgb(28, 181, 196);
+    width: 25%;
+    height: 7%;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    z-index: 10;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 100%;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease;
+    }
+    .detalhes-btn {
+        background-color: rgb(255, 140, 0);
+        width: 25%;
+        height: 7%;
+        position: fixed;
+        top: 10%;
+        left: 38%;
+        z-index: 10;
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 16px;
+        cursor: pointer;
+        font-size: 100%;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        transition: all 0.3s ease;
+    }
+    .estilo-btn {
+    background-color: rgb(220, 20, 60);
+    width: 25%;
+    height: 7%;
+    position: fixed;
+    top: 10%;
+    left: 65%;
+    z-index: 10;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 100%;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease;
     }
 }
