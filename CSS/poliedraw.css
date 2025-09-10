@@ -437,7 +437,7 @@ body.sidebar-closed .prompt {
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    font-size: 100%;
+    font-size: 150%;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     transition: all 0.3s ease;
@@ -454,7 +454,7 @@ body.sidebar-closed .prompt {
         border: none;
         border-radius: 16px;
         cursor: pointer;
-        font-size: 100%;
+        font-size: 150%;
         font-weight: bold;
         font-family: Arial, Helvetica, sans-serif;
         transition: all 0.3s ease;
@@ -471,7 +471,7 @@ body.sidebar-closed .prompt {
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    font-size: 100%;
+    font-size: 150%;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     transition: all 0.3s ease;
