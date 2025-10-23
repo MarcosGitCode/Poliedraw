@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/MarcosGitCode/Poliedraw#readme",
   "dependencies": {
+    "mysql2": "^3.15.3",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"
   },
