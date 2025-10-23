@@ -38,7 +38,7 @@ nav {
 nav img {
     display: block;
     width: auto;
-    height: 100px; 
+    height: 60px; 
     object-fit: contain;
 }
 .nav-list {
@@ -57,7 +57,7 @@ nav img {
     width: 32px;
     height: 2px;
     background: var(--fundo);
-    margin: 8px;
+    margin: 2px;
 }
 
 @media (max-width: 999px) {
