@@ -22,3 +22,19 @@ CREATE TABLE historico_pesquisa (
     termo_pesquisado TEXT NOT NULL,
     data_pesquisa DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO professores(nome, email, senha) VALUES ("Guilherme 43", "gui@43", "4343");
+
+SELECT * FROM professores;
+
+
+CREATE DATABASE login_db;
+USE login_db;
+
+CREATE TABLE usuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100) UNIQUE,
+  password VARCHAR(255)
+);
+
+INSERT INTO usuarios (username, password) VALUES ('gui@43', '4343');

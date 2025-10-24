@@ -1,32 +1,29 @@
-// import sqlite3 from 'sqlite3';
-// import { open } from 'sqlite';
-// import { use } from 'react';
-
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("loginForm");
+      const form = document.getElementById("loginForm");
 
-  const User = "a";
-  const Pass = "a";
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault(); 
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
 
-    // async function buscarUsuarios(username, password) {
-    //   const db = await open({
-    //     filename: './banco.db',
-    //     driver: sqlite3.Database
-    // });
-    //   db.run("SELECT * FROM usuarios WHERE username = ? AND password = ?", [username, password], (err, row) => {
-    // });
+        try {
+          const response = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+          });
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+          const result = await response.json();
 
-    if (username === User && password === Pass) {
-      window.location.href = "./poliedraw.html";
-    } else {
-      alert("Usuário ou senha incorretos!");
-    }
-    // }
-  });
-});
+          if (result.success) {
+            window.location.href = "./poliedraw.html";
+          } else {
+            alert("Usuário ou senha incorretos!");
+          }
+        } catch (err) {
+          alert("Erro ao conectar com o servidor!");
+          console.error(err);
+        }
+      });
+    });
