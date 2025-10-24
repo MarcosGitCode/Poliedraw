@@ -8,46 +8,33 @@
     <link rel="stylesheet" href="../CSS/poliedraw.css">
 </head>
 <body>
-    <div class="sidebar">
-        <button class="toggle-btn" title="Abrir/Fechar Sidebar">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="cabecalho">
-            <div class="materias">
-                <button class="materias-btn">Matérias</button>
-                <button class="quimica-btn"><span class="quimica-label">Química</span></button>
-                <button class="fisica-btn"><span class="fisica-label">Física</span></button>
+    <header>
+        <nav>
+            <a href="/HTML/poliedraw.html"><img src="/assets/logoCabeça.png" alt="logo"></a>
+            <div class="mobile-menu">
+                <div class="mobile-menu"></div>
+                <div class="line1"></div>
+                <div class="line2"></div>
             </div>
-            <div class="estilo">
-                <button class="estilo-btn">Estilo</button>
-            </div>
-            <div class="detalhes">
-                <button class="detalhes-btn">Detalhes</button>
-            </div>
-    </div>
-    <div class="imagem"></div>
-    <div class="prompt">
-        <textarea id="promptInput" placeholder="Digite seu texto aqui..." rows="2" aria-label="Campo de texto"
-          style="flex:1;margin:0 10px;background:transparent;color:#fff;border:none;font-size:100%;outline:none;resize:none;min-height:44px;max-height:160px;overflow-y:auto;white-space:pre-wrap;word-wrap:break-word;padding:6px 8px;line-height:1.25;"></textarea>
-         <button class="send-btn" title="Enviar">
-           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-             <path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-           </svg>
-         </button>
-     </div>
-
-    </div>
-    <script src="../JS/poliedraw.js"></script>
-    
+            <p class="nav-list">
+            </p>
+        </nav>
+    </header>
+    <main>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque cupiditate error dolor voluptate incidunt quasi tempora praesentium sit, minima natus, blanditiis nulla rem totam quo mollitia et vel animi reprehenderit.</p>
+    </main>
+    <script src="/JS/mobile-navbar.js"></script>
+    <!-- acessibilidade -->
     <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+    </div>
     </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script src="../JS/vlibras-init.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <script src="https://app.embed.im/accessibility.js" defer></script>
 </body>
 </html>
