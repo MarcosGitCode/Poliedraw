@@ -7,14 +7,16 @@
 }
 /* variáveis */
 :root {
-    --cabeçalho: #F7F7F7;
+    --cabeçalho: white;
     --fundo: gray;
-    --fundo2: rgb(65, 65, 65);
-    --corLetra: black;
+    --fundo2: white;
+    --main: white;
+    --corLetra: rgb(0, 0, 0);
 }
 /* corpo */
 body {
     background-color: var(--fundo);
+    overflow-x: hidden;
 }
 /* cabeçalho e navegação*/
 header {
@@ -29,60 +31,61 @@ a:hover {
 }
 nav {
     display: flex;
-    justify-content: space-around;
     align-items: center;
     font-family: system-ui;
     background-color: var(--cabeçalho);
     height: 8vh;
+    padding: 1%;
+    justify-content:space-between;
 }
 nav img {
     display: block;
     width: auto;
     height: 60px; 
     object-fit: contain;
+    margin: 10%;
 }
 .nav-list {
-    list-style: none;
+    position: absolute;
+    right: 0;
+    top: 8vh;
+    width: 4vw;
+    height: 92vh;
+    background: var(--fundo2);
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
     display: flex;
-}
-.nav-list li {
-    letter-spacing: 3px;
-    margin-left: 32px;
-}
-.mobile-menu {
-    cursor: pointer;
-    display: none;
-}
-.mobile-menu div {
-    width: 32px;
-    height: 2px;
-    background: var(--fundo);
-    margin: 2px;
-}
-
-@media (max-width: 999px) {
-    body {
-        overflow-x: hidden;
-    }
-    .nav-list {
-        position: absolute;
-        top: 8vh;
-        right: 0;
-        width: 50vw;
-        height: 92vh;
-        background: var(--fundo2);
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        transform: translateX(100%);
-    }
-    .nav-list li {
-        margin-left: 0;
-    }
-    .mobile-menu {
-        display: block;
-    }
+    margin: 0;
+    padding: 0;
 }
 .nav-list.active {
     transform: translateX(0);
+}
+.mobile-menu {
+    display: block;
+}
+.mobile-menu div {
+    width: 30px;
+    height: 4px;
+    background: var(--fundo);
+    margin: 3px;
+}
+.mobile-menu:hover {
+    opacity: 0.7;
+}
+/*main */
+main {
+    background-color: var(--main);
+    margin-inline: 20%;
+}
+main > img {
+    display: block;
+    margin: auto;
+    width: 50%; /* Necessário para que margin: auto funcione */
+}
+p {
+    font-size: 4em;
 }
