@@ -13,28 +13,29 @@ const db = await mysql.createConnection({
   port: 3306,
   user: "root",        // coloque seu usuário
   password: "imtdb", // coloque sua senha
-  database: "login_db"   // coloque o nome do seu banco
+  database: "poliedro_ai"   // coloque o nome do seu banco
 });
 
 console.log("✅ Conectado ao MySQL com sucesso!");
 
 // 🧱 Cria tabela se não existir
 await db.execute(`
-  CREATE TABLE IF NOT EXISTS usuarios (
+  CREATE TABLE IF NOT EXISTS professores (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(100) UNIQUE,
-    password VARCHAR(255)
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL
   )
 `);
 
 // 🧩 Endpoint de login
 app.post("/login", async (req, res) => {
-  const { username, password } = req.body;
+  const { email, senha } = req.body;
 
   try {
     const [rows] = await db.execute(
-      "SELECT * FROM usuarios WHERE username = ? AND password = ?",
-      [username, password]
+      "SELECT * FROM professores WHERE email = ? AND senha = ?",
+      [email, senha]
     );
 
     if (rows.length > 0) {

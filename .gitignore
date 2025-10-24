@@ -1,0 +1,16 @@
+# Node.js
+node_modules/
+package-lock.json
+
+# Arquivos de ambiente
+.env
+
+# Logs e caches
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+
+# IDEs (opcional, mas recomendável)
+.vscode/
+.idea/
