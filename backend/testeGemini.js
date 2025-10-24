@@ -1,5 +1,5 @@
 import express from 'express';
-import Gemini from './gemini.js';  
+import Gemini from '../JS/gemini.js';  
 
 const app = express();
 const PORT = 3000;

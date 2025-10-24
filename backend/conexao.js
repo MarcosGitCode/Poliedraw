@@ -12,7 +12,7 @@ const db = await mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",        // coloque seu usuário
-  password: "imtdb", // coloque sua senha
+  password: "12345", // coloque sua senha
   database: "poliedro_ai"   // coloque o nome do seu banco
 });
 
