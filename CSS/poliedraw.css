@@ -8,10 +8,11 @@
 /* variáveis */
 :root {
     --cabeçalho: white;
-    --fundo: gray;
+    --fundo: #FDBF62;
     --fundo2: white;
-    --main: white;
+    --main: gray;
     --corLetra: rgb(0, 0, 0);
+    --hamburguer: #1DB4C3;
 }
 /* corpo */
 body {
@@ -46,7 +47,7 @@ nav img {
     position: absolute;
     right: 100%;
     top: 8vh;
-    width: 40vw;
+    width: 4vw;
     height: 92vh;
     background: var(--fundo2);
     flex-direction: column;
@@ -67,7 +68,7 @@ nav img {
 .mobile-menu div {
     width: 30px;
     height: 4px;
-    background: var(--fundo);
+    background: var(--hamburguer);
     margin: 3px;
 }
 .mobile-menu:hover {
@@ -77,11 +78,13 @@ nav img {
 main {
     background-color: var(--main);
     margin-inline: 20%;
+    min-height:92vh;
+    box-shadow: 0px 20px 2 10px 1px rgba(0, 0, 0, 0.483);
 }
 main > img {
     display: block;
     margin: auto;
-    width: 50%; /* Necessário para que margin: auto funcione */
+    width: 50%;
 }
 p {
     font-size: 4em;
