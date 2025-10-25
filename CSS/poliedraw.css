@@ -19,9 +19,6 @@ body {
     overflow-x: hidden;
 }
 /* cabeçalho e navegação*/
-header {
-    overflow: hidden;
-}
 a {
     color: var(--corLetra);
     text-decoration: none;
@@ -36,7 +33,7 @@ nav {
     background-color: var(--cabeçalho);
     height: 8vh;
     padding: 1%;
-    justify-content:space-between;
+    justify-content:left;
 }
 nav img {
     display: block;
@@ -47,9 +44,9 @@ nav img {
 }
 .nav-list {
     position: absolute;
-    right: 0;
+    right: 100%;
     top: 8vh;
-    width: 4vw;
+    width: 40vw;
     height: 92vh;
     background: var(--fundo2);
     flex-direction: column;
