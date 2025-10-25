@@ -122,7 +122,7 @@ nav img:active {
 main {
     z-index: 1;
     background-color: var(--main);
-    margin-inline: 20%;
+    margin-inline: 24%;
     min-height:92vh;
     border-radius: 0px 0px 20px 20px;
 }
@@ -202,11 +202,11 @@ p {
 }
 textarea {
     flex:1;
-    margin:0 10px;
+    margin: 1% 0% -1% 6%;
     background:transparent;
     color:#fff;
     border:none;
-    font-size:100%;
+    font-size:115%;
     outline:none;
     resize:none;
     min-height:44px;
