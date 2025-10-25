@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
     <title>Poliedraw</title>
     <link rel="stylesheet" href="../CSS/poliedraw.css">
+    <script src="/JS/mobile-navbar.js" defer></script>
 </head>
 <body>
     <header>
@@ -25,8 +26,23 @@
         <a href="/"><img src="/assets/navegacao/cadastrar.png" alt="cadastro" class="img-cadastro" title="cadastro"></a>
     </header>
     <main>
+        <div id= "chat">
+            <div class="imagem"></div>
+        </div>
+
+        <div id="caixaPrompt">
+            <div class="prompt">
+            <textarea id="promptInput" placeholder="Digite seu texto aqui..." rows="2" aria-label="Campo de texto"></textarea>
+                <button class="send-btn" title="Enviar">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </main>
-    <script src="/JS/mobile-navbar.js"></script>
+    
+
     <!-- acessibilidade -->
     <div vw class="enabled">
     <div vw-access-button class="active"></div>
@@ -34,7 +50,7 @@
     <div class="vw-plugin-top-wrapper"></div>
     </div>
     </div>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>

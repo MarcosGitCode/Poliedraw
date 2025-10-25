@@ -48,6 +48,7 @@ header > a:hover {
 }
 /*navegação*/
 .nav-list {
+    z-index: 3;
     position: absolute;
     right: 100%;
     top: 8vh;
@@ -118,6 +119,7 @@ nav img:active {
 
 /*main */
 main {
+    z-index: 1;
     background-color: var(--main);
     margin-inline: 20%;
     min-height:92vh;
@@ -134,5 +136,92 @@ p {
 @media screen and (max-width: 1000px) {
     main {
         margin-inline: 0%;
+    }
+}
+
+/*chat*/
+#chat {
+    z-index: 2;
+    position: relative;
+    width: 100%;
+    height: 70vh;
+}
+/*imagem*/
+.imagem {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    width: 50vh;
+    height: 50vh;
+    border-radius: 12px;
+    margin: auto;
+    top: 10%;
+    display: block;
+}
+@media screen and (max-width: 1000px) {
+    .imagem{
+        width: 40vh;
+        height: 40vh;
+    }
+}
+/*barra para prompt*/
+#caixaPrompt {
+    position: relative;
+    width: 100%;
+    height: 20vh;
+}
+.prompt {
+    background-color: rgba(54, 54, 54, 0);
+    border: 4px solid var(--fundo);
+    border-radius: 100px;
+    width: 50%;
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s;
+}
+
+.prompt .send-btn {
+    background: rgba(0, 0, 0, 0.262);
+    border: none;
+    border-radius: 100px;
+    aspect-ratio: 1 / 1;
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prompt .send-btn:hover {
+    background: rgba(0, 0, 0, 0.487);
+}
+textarea {
+    flex:1;
+    margin:0 10px;
+    background:transparent;
+    color:#fff;
+    border:none;
+    font-size:100%;
+    outline:none;
+    resize:none;
+    min-height:44px;
+    max-height:160px;
+    overflow-y:auto;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    padding:6px 8px;
+    line-height:1.25;
+}
+@media screen and (max-width: 1000px) {
+    .prompt .send-btn {
+    width: 12%;
+    }
+    .prompt {
+        width: 70%;
+        top: 80%;
     }
 }
