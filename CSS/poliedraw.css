@@ -28,6 +28,7 @@ body {
 header {
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: var(--cabeçalho);
     height: 8vh;
     padding: 1%;
@@ -35,7 +36,7 @@ header {
     overflow: hidden;
 }
 header .img-logo {
-    width: auto;
+    position: relative;
     height: 60px; 
     margin: 10%;
 }
