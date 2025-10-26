@@ -167,6 +167,13 @@ p {
         height: 40vh;
     }
 }
+@media screen and (max-width: 450px) {
+    .imagem{
+        top: 30%;
+        width: 30vh;
+        height: 30vh;
+    }
+}
 /*barra para prompt*/
 #caixaPrompt {
     z-index: 3;
