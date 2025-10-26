@@ -10,10 +10,10 @@
 /* variáveis */
 :root {
     --cabeçalho: white;
-    --fundo: #cc994d;
+    --fundo: rgb(230, 226, 226);
     --fundo2: white;
-    --main:  #FDBF62;
-    --corLetra: rgb(0, 0, 0);
+    --main:  gray;
+    --corLetra: black;
     --hamburguer: #1DB4C3;
     --rodape: #f85454;
 }
@@ -30,7 +30,7 @@ header {
     align-items: center;
     justify-content: center;
     background-color: var(--cabeçalho);
-    height: 8vh;
+    height: 6vh;
     padding: 1%;
     justify-content: space-between;
     overflow: hidden;
@@ -47,14 +47,34 @@ header .img-cadastro{
 header > a:hover {
     opacity: 0.7;
 }
+
+/*hamburger*/
+.mobile-menu {
+    display: block;
+}
+.mobile-menu div {
+    width: 30px;
+    height: 4px;
+    background: var(--hamburguer);
+    margin: 3px;
+}
+.mobile-menu:hover {
+    opacity: 0.5;
+    transition-duration: 0.3s;
+}
+.mobile-menu:active {
+    transform: scale(0.9);
+    transition-duration: 0.4s;
+}
+
 /*navegação*/
 .nav-list {
-    z-index: 3;
+    z-index: 4;
     position: absolute;
     right: 100%;
-    top: 8vh;
+    top: 6vh;
     width: 4vw;
-    height: 92vh;
+    height: 94vh;
     background: var(--fundo2);
     flex-direction: column;
     transform: translateX(100%);
@@ -75,25 +95,8 @@ nav img:hover {
 nav img:active {
     transform: scale(0.9);
 }
-/*hamburger*/
-.mobile-menu {
-    display: block;
-}
-.mobile-menu div {
-    width: 30px;
-    height: 4px;
-    background: var(--hamburguer);
-    margin: 3px;
-}
-.mobile-menu:hover {
-    opacity: 0.5;
-    transition-duration: 0.3s;
-}
-.mobile-menu:active {
-    transform: scale(0.9);
-    transition-duration: 0.4s;
-}
-/*hamburger/navegação responsividade*/
+
+/*navegação responsividade*/
 @media screen and (max-width: 1500px) {
     .nav-list {
         width: 5vw;
@@ -108,13 +111,13 @@ nav img:active {
         width: 10vw;
     }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 720px) {
     .nav-list.active {
         transform: translateX(100%);
     }
     .nav-list {
         transform: translateX(0);
-        width: 14vw;
+        width: 16vw;
     }
 }
 
@@ -150,7 +153,7 @@ p {
 /*imagem*/
 .imagem {
     position: relative;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--fundo);
     width: 50vh;
     height: 50vh;
     border-radius: 12px;
@@ -164,16 +167,24 @@ p {
         height: 40vh;
     }
 }
+@media screen and (max-width: 450px) {
+    .imagem{
+        top: 30%;
+        width: 30vh;
+        height: 30vh;
+    }
+}
 /*barra para prompt*/
 #caixaPrompt {
+    z-index: 3;
     position: relative;
     width: 100%;
     height: 20vh;
 }
 .prompt {
-    background-color: rgba(54, 54, 54, 0);
-    border: 4px solid var(--fundo);
-    border-radius: 100px;
+    background-color: rgba(255, 255, 255, 0.233);
+    border: 2px solid rgba(0, 0, 0, 0.404);
+    border-radius: 40px;
     width: 50%;
     position: fixed;
     top: 80%;
@@ -187,11 +198,12 @@ p {
 }
 
 .prompt .send-btn {
+    position: relative;
     background: rgba(0, 0, 0, 0.262);
     border: none;
     border-radius: 100px;
     aspect-ratio: 1 / 1;
-    width: 5%;
+    width: 7%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -204,7 +216,7 @@ textarea {
     flex:1;
     margin: 1% 0% -1% 6%;
     background:transparent;
-    color:#fff;
+    color: var(--corLetra);
     border:none;
     font-size:115%;
     outline:none;
@@ -224,5 +236,36 @@ textarea {
     .prompt {
         width: 70%;
         top: 80%;
+    }
+}
+/*responsividade para botão da barra*/
+@media screen and (max-width: 1500px) {
+    .prompt .send-btn {
+        width: 8%;
+    }
+}
+@media screen and (max-width: 1300px) {
+    .prompt .send-btn {
+        width: 9%;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .prompt .send-btn {
+        width: 10%;
+    }
+}
+@media screen and (max-width: 750px) {
+    .prompt .send-btn {
+        width: 12%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .prompt .send-btn {
+        width: 15%;
+    }
+}
+@media screen and (max-width: 450px) {
+    .prompt .send-btn {
+        width: 18%;
     }
 }
