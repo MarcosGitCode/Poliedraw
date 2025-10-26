@@ -1,29 +1,5 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
-
-body {
-    min-height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    background: #ffffff;
-    font-family: 'Quicksand', Arial, sans-serif;
-    box-sizing: border-box;
-    overflow-x: hidden;
-}
-
-.logo {
-    max-width: 120px;
-    width: 30vw;
-    margin-bottom: 24px;
-}
-
-.caixaLogin {
-    background: #ebd2bd;
-    border-radius: 24px;
+.caixaCadastro {
     padding: 40px 32px;
     display: flex;
     flex-direction: column;
@@ -31,13 +7,10 @@ body {
     min-width: 0;
     width: 100%;
     max-width: 350px;
-    margin-bottom: 24px;
-    box-sizing: border-box;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.19);
 }
 
-.caixaLogin input[type="text"],
-.caixaLogin input[type="password"] {
+.caixaCadastro input[type="text"],
+.caixaCadastro input[type="password"] {
     width: 100%;
     padding: 12px 16px;
     margin-bottom: 18px;
@@ -51,11 +24,10 @@ body {
     box-sizing: border-box;
 }
 
-.caixaLogin input[type="text"]:focus,
-.caixaLogin input[type="password"]:focus {
+.caixaCadastro input[type="text"]:focus,
+.caixaCadastro input[type="password"]:focus {
     box-shadow: 0 0 0 2px #ac3712;
 }
-
 .botaoAvancar {
     display: flex;
     justify-content: center;
@@ -84,7 +56,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .caixaLogin {
+    .caixaCadastro {
         padding: 40px 20px;
         max-width: 98vw;
     }
@@ -98,9 +70,6 @@ body {
         max-width: 100%;
     }
 }
-h1 {
-    top: 0%;
-    margin-bottom: 2%;
-    font-size: 3em;
-    color: #ac3712;
+main {
+    justify-items: center;
 }

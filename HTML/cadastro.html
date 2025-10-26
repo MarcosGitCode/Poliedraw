@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poliedraw</title>
     <link rel="stylesheet" href="../CSS/poliedraw.css">
-    
+    <link rel="stylesheet" href="../CSS/cadastro.css">
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -14,7 +14,15 @@
         <a href="/HTML/cadastro.html"><img src="/assets/navegacao/cadastrar.png" alt="cadastro" class="img-cadastro" title="cadastro"></a>
     </header>
     <main>
-
+        <div class="caixaCadastro">
+            <form id="loginForm">
+                <input type="text" id="username" name="username" required placeholder="Usuário">
+                <input type="password" id="password" name="Senha" required placeholder="Senha">
+                <div class="botaoAvancar">
+                    <button type="submit">cadastrar</button>
+                </div>
+            </form>
+        </div>
     </main>
     <!-- acessibilidade -->
     <div vw class="enabled">
