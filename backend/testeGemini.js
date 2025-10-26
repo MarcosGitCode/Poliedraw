@@ -1,12 +1,12 @@
 import express from 'express';
-import Gemini from '../JS/gemini.js';  
+import Gemini from './gemini.js';  
 
 const app = express();
 const PORT = 3000;
 
 app.get('/', async (req, res) => {
     try {
-        const response = await Gemini("Quanto é 43 + 43?");
+        const response = await Gemini("oq é água");
         res.send(`Resposta do Gemini: ${response}`);
     } catch (error) {
         res.status(500).send("Erro ao obter resposta do Gemini");
