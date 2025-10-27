@@ -33,7 +33,7 @@ header {
     align-items: center;
     justify-content: center;
     background-color: var(--cabeçalho);
-    height: 6vh;
+    height: 7vh;
     padding: 1%;
     justify-content: space-between;
     overflow: hidden;
