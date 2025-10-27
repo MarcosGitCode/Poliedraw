@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         responseElement.className = 'response-text';
         responseElement.style.color = '#fff';
         responseElement.style.margin = '20px';
-        responseElement.style.fontSize = '14px';
-        responseElement.innerText = 'Enviando...'; // Note que mudei de result para resposta
+        responseElement.style.fontSize = '18px';
+        responseElement.innerText = 'Enviando...'; 
 
             
         imagemDiv.appendChild(responseElement);
@@ -26,15 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await res.json();
             responseElement.innerHTML = '';
             
-            // Adiciona o texto se existir
+            
             if (data.texto) {
                 const textElement = document.createElement('p');
                 textElement.innerText = data.texto;
-                textElement.style.fontSize = '14px';
+                textElement.style.fontSize = '18px';
                 responseElement.appendChild(textElement);
             }
             
-            // Adiciona as imagens se existirem
+            
             if (data.imagens && data.imagens.length > 0) {
                 data.imagens.forEach(imgUrl => {
                     const img = document.createElement('img');
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sendPrompt(prompt);
     });
 
-    // Evento de tecla Enter
+    
     textarea.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
