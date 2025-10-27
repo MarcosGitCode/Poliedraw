@@ -4,12 +4,14 @@
     font-family: 'Quicksand', Arial, sans-serif;
 }
 h1 {
-    top: 0%;
-    margin-bottom: 2%;
     font-size: 3em;
     color: #ffffff;
 }
-/*div cadastro*/
+p {
+    font-size: 1.3em;
+}
+
+/*caixa do cadastro*/
 .caixaCadastro {
     padding: 40px 32px;
     display: flex;
@@ -38,6 +40,7 @@ h1 {
 .caixaCadastro input[type="password"]:focus {
     box-shadow: 0 0 0 2px #ac3712;
 }
+
 /*botão para cadastrar*/
 .botaoCadastrar {
     display: flex;
@@ -64,6 +67,7 @@ h1 {
 .botaoCadastrar button:hover {
     background: #d94d1a;
 }
+
 /*responsividade*/
 @media (max-width: 768px) {
     .caixaCadastro {
@@ -80,6 +84,8 @@ h1 {
         max-width: 100%;
     }
 }
+
+/*main*/
 main {
     justify-items: center;
     padding-top: 5%;
@@ -102,20 +108,45 @@ background-color: white;
 padding: 20px 30px;
 border-radius: 10px;
 box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-max-width: 300px;
+max-width: 30vh;
+max-height: 20vh ;
 text-align: center;
-animation: aparecer 0.3s ease;
 }
 @keyframes aparecer {
-from { transform: scale(0.8); opacity: 0; }
-to { transform: scale(1); opacity: 1; }
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
 /* Botão de fechar */
 .fechar {
-margin-top: 15px;
-background-color: #ff4b4b;
-}
+    margin-top: 15px;
+    background-color: #ff4b4b;
+    border: none;
+    border-radius: 10px;
+    padding: 2%;
+    }
 .fechar:hover {
-background-color: #d93838;
-}
+    background-color: #d93838;
+    }
+
+/* Botão de nao*/
+    .nao {
+    margin-inline: 1%;
+    margin-top: 15px;
+    background-color: #ff4b4b;
+    border: none;
+    border-radius: 10px;
+    padding: 2%;
+    width: 20%;
+    }
+/* Botão de sim*/
+    .sim {
+    margin-inline: 1%;
+    margin-top: 15px;
+    background-color: #2bff00;
+    border: none;
+    border-radius: 10px;
+    padding: 2%;
+    width: 20%;
+    height: 20%;
+    }
