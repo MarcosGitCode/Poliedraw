@@ -16,6 +16,7 @@
 }
 h1 {
     font-size: 3em;
+    text-align: center;
 }
 p {
     font-size: 1.3em;
@@ -78,9 +79,10 @@ p {
 
 /*responsividade*/
 @media (max-width: 768px) {
-    .caixaCadastro {
+    .caixaLogin {
         padding: 40px 20px;
-        max-width: 98vw;
+        max-width: 70vw;
+        margin-top: 10%;
     }
     .logo {
         max-width: 80px;
