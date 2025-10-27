@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         responseElement.className = 'response-text';
         responseElement.style.color = '#fff';
         responseElement.style.margin = '20px';
+        responseElement.style.fontSize = '14px';
         responseElement.innerText = 'Enviando...'; // Note que mudei de result para resposta
 
             
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.texto) {
                 const textElement = document.createElement('p');
                 textElement.innerText = data.texto;
+                textElement.style.fontSize = '14px';
                 responseElement.appendChild(textElement);
             }
             
