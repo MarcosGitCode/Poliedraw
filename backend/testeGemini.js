@@ -15,21 +15,17 @@ app.post('/api/gemini', async (req, res) => {
         if (!prompt) return res.status(400).json({ error: 'prompt é obrigatório' });
 
         const resposta = await Gemini(prompt);
-        res.json({ resposta });
+        res.json({
+            texto: resposta.text,
+            imagens: resposta.images
+        });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: 'Erro ao obter resposta do Gemini' });
     }
 });
 
-app.get('/', async (req, res) => {
-    try {
-        const response = await Gemini(prompt);
-        res.send(`Resposta do Gemini: ${response}`);
-    } catch (error) {
-        res.status(500).send("Erro ao obter resposta do Gemini");
-    }
-});
+
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
