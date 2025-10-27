@@ -51,3 +51,7 @@ function verificar() {
     if (popupBg) popupBg.style.display = 'flex';
   }
 }
+// teste para botão de visualizar alunos cadastrados
+function visualizarAlunos() {
+    alert("Exibindo alunos cadastrados!");
+}

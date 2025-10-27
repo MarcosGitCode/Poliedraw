@@ -19,10 +19,12 @@
         <!-- caixa do cadastro -->
         <h1>Cadastro de alunos</h1>
         <div class="caixaCadastro">
+            <input type="text" id="nome" name="nome" required placeholder="Nome">
             <input type="text" id="username" name="username" required placeholder="Usuário">
             <input type="password" id="password" name="Senha" required placeholder="Senha">
             <div class="botaoCadastrar">
-                <button id="abrirPopup" onclick="verificar()">cadastrar</button>
+                <button id="visualizarAlunos" onclick="visualizarAlunos()">Visualizar Alunos</button>
+                <button id="abrirPopup" onclick="verificar()">Cadastrar</button>
             </div>
         </div>
         <p id="mensagem"></p>
