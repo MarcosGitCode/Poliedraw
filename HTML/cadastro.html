@@ -14,16 +14,30 @@
         <a href="/HTML/cadastro.html"><img src="/assets/navegacao/cadastrar.png" alt="cadastro" class="img-cadastro" title="cadastro"></a>
     </header>
     <main>
+        <h1>Cadastro de alunos</h1>
         <div class="caixaCadastro">
-            <form id="loginForm">
-                <input type="text" id="username" name="username" required placeholder="Usuário">
-                <input type="password" id="password" name="Senha" required placeholder="Senha">
-                <div class="botaoAvancar">
-                    <button type="submit">cadastrar</button>
-                </div>
-            </form>
+            <input type="text" id="username" name="username" required placeholder="Usuário">
+            <input type="password" id="password" name="Senha" required placeholder="Senha">
+            <div class="botaoCadastrar">
+                <button id="abrirPopup" onclick="verificar()">cadastrar</button>
+            </div>
+            <p id="mensagem"></p>
         </div>
     </main>
+    <div class="popup-bg" id="popupBg2">
+        <div class="popup">
+            <h2>Olá!</h2>
+            <p>vc não preencheus os dados</p>
+            <button class="fechar" id="fecharPopup">Fechar</button>
+        </div>
+    </div>
+    <div class="popup-bg" id="popupBg">
+        <div class="popup">
+            <h2>Olá!</h2>
+            <p>Este é um pop-up simples 😄</p>
+            <button class="fechar" id="fecharPopup">Fechar</button>
+        </div>
+    </div>
     <!-- acessibilidade -->
     <div vw class="enabled">
     <div vw-access-button class="active"></div>
@@ -36,5 +50,6 @@
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
     <script src="https://app.embed.im/accessibility.js" defer></script>
+    <script src="/JS/cadastro.js"></script>
 </body>
 </html>
