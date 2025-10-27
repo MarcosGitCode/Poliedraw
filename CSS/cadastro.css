@@ -1,0 +1,152 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+/* variáveis */
+:root {
+    --corLetra: white;
+    --corLetra2: black;
+    --corDoImput: #464646;
+    --botaoCadastrar: #AE1E41;
+    --popupFundo: #212121;
+}
+
+/* configurações globais */
+* {
+    font-family: 'Quicksand', Arial, sans-serif;
+    color: var(--corLetra);
+}
+h1 {
+    font-size: 3em;
+    text-align: center;
+}
+p {
+    font-size: 1.3em;
+}
+
+/*caixa do cadastro*/
+.caixaCadastro {
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    width: 100%;
+    max-width: 350px;
+}
+
+.caixaCadastro input[type="text"],
+.caixaCadastro input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    border: none;
+    border-radius: 16px;
+    background: var(--corDoImput);
+    font-size: 1rem;
+    outline: none;
+    transition: box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.caixaCadastro input[type="text"]:focus,
+.caixaCadastro input[type="password"]:focus {
+    box-shadow: 0 0 0 2px var(--botaoCadastrar);
+}
+
+/*botão para cadastrar*/
+.botaoCadastrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.botaoCadastrar button {
+    background: var(--botaoCadastrar);
+    border: none;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 12px 36px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(60,60,60,0.08);
+    width: 100%;
+    max-width: 200px;
+}
+
+.botaoCadastrar button:hover {
+    background: #ae1e428f;
+}
+
+/*responsividade*/
+@media (max-width: 768px) {
+    .caixaLogin {
+        padding: 40px 20px;
+        max-width: 70vw;
+        margin-top: 10%;
+    }
+    .logo {
+        max-width: 80px;
+        width: 40vw;
+    }
+    .botaoAvancar button {
+        padding: 12px 0;
+        font-size: 1rem;
+        max-width: 100%;
+    }
+}
+
+/*main*/
+main {
+    justify-items: center;
+    padding-top: 5%;
+}
+
+/* Fundo do pop-up (overlay) */
+.popup-bg {
+display: none;
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+background-color: rgba(0,0,0,0.5);
+justify-content: center;
+align-items: center;
+}
+
+/* Caixa do pop-up */
+.popup {
+background-color: var(--popupFundo);
+padding: 20px 30px;
+border-radius: 16px;
+box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+max-width: 30vh;
+text-align: center;
+}
+@keyframes aparecer {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Botão de não*/
+    .nao {
+    margin-inline: 1%;
+    margin-top: 15px;
+    background-color: #ff4b4b;
+    border: none;
+    border-radius: 10px;
+    padding: 2%;
+    width: 20%;
+    color: var(--corLetra2)
+    }
+
+/* Botão de sim*/
+    .sim {
+    margin-inline: 1%;
+    margin-top: 15px;
+    background-color: #2bff00;
+    border: none;
+    border-radius: 10px;
+    padding: 2%;
+    width: 20%;
+    height: 20%;
+    color: var(--corLetra2)
+    }
