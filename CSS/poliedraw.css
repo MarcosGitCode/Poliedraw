@@ -9,13 +9,14 @@
 
 /* variáveis */
 :root {
-    --cabeçalho: white;
-    --fundo: rgb(230, 226, 226);
-    --fundo2: white;
-    --main:  rgb(161, 161, 161);
-    --corLetra: black;
-    --hamburguer: #1DB4C3;
+    --cabeçalho: #181818;
+    --fundo: #212121;
+    --fundo2: #181818;
+    --corLetra: rgb(255, 255, 255);
+    --hamburguer: white;
     --rodape: #f85454;
+    --barra: #464646;
+    --imagem: #303030;
 }
 
 /* corpo */
@@ -153,7 +154,7 @@ p {
 /*imagem*/
 .imagem {
     position: relative;
-    background-color: var(--fundo);
+    background-color: var(--imagem);
     width: 50vh;
     height: 50vh;
     border-radius: 12px;
@@ -182,19 +183,19 @@ p {
     height: 20vh;
 }
 .prompt {
-    background-color: rgba(255, 255, 255, 0.233);
-    border: 2px solid rgba(0, 0, 0, 0.404);
+    background-color: var(--barra);
+    border: 1px solid rgba(146, 146, 146, 0.26);
     border-radius: 40px;
-    width: 50%;
+    width: 40%;
     position: fixed;
-    top: 80%;
+    top: 78%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: all 0.3s;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.308);
 }
 
 .prompt .send-btn {
@@ -203,7 +204,7 @@ p {
     border: none;
     border-radius: 100px;
     aspect-ratio: 1 / 1;
-    width: 7%;
+    width: 8%;
     display: flex;
     align-items: center;
     justify-content: center;
