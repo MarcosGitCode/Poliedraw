@@ -7,7 +7,6 @@
     --corDoImput: #464646;
     --botaoCadastrar: #AE1E41;
     --popupFundo: #212121;
-
 }
 
 /* configurações globais */
@@ -74,7 +73,7 @@ p {
 }
 
 .botaoCadastrar button:hover {
-    background: #d94d1a;
+    background: #ae1e428f;
 }
 
 /*responsividade*/

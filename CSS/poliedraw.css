@@ -1,11 +1,5 @@
 @charset "UTF-8";
-
-/* configurações globais */
-* {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
 
 /* variáveis */
 :root {
@@ -17,6 +11,14 @@
     --rodape: #f85454;
     --barra: #464646;
     --imagem: #303030;
+}
+
+/* configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', Arial, sans-serif;
+    color: var(--corLetra);
 }
 
 /* corpo */
