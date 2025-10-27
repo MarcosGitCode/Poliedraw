@@ -52,7 +52,7 @@ p {
     box-shadow: 0 0 0 2px var(--botaoCadastrar);
 }
 
-/*botão para cadastrar*/
+/*botão para cadastrar e */
 .botaoCadastrar {
     display: flex;
     justify-content: center;

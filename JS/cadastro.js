@@ -19,9 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
         mensagem.textContent = '✔️ Aluno cadastrado com sucesso!';
       }
       // limpa campos (opcional)
-      const username = document.getElementById('username');
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
       const password = document.getElementById('password');
-      if (username) username.value = '';
+      if (name) name.value = '';
+      if (email) email.value = '';
       if (password) password.value = '';
     });
   }
@@ -36,12 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // verifica campos e abre o pop-up quando preenchidos
 function verificar() {
-  const campo = document.getElementById("username")?.value || "";
-  const campo2 = document.getElementById("password")?.value || "";
+  const campo = document.getElementById("name")?.value || "";
+  const campo2 = document.getElementById("email")?.value || "";
+  const campo3 = document.getElementById("password")?.value || "";
   const mensagem = document.getElementById("mensagem");
   const popupBg = document.getElementById('popupBg');
 
-  if (campo.trim() === "" || campo2.trim() === "" ) {
+  if (campo.trim() === "" || campo2.trim() === "" || campo3.trim() === "")  {
     if (mensagem) {
       mensagem.textContent = "⚠️ Pelo menos um dos campos está vazio!";
     }
@@ -50,8 +53,4 @@ function verificar() {
     if (mensagem) mensagem.textContent = "";
     if (popupBg) popupBg.style.display = 'flex';
   }
-}
-// teste para botão de visualizar alunos cadastrados
-function visualizarAlunos() {
-    alert("Exibindo alunos cadastrados!");
 }

@@ -12,18 +12,17 @@
 <body>
     <header>
         <a href="/HTML/poliedraw.html"><img src="/assets/logoCabecalho.png" alt="logo" class="img-logo"></a>
-        <a href="/HTML/cadastro.html"><img src="/assets/navegacao/cadastrar.png" alt="cadastro" class="img-cadastro" title="cadastro"></a>
+        <a href="/HTML/dadosAlunos.html"><img src="/assets/navegacao/dadosDosAlunos.png" alt="dados" class="img-cadastro" title="cadastro"></a>
     </header>
 
     <main>
         <!-- caixa do cadastro -->
         <h1>Cadastro de alunos</h1>
         <div class="caixaCadastro">
-            <input type="text" id="nome" name="nome" required placeholder="Nome">
-            <input type="text" id="username" name="username" required placeholder="Usuário">
+            <input type="text" id="name" name="name" required placeholder="Nome">
+            <input type="text" id="email" name="email" required placeholder="Email">
             <input type="password" id="password" name="Senha" required placeholder="Senha">
             <div class="botaoCadastrar">
-                <button id="visualizarAlunos" onclick="visualizarAlunos()">Visualizar Alunos</button>
                 <button id="abrirPopup" onclick="verificar()">Cadastrar</button>
             </div>
         </div>
