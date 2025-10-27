@@ -1,4 +1,3 @@
-// ...existing code...
 document.addEventListener('DOMContentLoaded', () => {
   const nao = document.getElementById('nao');
   const sim = document.getElementById('sim');
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (popupBg) popupBg.style.display = 'none';
       if (mensagem) {
         mensagem.textContent = '✔️ Aluno cadastrado com sucesso!';
-        mensagem.style.color = 'green';
       }
       // limpa campos (opcional)
       const username = document.getElementById('username');
@@ -46,7 +44,6 @@ function verificar() {
   if (campo.trim() === "" || campo2.trim() === "" ) {
     if (mensagem) {
       mensagem.textContent = "⚠️ Pelo menos um dos campos está vazio!";
-      mensagem.style.color = "red";
     }
     if (popupBg) popupBg.style.display = 'none';
   } else {
