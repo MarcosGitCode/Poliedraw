@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// 🔌 Conexão com o banco de dados MySQL
+// Conexão com o banco de dados MySQL
 const db = await mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -16,7 +16,7 @@ const db = await mysql.createConnection({
   database: "poliedro_ai"   // coloque o nome do seu banco
 });
 
-console.log("Conectado ao MySQL com sucesso!");
+console.log("Conectado ao MySQL com sucesso");
 
 // Cria tabela se não existir
 await db.execute(`

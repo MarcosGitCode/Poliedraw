@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sim.addEventListener('click', () => {
       if (popupBg) popupBg.style.display = 'none';
       if (mensagem) {
-        mensagem.textContent = '✔️ Aluno cadastrado com sucesso!';
+        mensagem.textContent = 'Aluno cadastrado com sucesso!';
       }
       // limpa campos (opcional)
       const name = document.getElementById('name');
@@ -46,7 +46,7 @@ function verificar() {
 
   if (campo.trim() === "" || campo2.trim() === "" || campo3.trim() === "")  {
     if (mensagem) {
-      mensagem.textContent = "⚠️ Pelo menos um dos campos está vazio!";
+      mensagem.textContent = "Pelo menos um dos campos está vazio!";
     }
     if (popupBg) popupBg.style.display = 'none';
   } else {

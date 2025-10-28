@@ -1,6 +1,6 @@
 async function carregarAlunos() {
     try {
-        console.log('Iniciando busca de alunos...');
+        console.log('Iniciando busca de alunos');
         const response = await fetch('http://localhost:3000/alunos');
         const alunos = await response.json();
         console.log('Alunos recebidos:', alunos);
