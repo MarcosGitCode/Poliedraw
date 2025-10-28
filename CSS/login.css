@@ -80,6 +80,7 @@ body {
 
 /*botão avançar*/
 .botaoAvancar {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,6 +88,7 @@ body {
 }
 
 .botaoAvancar button {
+    position: relative;
     background: var(--botaoLogin);
     border: none;
     border-radius: 16px;
@@ -121,4 +123,44 @@ body {
         font-size: 1rem;
         max-width: 100%;
     }
+}
+/*botão opção*/
+.botaoOpcao {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.botaoOpcao button {
+    position: relative;
+    background: var(--botaoLogin);
+    border: none;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 12px 36px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(60,60,60,0.08);
+    width: 100%;
+    max-width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline: 4%;
+    margin-bottom: 9%;
+}
+
+.botaoOpcao button:hover {
+    background: #ae1e428f;
+}
+/*responsividade*/
+@media (max-width: 768px) {
+    .botaoOpcao button {
+        padding: 12px 0;
+        font-size: 0.8em;
+        max-width: 100%;
+    }
+    
 }
