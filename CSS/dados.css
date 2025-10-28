@@ -1,0 +1,18 @@
+#tabelaAlunos th, #tabelaAlunos td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#tabelaAlunos {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tabelaAlunos th {
+    background-color: #ae1e428f;
+    color: white;
+}
+
+
+
