@@ -49,4 +49,16 @@ app.post("/login", async (req, res) => {
   }
 });
 
+// 🎓 Endpoint para buscar alunos
+app.get("/alunos", async (req, res) => {
+  try {
+    const [rows] = await db.execute("SELECT * FROM alunos");
+    res.json(rows);
+  } catch (err) {
+    console.error("Erro ao buscar alunos:", err);
+    res.status(500).json({ error: "Erro interno no servidor" });
+  }
+});
+
+
 app.listen(3000, () => console.log("🚀 Servidor rodando em http://localhost:3000"));
