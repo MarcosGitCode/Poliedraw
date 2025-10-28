@@ -24,5 +24,7 @@ CREATE TABLE historico_pesquisa (
 );
 
 INSERT INTO professores(nome, email, senha) VALUES ("Guilherme 43", "gui@43", "4343");
+INSERT INTO alunos(nome, email, senha) VALUES ("Guilherme43", "aluno@43", "43");
 
+SELECT * FROM alunos;
 SELECT * FROM professores;
