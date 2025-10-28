@@ -16,9 +16,9 @@ const db = await mysql.createConnection({
   database: "poliedro_ai"   // coloque o nome do seu banco
 });
 
-console.log("✅ Conectado ao MySQL com sucesso!");
+console.log("Conectado ao MySQL com sucesso!");
 
-// 🧱 Cria tabela se não existir
+// Cria tabela se não existir
 await db.execute(`
   CREATE TABLE IF NOT EXISTS professores (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -28,28 +28,38 @@ await db.execute(`
   )
 `);
 
-// 🧩 Endpoint de login
-app.post("/login", async (req, res) => {
+// Endpoint de login professor
+app.post("/professores", async (req, res) => {
   const { email, senha } = req.body;
-
   try {
     const [rows] = await db.execute(
       "SELECT * FROM professores WHERE email = ? AND senha = ?",
       [email, senha]
     );
-
-    if (rows.length > 0) {
-      res.json({ success: true });
-    } else {
-      res.json({ success: false });
-    }
+    res.json({ success: rows.length > 0 });
   } catch (err) {
-    console.error("Erro ao verificar login:", err);
-    res.status(500).json({ success: false, error: "Erro interno no servidor" });
+    console.error("Erro ao fazer login do professor:", err);
+    res.status(500).json({ error: "Erro interno no servidor" });
   }
 });
 
-// 🎓 Endpoint para buscar alunos
+// endpoint de login alunos
+app.post("/alunosLogin", async (req, res) => {
+  const { email, senha } = req.body;
+  try {
+    const [rows] = await db.execute(
+      "SELECT * FROM alunos WHERE email = ? AND senha = ?",
+      [email, senha]
+    );
+    res.json({ success: rows.length > 0 });
+  } catch (err) {
+    console.error("Erro ao fazer login do aluno:", err);
+    res.status(500).json({ error: "Erro interno no servidor" });
+  }
+});
+
+
+// Endpoint para buscar alunos
 app.get("/alunos", async (req, res) => {
   try {
     const [rows] = await db.execute("SELECT * FROM alunos");
@@ -61,4 +71,4 @@ app.get("/alunos", async (req, res) => {
 });
 
 
-app.listen(3000, () => console.log("🚀 Servidor rodando em http://localhost:3000"));
+app.listen(3000, () => console.log("Servidor rodando em http://localhost:3000"));
