@@ -1,7 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const textarea = document.getElementById('promptInput');
-    const imagemDiv = document.querySelector('.imagem');
+    const imagemDiv = document.querySelector('.chat');
     const btn = document.querySelector(".send-btn");
+    
+    function scrollToBottom() {
+        imagemDiv.scrollTo({
+            top: imagemDiv.scrollHeight,
+            behavior: 'smooth' // Adiciona um efeito de rolagem suave
+        });
+    }
 
     async function sendPrompt(prompt) {
         textarea.value = '';
@@ -12,9 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
         responseElement.style.margin = '20px';
         responseElement.style.fontSize = '18px';
         responseElement.innerText = 'Enviando...'; 
-
             
         imagemDiv.appendChild(responseElement);
+
+        scrollToBottom();
         
         try {
             const res = await fetch('http://localhost:3000/api/gemini', {
@@ -47,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (err) {
             console.error('Erro ao chamar o backend:', err);
             responseElement.innerText = 'Erro na requisição';
+            scrollToBottom();
         }
     }
 
