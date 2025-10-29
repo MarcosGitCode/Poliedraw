@@ -4,14 +4,14 @@ USE poliedro_ai;
 CREATE TABLE professores (
     id_professor INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL, CHECK (email REGEXP '^[A-Za-z0-9._%+-]+@sistemapoliedro$'),
     senha VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE alunos (
     id_aluno INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL, CHECK (email REGEXP '^[A-Za-z0-9._%+-]+@sistemapoliedro$'),
     senha VARCHAR(255) NOT NULL
 );
 
@@ -23,8 +23,8 @@ CREATE TABLE historico_pesquisa (
     data_pesquisa DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO professores(nome, email, senha) VALUES ("Guilherme 43", "gui@43", "4343");
-INSERT INTO alunos(nome, email, senha) VALUES ("Guilherme43", "aluno@43", "43");
+INSERT INTO professores(nome, email, senha) VALUES ("Guilherme 43", "gui@sistemapoliedro", "4343");
+INSERT INTO alunos(nome, email, senha) VALUES ("Guilherme43", "aluno@sistemapoliedro", "43");
 
 SELECT * FROM alunos;
 SELECT * FROM professores;
