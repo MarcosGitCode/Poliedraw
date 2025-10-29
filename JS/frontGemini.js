@@ -1,30 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Seleção dos elementos da interface
     const textarea = document.getElementById('promptInput');
-    const imagemDiv = document.querySelector('.chat');
+    const chatContainer = document.querySelector('.chat'); // Renomeei para maior clareza
     const btn = document.querySelector(".send-btn");
     
+    // Função para rolar o chat para o final
     function scrollToBottom() {
-        imagemDiv.scrollTo({
-            top: imagemDiv.scrollHeight,
-            behavior: 'smooth' // Adiciona um efeito de rolagem suave
+        chatContainer.scrollTo({
+            top: chatContainer.scrollHeight,
+            behavior: 'smooth' 
         });
     }
 
-    async function sendPrompt(prompt) {
-        textarea.value = '';
+    /**
+     * Cria e adiciona um elemento de mensagem ao chat.
+     * @param {string} content - O texto ou HTML da mensagem.
+     * @param {string} type - 'user' ou 'ai' para estilização.
+     */
+    function appendMessage(content, type) {
+        const messageWrapper = document.createElement('div');
+        messageWrapper.classList.add('message-wrapper', `${type}-message-wrapper`);
+        
+        const messageBubble = document.createElement('div');
+        messageBubble.classList.add('message-bubble', `${type}-message-bubble`);
+        
+        // Se for mensagem de texto simples
+        if (typeof content === 'string') {
+            messageBubble.innerText = content;
+        } else {
+            // Se for um elemento (ex: div de resposta da IA), anexamos o conteúdo
+            messageBubble.appendChild(content);
+        }
 
-        const responseElement = document.createElement('div');
-        responseElement.className = 'response-text';
-        responseElement.style.color = '#fff';
-        responseElement.style.margin = '20px';
-        responseElement.style.fontSize = '18px';
-        responseElement.innerText = 'Enviando...'; 
-            
-        imagemDiv.appendChild(responseElement);
-
+        messageWrapper.appendChild(messageBubble);
+        chatContainer.appendChild(messageWrapper);
         scrollToBottom();
+        return messageBubble; // Retorna o elemento da bolha para manipulação posterior
+    }
+
+
+    async function sendPrompt(prompt) {
+        if (!prompt) return;
+
+        // 1. Exibir a mensagem do usuário imediatamente
+        appendMessage(prompt, 'user');
+        textarea.value = ''; // Limpa o campo de texto
+
+        // 2. Preparar e exibir a "bolha" de resposta da IA (com 'Enviando...')
+        const aiResponseContent = document.createElement('div');
+        aiResponseContent.className = 'ai-response-content';
+        aiResponseContent.innerHTML = '<p>Enviando...</p>';
+        
+        const aiMessageBubble = appendMessage(aiResponseContent, 'ai');
+
         
         try {
+            // Chamada à API
             const res = await fetch('http://localhost:3000/api/gemini', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -32,46 +63,63 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             
             const data = await res.json();
-            responseElement.innerHTML = '';
             
+            // Limpa o conteúdo de 'Enviando...'
+            aiResponseContent.innerHTML = ''; 
             
+            let imagesLoadedPromises = []; 
+            
+            // 3. Adicionar o texto da IA
             if (data.texto) {
                 const textElement = document.createElement('p');
                 textElement.innerText = data.texto;
-                textElement.style.fontSize = '18px';
-                responseElement.appendChild(textElement);
+                aiResponseContent.appendChild(textElement);
             }
             
-            
+            // 4. Adicionar as imagens e rastrear o carregamento
             if (data.imagens && data.imagens.length > 0) {
                 data.imagens.forEach(imgUrl => {
                     const img = document.createElement('img');
                     img.src = imgUrl;
-                    img.style.maxWidth = '100%';
-                    img.style.marginTop = '10px';
-                    responseElement.appendChild(img);
+                    
+                    const loadPromise = new Promise((resolve) => {
+                        img.onload = () => {
+                            resolve();
+                            scrollToBottom(); // Rola após o carregamento de CADA imagem
+                        };
+                        img.onerror = () => resolve(); 
+                    });
+
+                    imagesLoadedPromises.push(loadPromise);
+                    aiResponseContent.appendChild(img);
                 });
             }
+
+            // 5. Rola para o final após o texto ser adicionado
+            scrollToBottom(); 
+
+            // Espera o carregamento de todas as imagens antes de considerar a resposta finalizada
+            await Promise.all(imagesLoadedPromises);
+
+
         } catch (err) {
             console.error('Erro ao chamar o backend:', err);
-            responseElement.innerText = 'Erro na requisição';
-            scrollToBottom();
+            aiResponseContent.innerHTML = '<p style="color: red;">Erro na requisição. Verifique o console.</p>';
+            scrollToBottom(); 
         }
     }
 
-    
+    // Event Listener para o botão de envio
     btn.addEventListener("click", () => {
         const prompt = textarea.value.trim();
-        if (!prompt) return;
         sendPrompt(prompt);
     });
 
-    
+    // Event Listener para a tecla Enter no textarea
     textarea.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             const prompt = textarea.value.trim();
-            if (!prompt) return;
             sendPrompt(prompt);
         }
     });

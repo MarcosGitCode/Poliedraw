@@ -8,9 +8,8 @@
     --fundo2: #181818;
     --corLetra: rgb(255, 255, 255);
     --hamburguer: white;
-    --rodape: #f85454;
     --barra: #464646;
-    --imagem: #303030;
+    --mensagemIA: #303030;
 }
 
 /* configurações globais */
@@ -20,7 +19,6 @@
     font-family: 'Quicksand', Arial, sans-serif;
     color: var(--corLetra);
 }
-
 /* corpo */
 body {
     background-color: var(--fundo);
@@ -134,9 +132,7 @@ main {
     border-radius: 0px 0px 20px 20px;
     padding-inline: 5%;
 }
-p {
-    font-size: 4em;
-}
+
 @media screen and (max-width: 1000px) {
     main {
         margin-inline: 10%;
@@ -147,27 +143,64 @@ p {
 .chat {
     z-index: 1;
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 70vh; 
     overflow-y: auto; 
     overflow-x: hidden;
     scrollbar-width: none;
     padding-top: 2%;
+    margin: auto;
 }
 .chat::-webkit-scrollbar {
     width: 0;
     height: 0;
     display: none;
 }
-div.chat img {
-    width: 50%;
-    display: block;
-    margin: 0 auto;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.281);
-    border-radius: 10px;
-    margin-bottom: 5%;
+.message-wrapper {
+    display: flex;
+    margin: 10px 0;
+    width: 100%;
+}
+.message-bubble {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+.user-message-wrapper {
+    justify-content: flex-end;
+}
+.user-message-bubble {
+    background-color: var(--cabeçalho); 
+    color: var(--corLetra);
+    border-bottom-right-radius: 5px; 
+}
+.ai-message-wrapper {
+    justify-content: flex-start;
+}
+.ai-message-bubble {
+    background-color: var(--mensagemIA); 
+    color: var(--corLetra);
+    border-bottom-left-radius: 5px; 
+    padding: 3%;
+}
+.message-bubble p {
+    font-size: 1em; 
+    margin: 0;
+    padding: 0;
+    margin-bottom: 3%;
+}
+.ai-response-content img {
+    width: 100% !important;
+    border-radius: 8px !important;
 }
 
+@media screen and (max-width: 720px) {
+    .message-bubble {
+        max-width: 90%;
+    }
+}
 /*barra para prompt*/
 #caixaPrompt {
     background-color: var(--fundo);
