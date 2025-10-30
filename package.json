@@ -4,7 +4,8 @@
   "description": "Projeto desenvolvido para a **Escola Poliedro**, com o objetivo de criar um site interativo que permite gerar imagens utilizando **Inteligência Artificial**.  \r A proposta é unir **criatividade**, **tecnologia** e **educação** em uma plataforma simples e acessível.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node backend/conexao.js",
+    "dev": "nodemon backend/conexao.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,7 @@
   },
   "homepage": "https://github.com/MarcosGitCode/Poliedraw#readme",
   "dependencies": {
-    "@google/genai": "^1.27.0",
+    "@google/genai": "^1.28.0",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
