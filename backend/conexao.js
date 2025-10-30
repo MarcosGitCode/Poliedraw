@@ -70,5 +70,20 @@ app.get("/alunos", async (req, res) => {
   }
 });
 
+app.post("/cadastrarAlunos", async (req, res) => {
+  const { nome, email, senha } = req.body;
+
+  try {
+    const [result] = await db.execute(
+      "INSERT INTO alunos(nome, email, senha) VALUES(?, ?, ?)",
+      [nome, email, senha]
+    );
+
+    res.json({ success: result.affectedRows > 0 });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Erro ao cadastrar aluno" });
+  }
+});
 
 app.listen(3000, () => console.log("Servidor rodando em http://localhost:3000"));
