@@ -3,6 +3,7 @@ node_modules/
 package-lock.json
 
 # Arquivos de ambiente
+.env
 
 # Logs e caches
 npm-debug.log*
