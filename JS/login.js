@@ -44,3 +44,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
+
+//mudar cor do botão selecionado//
+document.addEventListener("DOMContentLoaded", () => {
+    const professorBtn = document.getElementById("professor");
+    const alunoBtn = document.getElementById("aluno");
+    const caixaLogin = document.getElementById("caixaLogin");
+
+    professorBtn.addEventListener("click", () => {
+        professorBtn.style.backgroundColor = "#212121";
+        alunoBtn.style.backgroundColor = "#464646";
+    });
+
+    alunoBtn.addEventListener("click", () => {
+        alunoBtn.style.backgroundColor = "#212121";
+        professorBtn.style.backgroundColor = "#464646";
+    });
+});

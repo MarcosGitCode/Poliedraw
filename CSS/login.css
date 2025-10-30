@@ -54,9 +54,7 @@ body {
     min-width: 0;
     width: 100%;
     max-width: 350px;
-    margin-bottom: 24px;
     box-sizing: border-box;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.19);
 }
 
 .caixaLogin input[type="text"],
@@ -112,7 +110,6 @@ body {
     .caixaLogin {
         padding: 40px 20px;
         max-width: 70vw;
-        margin-top: 10%;
     }
     .logo {
         max-width: 80px;
@@ -126,7 +123,6 @@ body {
 }
 /*botão opção*/
 .botaoOpcao {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,33 +130,21 @@ body {
 }
 
 .botaoOpcao button {
-    position: relative;
-    background: var(--botaoLogin);
+    background-color: var(--fundo); 
     border: none;
-    border-radius: 16px;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 700;
-    padding: 12px 36px;
+    padding: 3%;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(60,60,60,0.08);
-    width: 100%;
+    width: 80px;
     max-width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-inline: 4%;
-    margin-bottom: 9%;
 }
-
-.botaoOpcao button:hover {
-    background: #ae1e428f;
+.botaoOpcao button#professor {
+    border-radius: 16px 0px 0px 0px;
 }
-/*responsividade*/
-@media (max-width: 768px) {
-    .botaoOpcao button {
-        padding: 12px 0;
-        font-size: 0.8em;
-        max-width: 100%;
-    }
-    
+.botaoOpcao button#aluno {
+    border-radius: 0px 16px 0px 0px;
 }
