@@ -50,48 +50,27 @@ await db.query(`
   )
 `);
 
-app.post("/login", async (req, res) => {
-  const { email, senha } = req.body;
-  const e = String(email ?? "").trim();
-  const s = String(senha ?? "").trim();
-
-  try {
-    const [profRows] = await db.query("SELECT * FROM professores WHERE email = ?", [e]);
-    if (profRows.length && String(profRows[0].senha).trim() === s) {
-      return res.json({ success: true, tipo: "professor", id: profRows[0].id_professor, nome: profRows[0].nome });
-    }
-
-    const [alunoRows] = await db.query("SELECT * FROM alunos WHERE email = ?", [e]);
-    if (alunoRows.length && String(alunoRows[0].senha).trim() === s) {
-      return res.json({ success: true, tipo: "aluno", id: alunoRows[0].id_aluno, nome: alunoRows[0].nome });
-    }
-
-    res.json({ success: false });
-  } catch (err) {
-    console.error("Erro /login:", err);
-    res.status(500).json({ success: false, error: "INTERNAL" });
-  }
-});
-
 app.post("/professores", async (req, res) => {
   const { email, senha } = req.body;
   try {
-    const [rows] = await db.query("SELECT * FROM professores WHERE email = ? AND senha = ?", [String(email).trim(), String(senha).trim()]);
+    const [rows] = await db.query("SELECT * FROM professores WHERE email = ? AND senha = ?", 
+    [String(email).trim(), String(senha).trim()]);
     res.json({ success: rows.length > 0 });
   } catch (err) {
     console.error("Erro login professor:", err);
-    res.status(500).json({ error: "INTERNAL" });
+    res.status(500).json({ error: "Erro complicado" });
   }
 });
 
 app.post("/alunosLogin", async (req, res) => {
   const { email, senha } = req.body;
   try {
-    const [rows] = await db.query("SELECT * FROM alunos WHERE email = ? AND senha = ?", [String(email).trim(), String(senha).trim()]);
+    const [rows] = await db.query("SELECT * FROM alunos WHERE email = ? AND senha = ?", 
+    [String(email).trim(), String(senha).trim()]);
     res.json({ success: rows.length > 0 });
   } catch (err) {
     console.error("Erro login aluno:", err);
-    res.status(500).json({ error: "INTERNAL" });
+    res.status(500).json({ error: "Erro complicado" });
   }
 });
 
@@ -101,18 +80,19 @@ app.get("/alunos", async (req, res) => {
     res.json(rows);
   } catch (err) {
     console.error("Erro /alunos:", err);
-    res.status(500).json({ error: "INTERNAL" });
+    res.status(500).json({ error: "Erro complicado" });
   }
 });
 
 app.post("/cadastrarAlunos", async (req, res) => {
   const { nome, email, senha } = req.body;
   try {
-    const [result] = await db.query("INSERT INTO alunos (nome, email, senha) VALUES (?, ?, ?)", [nome, email, senha]);
+    const [result] = await db.query("INSERT INTO alunos (nome, email, senha) VALUES (?, ?, ?)", 
+    [nome, email, senha]);
     res.json({ success: result.affectedRows > 0, id: result.insertId });
   } catch (err) {
     console.error("Erro cadastrarAlunos:", err);
-    res.status(500).json({ error: "INTERNAL" });
+    res.status(500).json({ error: "Erro complicado" });
   }
 });
 
@@ -125,7 +105,7 @@ app.post("/api/gemini", async (req, res) => {
     res.json({ texto: resposta.text, imagens: resposta.images });
   } catch (err) {
     console.error("Erro /api/gemini:", err);
-    res.status(500).json({ error: "GEMINI_ERROR" });
+    res.status(500).json({ error: "Erro no Gemini" });
   }
 });
 
