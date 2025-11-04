@@ -1,56 +1,44 @@
-// document.addEventListener('DOMContentLoaded', () => {
-//   const nao = document.getElementById('nao');
-//   const sim = document.getElementById('sim');
-//   const popupBg = document.getElementById('popupBg');
-//   const mensagem = document.getElementById('mensagem');
+document.addEventListener("DOMContentLoaded", () => {
+    const popupBg = document.getElementById("popupBg");
+    const btnAbrir = document.getElementById("abrirPopup");
+    const btnNao = document.getElementById("nao");
+    const btnSim = document.getElementById("sim");
 
-//   // fecha o pop-up ao clicar em "Não"
-//   if (nao) {
-//     nao.addEventListener('click', () => {
-//       if (popupBg) popupBg.style.display = 'none';
-//     });
-//   }
+    // Abre o popup
+    btnAbrir.addEventListener("click", () => {
+        popupBg.style.display = "flex";
+    });
 
-//   // ação ao confirmar (Sim)
-//   if (sim) {
-//     sim.addEventListener('click', () => {
-//       if (popupBg) popupBg.style.display = 'none';
-//       if (mensagem) {
-//         mensagem.textContent = 'Aluno cadastrado com sucesso!';
-//       }
-//       // limpa campos (opcional)
-//       const name = document.getElementById('name');
-//       const email = document.getElementById('email');
-//       const password = document.getElementById('password');
-//       if (name) name.value = '';
-//       if (email) email.value = '';
-//       if (password) password.value = '';
-//     });
-//   }
+    // Fecha o popup
+    btnNao.addEventListener("click", () => {
+        popupBg.style.display = "none";
+    });
 
-//   // fecha se clicar fora do pop-up
-//   window.addEventListener('click', (e) => {
-//     if (e.target === popupBg) {
-//       popupBg.style.display = 'none';
-//     }
-//   });
-// });
+    // Cadastrar (se confirmar)
+    btnSim.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const nome = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const senha = document.getElementById("password").value;
 
-// // verifica campos e abre o pop-up quando preenchidos
-// function verificar() {
-//   const campo = document.getElementById("name")?.value || "";
-//   const campo2 = document.getElementById("email")?.value || "";
-//   const campo3 = document.getElementById("password")?.value || "";
-//   const mensagem = document.getElementById("mensagem");
-//   const popupBg = document.getElementById('popupBg');
+        try {
+            const response = await fetch("http://localhost:3000/cadastrarAlunos", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nome, email, senha })
+            });
 
-//   if (campo.trim() === "" || campo2.trim() === "" || campo3.trim() === "")  {
-//     if (mensagem) {
-//       mensagem.textContent = "Pelo menos um dos campos está vazio!";
-//     }
-//     if (popupBg) popupBg.style.display = 'none';
-//   } else {
-//     if (mensagem) mensagem.textContent = "";
-//     if (popupBg) popupBg.style.display = 'flex';
-//   }
-// }
+            const result = await response.json();
+
+            if (result.success) {
+                alert("Aluno cadastrado com sucesso!");
+                window.location.href = "./cadastro.html";
+            } else {
+                alert("Não foi possível cadastrar o aluno");
+            }
+        } catch (err) {
+            alert("Erro ao conectar no servidor");
+            console.error(err);
+        }
+    });
+});
