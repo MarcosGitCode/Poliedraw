@@ -19,14 +19,11 @@ const db = await mysql.createPool({
   port: DB_PORT,
   user: DB_USER,
   password: DB_PASS,
-  database: DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 10,
+  database: DB_NAME
 });
 
 console.log("Conectado ao MySQL:", `${DB_HOST}:${DB_PORT}/${DB_NAME}`);
 
-/* Garante tabelas */
 await db.query(`
   CREATE TABLE IF NOT EXISTS professores (
     id_professor INT AUTO_INCREMENT PRIMARY KEY,
@@ -53,18 +50,6 @@ await db.query(`
   )
 `);
 
-/* Endpoint init (frontend pode chamar ao carregar) */
-app.get("/init", async (req, res) => {
-  try {
-    await db.query("SELECT 1");
-    res.json({ ok: true, message: "DB OK" });
-  } catch (err) {
-    console.error("Erro init:", err);
-    res.status(500).json({ ok: false, error: "DB_ERROR" });
-  }
-});
-
-/* Login unificado: retorna tipo (professor | aluno) */
 app.post("/login", async (req, res) => {
   const { email, senha } = req.body;
   const e = String(email ?? "").trim();
@@ -88,7 +73,6 @@ app.post("/login", async (req, res) => {
   }
 });
 
-/* Endpoints auxiliares (compatibilidade) */
 app.post("/professores", async (req, res) => {
   const { email, senha } = req.body;
   try {
@@ -111,7 +95,6 @@ app.post("/alunosLogin", async (req, res) => {
   }
 });
 
-/* CRUD mínimo alunos */
 app.get("/alunos", async (req, res) => {
   try {
     const [rows] = await db.query("SELECT * FROM alunos");
@@ -133,7 +116,6 @@ app.post("/cadastrarAlunos", async (req, res) => {
   }
 });
 
-/* Endpoint Gemini integrado (usa ./gemini.js) */
 app.post("/api/gemini", async (req, res) => {
   try {
     const { prompt } = req.body;
