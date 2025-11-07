@@ -157,6 +157,56 @@ header > a:hover {
     transform: translateX(0);
     opacity: 1;
 }
+
+/* Estilo menu específico */
+.style-buttons {
+    width: 90%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.style-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.style-button img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.style-button h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.style-button:hover {
+    background: rgba(255,255,255,0.06);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.style-button:active {
+    transform: translateY(0);
+    background-color: #1C8590;
+}
+
+.style-button.selected {
+    background: linear-gradient(45deg, #1C8590, #2C95A0);
+    border-color: rgba(255,255,255,0.2);
+}
 .menu.hidden {
     transform: translateX(-110%);
     opacity: 0;
