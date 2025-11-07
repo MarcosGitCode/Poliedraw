@@ -18,8 +18,6 @@
             <div class="line2"></div>
         </div>
 
-        <script src="../JS/mobile-menu.js" type="module" defer></script>
-
         <!-- logo para voltar e botão para ir a página cadastro -->
         <a href="/HTML/login.html"><img src="/assets/logoCabecalho.png" alt="logo" class="img-logo" title="Voltar para o login"></a>
         <a href="/HTML/cadastro.html"><img src="/assets/navegacao/cadastrar.png" alt="cadastro" class="img-cadastro" title="Cadastro"></a>
@@ -29,11 +27,33 @@
 
     <!-- barra lateral -->
     <div class="barraLateral">
-        <button class="buttonBarraLateral"><img src="/assets/navegacao/materias.png" alt="matérias" title="Matérias"></button>
-        <button class="buttonBarraLateral"><img src="/assets/navegacao/detalhes.png" alt="matérias" title="Detalhes"></button>
-        <button class="buttonBarraLateral"><img src="/assets/navegacao/estilo.png" alt="matérias" title="Estilo"></button>
+        <button class="buttonBarraLateral" id="materiasBtn" aria-expanded="false" title="Matérias">
+            <img src="/assets/navegacao/materias.png" alt="matérias">
+        </button>
+        <button class="buttonBarraLateral" id="detalhesBtn" aria-expanded="false" title="Detalhes">
+            <img src="/assets/navegacao/detalhes.png" alt="detalhes">
+        </button>
+        <button class="buttonBarraLateral" id="estiloBtn" aria-expanded="false" title="Estilo">
+            <img src="/assets/navegacao/estilo.png" alt="estilo">
+        </button>
     </div>
 
+    <!-- menus (iniciam escondidos) -->
+    <div class="materiasMenu menu hidden" id="materiasMenu" aria-hidden="true">
+        <h1>Matérias</h1>
+        <button class="buttonBarraLateral"><img src="/assets/fisica.png" alt="física"><h2>física</h2></button>
+        <button class="buttonBarraLateral"><img src="/assets/quimica.png" alt="química"><h2>química</h2></button>
+    </div>
+
+    <div class="detalhesMenu menu hidden" id="detalhesMenu" aria-hidden="true">
+        <h1>Detalhes</h1>
+    </div>
+
+    <div class="estiloMenu menu hidden" id="estiloMenu" aria-hidden="true">
+        <h1>Estilo</h1>
+    </div>
+
+    <!-- main -->
     <main>
         <!-- chat da ia -->
         <div class="chat">
@@ -70,5 +90,11 @@
 
     <!-- completa prompt -->
     <script src="../JS/completaPrompt.js" type="module" defer></script>
+
+    <!-- barra lateral -->
+    <script src="../JS/barraLateral.js" type="module" defer></script>
+
+    <!-- hamburguer -->
+    <script src="../JS/mobile-menu.js" type="module" defer></script>
 </body>
 </html>
