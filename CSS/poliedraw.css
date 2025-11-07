@@ -172,6 +172,36 @@ header > a:hover {
     padding: 10%;
 }
 
+/* Prompt da barra lateral */
+.sidebar-prompt-container {
+    width: 90%;
+    margin: 20px auto;
+}
+.sidebar-prompt {
+    background-color: var(--barra);
+    border: 1px solid rgba(146, 146, 146, 0.26);
+    border-radius: 20px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.742);
+}
+.sidebar-prompt textarea {
+    font-size: 14px;
+    min-height: 36px;
+    max-height: 120px;
+    margin: 8px;
+    padding: 8px;
+}
+.sidebar-prompt .send-btn {
+    min-width: 36px;
+    width: auto;
+    height: 36px;
+    margin: 6px;
+}
+
 /*Barra lateral responsividade*/
 @media screen and (max-width: 1500px) {
     .barraLateral {
