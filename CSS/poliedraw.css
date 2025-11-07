@@ -36,11 +36,14 @@ header {
     padding: 1%;
     justify-content: space-between;
     overflow: hidden;
+    width: 100%;
+    z-index: 1000;
 }
 header .img-logo {
     position: relative;
     height: 60px; 
-    margin: 10%;
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
 header .img-cadastro{
     height: 30px;
@@ -52,7 +55,7 @@ header > a:hover {
 
 /*hamburger*/
 .mobile-menu {
-    display: block;
+    display: none;
 }
 .mobile-menu div {
     width: 30px;
@@ -69,80 +72,90 @@ header > a:hover {
     transition-duration: 0.4s;
 }
 
-/*navegação*/
-.nav-list {
-    z-index: 4;
-    position: absolute;
-    right: 100%;
-    top: 6vh;
-    width: 15vw;
-    height: 94vh;
-    background: var(--fundo2);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-}
-.nav-list.active {
-    transform: translateX(0);
-}
-nav img {
-    width: 20%;
-    margin-top: 20px;
-    margin-left: 1vw;
-    height: 6.5%;
-}
-nav img:hover {
-    transform: scale(1.05);
-    transition-duration: 0.3s;
-}
-nav img:active {
-    transform: scale(0.9);
+@media screen and (max-width: 800px) {
+    .mobile-menu {
+        display: block;
+    }
 }
 
-/*navegação responsividade*/
+/* Barra Lateral */
+.barraLateral {
+    position: absolute;
+    background-color: var(--cabeçalho);
+    width: 4%;
+    height: 93vh;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 300ms ease, opacity 300ms ease;
+    transform: translateX(0);
+    opacity: 1;
+}
+.barraLateral.open {
+    transform: translateX(0);
+    opacity: 1;
+}
+.buttonBarraLateral {
+    background: none;
+    border: none;
+    margin-bottom: 10%;
+    width: 100%;
+}
+.buttonBarraLateral img {
+    width: 100%;
+    height: auto;
+}
+
+/*Barra lateral responsividade*/
 @media screen and (max-width: 1500px) {
-    .nav-list {
-        width: 20vw;
+    .barraLateral {
+        width: 6%;
     }
 }
 @media screen and (max-width: 1000px) {
-    .nav-list.active {
-        transform: translateX(100%);
-    }
-    .nav-list {
-        transform: translateX(0);
-        width: 10vw;
+    .barraLateral {
+        width: 7%;
     }
 }
-@media screen and (max-width: 720px) {
-    .nav-list.active {
-        transform: translateX(100%);
-    }
-    .nav-list {
-        transform: translateX(0);
-        width: 16vw;
+@media screen and (max-width: 800px) {
+    .barraLateral {
+        width: 9%;
+        display: flex;
+        transform: translateX(-110%); 
+        opacity: 0;
     }
 }
-/*botões na navegaçõo*/
-.nav-list button {
-    background-color: var(--barra);
-    border: none;
-    border-radius: 8px;
-    color: var(--corLetra);
-    padding: 8px 12px;
-    margin: 10px 0;
-    cursor: pointer;
-    width: 80%;
-    font-size: 1em;
+@media screen and (max-width: 650px) {
+    .barraLateral {
+        width: 10%;
+        display: flex;
+        transform: translateX(-110%);
+        opacity: 0;
+    }
+}
+@media screen and (max-width: 500px) {
+    .barraLateral {
+        width: 12%;
+        display: flex;
+        transform: translateX(-110%);
+        opacity: 0;
+    }
+}
+@media screen and (max-width: 400px) {
+    .barraLateral {
+        width: 15%;
+        display: flex;
+        transform: translateX(-110%);
+        opacity: 0;
+    }
 }
 /*main */
 main {
     z-index: 0;
     background-color: var(--main);
     margin-inline: 24%;
-    min-height:92vh;
+    min-height: 92vh;
     border-radius: 0px 0px 20px 20px;
     padding-inline: 5%;
 }
@@ -158,7 +171,7 @@ main {
     z-index: 1;
     position: relative;
     width: 90%;
-    height: 70vh; 
+    height: 80vh; 
     overflow-y: auto; 
     overflow-x: hidden;
     scrollbar-width: none;

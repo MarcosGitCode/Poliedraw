@@ -8,31 +8,37 @@
     <link rel="stylesheet" href="../CSS/poliedraw.css">
 </head>
 <body>
+    <!-- cabeçalho -->
+
     <header>
-        <!-- navegação entre as opções de prompt-->
+        <!-- hamburguer -->
         <div class="mobile-menu">
             <div class="mobile-menu"></div>
             <div class="line1"></div>
             <div class="line2"></div>
         </div>
+
+        <script src="../JS/mobile-menu.js" type="module" defer></script>
+
         <!-- logo para voltar e botão para ir a página cadastro -->
         <a href="/HTML/login.html"><img src="/assets/logoCabecalho.png" alt="logo" class="img-logo" title="Voltar para o login"></a>
         <a href="/HTML/cadastro.html"><img src="/assets/navegacao/cadastrar.png" alt="cadastro" class="img-cadastro" title="Cadastro"></a>
         <script src="/JS/mobile-navbar.js" defer></script>
+
     </header>
-    <!-- navegação entre as opções de prompt-->
-    <nav>
-        <!-- navegação entre as opções de prompt-->
-        <div class="nav-list">
-            <img src="/assets/navegacao/materias.png" alt="matérias" title="Matérias" classe="nav-img">
-            <img src="/assets/navegacao/detalhes.png" alt="matérias" title="Detalhes" classe="nav-img">
-            <img src="/assets/navegacao/estilo.png" alt="matérias" title="Estilo" classe="nav-img">
-        </div>
-    </nav>
+
+    <!-- barra lateral -->
+    <div class="barraLateral">
+        <button class="buttonBarraLateral"><img src="/assets/navegacao/materias.png" alt="matérias" title="Matérias"></button>
+        <button class="buttonBarraLateral"><img src="/assets/navegacao/detalhes.png" alt="matérias" title="Detalhes"></button>
+        <button class="buttonBarraLateral"><img src="/assets/navegacao/estilo.png" alt="matérias" title="Estilo"></button>
+    </div>
+
     <main>
         <!-- chat da ia -->
         <div class="chat">
         </div>
+
         <!--caixa para escrever os prompts -->
         <div id="caixaPrompt">
             <div class="prompt">
@@ -58,8 +64,10 @@
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
     <script src="https://app.embed.im/accessibility.js" defer></script>
+
     <!-- API -->
     <script src="../JS/frontGemini.js" type="module" defer></script>
+
     <!-- completa prompt -->
     <script src="../JS/completaPrompt.js" type="module" defer></script>
 </body>
