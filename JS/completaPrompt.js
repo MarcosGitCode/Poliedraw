@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const botaoFisica = document.getElementById("fisica");
     const textarea = document.getElementById("promptInput");
     const botaoDetalhe = document.getElementById("botaoDetalhe");
-    const detalheInput = document.getElementById("detalhe");
+    const detalheInput = document.getElementById("sidebarPromptInput");
 
     let temaSelecionado = false; 
 
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const promptDetalhe = detalheInput.value.trim();
         if (promptDetalhe !== "") {
-            textarea.value += (textarea.value ? " " : "") + promptDetalhe;
+            textarea.value += (textarea.value ? " " : "") +"'" + promptDetalhe + "'";
             temaSelecionado = false
         }
     });

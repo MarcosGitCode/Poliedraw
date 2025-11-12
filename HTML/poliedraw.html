@@ -41,8 +41,8 @@
     <!-- menus (iniciam escondidos) -->
     <div class="materiasMenu menu hidden" id="materiasMenu" aria-hidden="true">
         <h1>Matérias</h1>
-        <button class="buttonBarraLateral"><img src="/assets/fisica.png" alt="física"><h2>física</h2></button>
-        <button class="buttonBarraLateral"><img src="/assets/quimica.png" alt="química"><h2>química</h2></button>
+        <button id="fisica" class="buttonBarraLateral"><img src="/assets/fisica.png" alt="física"><h2>física</h2></button>
+        <button id="quimica" class="buttonBarraLateral"><img src="/assets/quimica.png" alt="química"><h2>química</h2></button>
     </div>
 
     <div class="detalhesMenu menu hidden" id="detalhesMenu" aria-hidden="true">
@@ -51,7 +51,7 @@
         <div class="sidebar-prompt-container">
             <div class="prompt sidebar-prompt">
                 <textarea id="sidebarPromptInput" placeholder="Digite seu texto aqui..." rows="2" aria-label="Campo de texto da barra lateral"></textarea>
-                <button class="send-btn" title="Enviar">
+                <button id="botaoDetalhe" class="send-btn" title="Enviar">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                         <path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -88,7 +88,7 @@
         <div id="caixaPrompt">
             <div class="prompt">
             <textarea id="promptInput" placeholder="Digite seu texto aqui..." rows="2" aria-label="Campo de texto"></textarea>
-                <button class="send-btn" title="Enviar">
+                <button id="send-btno" class="send-btn" title="Enviar">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                         <path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>

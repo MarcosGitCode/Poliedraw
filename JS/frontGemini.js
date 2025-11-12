@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Seleção dos elementos da interface
     const textarea = document.getElementById('promptInput');
     const chatContainer = document.querySelector('.chat'); // Renomeei para maior clareza
-    const btn = document.querySelector(".send-btn");
+    const btn = document.getElementById("send-btno");
     
     // Função para rolar o chat para o final
     function scrollToBottom() {
