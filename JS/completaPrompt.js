@@ -29,4 +29,39 @@ document.addEventListener("DOMContentLoaded", function() {
             temaSelecionado = false
         }
     });
+
+    botaoGrafico.addEventListener("click", function() {
+        textarea.value = "no estilo de um gráfico";
+        temaSelecionado = true; 
+    });
+
+    botaoTabela.addEventListener("click", function() {
+        textarea.value = "no estilo de uma tabela";
+        temaSelecionado = true; 
+    });
+
+    botaoRealista.addEventListener("click", function() {
+        textarea.value = "no estilo realista";
+        temaSelecionado = true; 
+    });
+
+    botao3D.addEventListener("click", function() {
+        textarea.value = "no estilo 3D";
+        temaSelecionado = true; 
+    });
+
+    botaoCartoon.addEventListener("click", function() {
+        textarea.value = "no estilo de cartoon";
+        temaSelecionado = true; 
+    });
+
+    botaoAnime.addEventListener("click", function() {
+        textarea.value = "no estilo de anime";
+        temaSelecionado = true; 
+    });
+
+    botaoPixelArt.addEventListener("click", function() {
+        textarea.value = "no estilo de pixel art";
+        temaSelecionado = true; 
+    });
 });
