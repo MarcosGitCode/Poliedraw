@@ -120,7 +120,9 @@ header > a:hover {
     height: auto;
     padding: 15%;
 }
-
+a.buttonBarraLateral {
+    position: relative;
+}
 /* estado visual do botão ativo na barra lateral */
 .buttonBarraLateral {
     position: relative; /* necessário para o ::before indicador */
