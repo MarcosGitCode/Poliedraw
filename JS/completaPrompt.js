@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const botaoCartoon = document.getElementById("cartoon");
     const botaoAnime = document.getElementById("anime");
     const botaoPixelArt = document.getElementById("pixelart");
+    const botaoApagarPrompt = document.getElementById("apagarPrompt");
 
     let temaSelecionado = false; 
     let detalheAdicionado = false;
@@ -61,4 +62,11 @@ document.addEventListener("DOMContentLoaded", function() {
     botaoCartoon.addEventListener("click", () => aplicarEstilo("de cartoon"));
     botaoAnime.addEventListener("click", () => aplicarEstilo("de anime"));
     botaoPixelArt.addEventListener("click", () => aplicarEstilo("de pixel art"));
+
+    botaoApagarPrompt.addEventListener("click", function() {
+        textarea.value = "";
+        temaSelecionado = false;
+        detalheAdicionado = false;
+        estiloSelecionado = false;
+    });
 });
