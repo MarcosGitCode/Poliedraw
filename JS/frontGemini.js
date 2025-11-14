@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const textarea = document.getElementById('promptInput');
     const chatContainer = document.querySelector('.chat'); // Renomeei para maior clareza
     const btn = document.getElementById("send-btno");
+
     
     // Função para rolar o chat para o final
     function scrollToBottom() {
@@ -10,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
             top: chatContainer.scrollHeight,
             behavior: 'smooth' 
         });
+    }
+
+    function criarUserId() {
+        const id = crypto.randomUUID();
+        localStorage.setItem("userId", id);
+        return id;
     }
 
     /**
@@ -53,13 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const aiMessageBubble = appendMessage(aiResponseContent, 'ai');
 
+        const userId = localStorage.getItem("userId") || criarUserId();
         
         try {
             // Chamada à API
             const res = await fetch('http://localhost:3000/api/gemini', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ prompt })
+                body: JSON.stringify({ 
+                    prompt,
+                    userId
+                })
             });
             
             const data = await res.json();

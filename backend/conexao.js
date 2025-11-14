@@ -3,6 +3,8 @@ import cors from "cors";
 import mysql from "mysql2/promise";
 import "dotenv/config";
 import Gemini from "./gemini.js";
+import fs from "fs";
+import path from "path";
 
 const app = express();
 app.use(cors());
@@ -100,6 +102,35 @@ app.post("/api/gemini", async (req, res) => {
   try {
     const { prompt } = req.body;
     if (!prompt) return res.status(400).json({ error: "prompt obrigatório" });
+
+    const resposta = await Gemini(prompt);
+    res.json({ texto: resposta.text, imagens: resposta.images });
+  } catch (err) {
+    console.error("Erro /api/gemini:", err);
+    res.status(500).json({ error: "Erro no Gemini" });
+  }
+});
+
+app.post("/api/gemini", async (req, res) => {
+  try {
+    const { prompt, userId } = req.body;
+    if (!prompt) return res.status(400).json({ error: "prompt obrigatório" });
+
+    // salvar histórico
+    const filePath = path.resolve("messages.json");
+    let historico = [];
+
+    if (fs.existsSync(filePath)) {
+      historico = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    }
+
+    historico.push({
+      userId,
+      prompt,
+      timestamp: new Date().toISOString(),
+    });
+
+    fs.writeFileSync(filePath, JSON.stringify(historico, null, 2));
 
     const resposta = await Gemini(prompt);
     res.json({ texto: resposta.text, imagens: resposta.images });
