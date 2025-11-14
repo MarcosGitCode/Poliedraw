@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let temaSelecionado = false; 
     let detalheAdicionado = false;
+    let estiloSelecionado = false;
 
     botaoQuimica.addEventListener("click", function() {
         textarea.value = "Crie uma imagem de química sobre";
@@ -39,82 +40,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    botaoGrafico.addEventListener("click", function() {
-        if (!detalheAdicionado) {
-            alert("Adicione primeiro detalhes antes de escolher um estilo");
-            return; 
-        }
-        
-        if (detalheAdicionado) {
-            botaoGrafico.addEventListener("click", function() {
-                textarea.value += (textarea.value ? " " : "") + "no estilo de um gráfico"; 
-            });
-        }
-    });
+    function aplicarEstilo(estiloTexto) {
+    if (!detalheAdicionado) {
+        alert("Adicione primeiro detalhes antes de escolher um estilo");
+        return;
+    }
 
-    botaoTabela.addEventListener("click", function() {
-        if (!detalheAdicionado) {
-            alert("Adicione primeiro detalhes antes de escolher um estilo");
-            return; 
-        }
-        
-        if (detalheAdicionado) {
-                textarea.value += (textarea.value ? " " : "") + "no estilo de uma tabela"; 
-        }
-    });
+    textarea.value = textarea.value.replace(
+        / no estilo.*$/i,
+        ""
+    );
 
-    botaoRealista.addEventListener("click", function() {
-        if (!detalheAdicionado) {
-            alert("Adicione primeiro detalhes antes de escolher um estilo");
-            return; 
-        }
-        
-        if (detalheAdicionado) {
-                textarea.value += (textarea.value ? " " : "") + "no estilo realista"; 
-        }
-    });
+    textarea.value += " no estilo " + estiloTexto;
+    }
 
-    botao3D.addEventListener("click", function() {
-        if (!detalheAdicionado) {
-            alert("Adicione primeiro detalhes antes de escolher um estilo");
-            return; 
-        }
-        
-        if (detalheAdicionado) {
-                textarea.value += (textarea.value ? " " : "") + "no estilo 3D"; 
-        }
-    });
-
-    botaoCartoon.addEventListener("click", function() {
-        if (!detalheAdicionado) {
-            alert("Adicione primeiro detalhes antes de escolher um estilo");
-            return; 
-        }
-        
-        if (detalheAdicionado) {
-                textarea.value += (textarea.value ? " " : "") + "no estilo de cartoon"; 
-        }
-    });
-
-    botaoAnime.addEventListener("click", function() {
-        if (!detalheAdicionado) {
-            alert("Adicione primeiro detalhes antes de escolher um estilo");
-            return; 
-        }
-        
-        if (detalheAdicionado) {
-                textarea.value += (textarea.value ? " " : "") + "no estilo de anime"; 
-        }
-    });
-
-    botaoPixelArt.addEventListener("click", function() {
-        if (!detalheAdicionado) {
-            alert("Adicione primeiro detalhes antes de escolher um estilo");
-            return; 
-        }
-        
-        if (detalheAdicionado) {
-                textarea.value += (textarea.value ? " " : "") + "no estilo de pixel art"; 
-        }
-    });
+    botaoGrafico.addEventListener("click", () => aplicarEstilo("de um gráfico"));
+    botaoTabela.addEventListener("click", () => aplicarEstilo("de uma tabela"));
+    botaoRealista.addEventListener("click", () => aplicarEstilo("realista"));
+    botao3D.addEventListener("click", () => aplicarEstilo("3D"));
+    botaoCartoon.addEventListener("click", () => aplicarEstilo("de cartoon"));
+    botaoAnime.addEventListener("click", () => aplicarEstilo("de anime"));
+    botaoPixelArt.addEventListener("click", () => aplicarEstilo("de pixel art"));
 });
