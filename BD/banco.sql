@@ -23,6 +23,16 @@ CREATE TABLE historico_pesquisa (
     data_pesquisa DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE imagens_geradas (
+    id_imagem INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    tipo_usuario ENUM('professor', 'aluno') NOT NULL,
+    prompt TEXT NOT NULL,
+    imagem LONGBLOB NOT NULL,
+    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
 INSERT INTO professores(nome, email, senha) VALUES ("Guilherme 43", "gui@sistemapoliedro", "4343");
 INSERT INTO alunos(nome, email, senha) VALUES ("Guilherme43", "aluno@sistemapoliedro", "43");
 
