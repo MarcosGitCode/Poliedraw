@@ -4,6 +4,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const textarea = document.getElementById("promptInput");
     const botaoDetalhe = document.getElementById("botaoDetalhe");
     const detalheInput = document.getElementById("sidebarPromptInput");
+    const botaoGrafico = document.getElementById("grafico");
+    const botaoTabela = document.getElementById("tabela");
+    const botaoRealista = document.getElementById("realista");
+    const botao3D = document.getElementById("3D");
+    const botaoCartoon = document.getElementById("cartoon");
+    const botaoAnime = document.getElementById("anime");
+    const botaoPixelArt = document.getElementById("pixelart");
 
     let temaSelecionado = false; 
 
@@ -31,37 +38,30 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     botaoGrafico.addEventListener("click", function() {
-        textarea.value = "no estilo de um gráfico";
-        temaSelecionado = true; 
+        textarea.value += (textarea.value ? " " : "") + "no estilo de um gráfico"; 
     });
 
     botaoTabela.addEventListener("click", function() {
-        textarea.value = "no estilo de uma tabela";
-        temaSelecionado = true; 
+        textarea.value += (textarea.value ? " " : "") + "no estilo de uma tabela"; 
     });
 
     botaoRealista.addEventListener("click", function() {
-        textarea.value = "no estilo realista";
-        temaSelecionado = true; 
+        textarea.value += (textarea.value ? " " : "") + "no estilo realista"; 
     });
 
     botao3D.addEventListener("click", function() {
-        textarea.value = "no estilo 3D";
-        temaSelecionado = true; 
+        textarea.value += (textarea.value ? " " : "") + "no estilo 3D"; 
     });
 
     botaoCartoon.addEventListener("click", function() {
-        textarea.value = "no estilo de cartoon";
-        temaSelecionado = true; 
+        textarea.value += (textarea.value ? " " : "") + "no estilo de um cartoon"; 
     });
 
     botaoAnime.addEventListener("click", function() {
-        textarea.value = "no estilo de anime";
-        temaSelecionado = true; 
+        textarea.value += (textarea.value ? " " : "") + "no estilo de anime"; 
     });
 
     botaoPixelArt.addEventListener("click", function() {
-        textarea.value = "no estilo de pixel art";
-        temaSelecionado = true; 
+        textarea.value += (textarea.value ? " " : "") + "no estilo de pixel art"; 
     });
 });
