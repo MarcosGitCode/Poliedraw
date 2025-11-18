@@ -19,6 +19,17 @@
     font-family: 'Quicksand', Arial, sans-serif;
     color: var(--corLetra);
 }
+p {
+    font-size: 14px;
+    text-align: center;
+    margin-top: -10%;
+    margin-bottom: 5%;
+    color: var(--corLetra);
+}
+a {
+    text-decoration-line: none;
+}
+
 /* corpo */
 body {
     background-color: var(--fundo);
