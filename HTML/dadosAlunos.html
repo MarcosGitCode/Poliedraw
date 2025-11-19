@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../CSS/cadastro.css">
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../CSS/dados.css">
-    <script src="/JS/cadastro.js"></script>
+    <script src="/backend/cadastro.js" defer></script>
 </head>
 <body>
     <header style="justify-content: left;">
@@ -17,18 +17,21 @@
     </header>
     <main>
     <h1>Dados dos Alunos</h1>
-    <table id="tabelaAlunos">
+    <div class="tabela-container">
+        <table id="tabelaAlunos">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
+                <th style="min-width: 20vh;">Ações</th>
             </tr>
         </thead>
         <tbody>
             <!-- js -->
-        </tbody>
+        </tbody> 
     </table>
+    </div> 
     </main>
     <!-- acessibilidade -->
     <div vw class="enabled">

@@ -35,6 +35,6 @@ CREATE TABLE imagens_geradas (
 
 INSERT INTO professores(nome, email, senha) VALUES ("Guilherme 43", "gui@sistemapoliedro", "4343");
 INSERT INTO alunos(nome, email, senha) VALUES ("Guilherme43", "aluno@sistemapoliedro", "43");
-
+UPDATE alunos SET nome = ?, email = ? WHERE id_aluno = ?;
 SELECT * FROM alunos;
 SELECT * FROM professores;
