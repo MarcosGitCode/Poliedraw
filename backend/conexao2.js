@@ -64,7 +64,7 @@ app.post("/professores", async (req, res) => {
     res.json({ success: rows.length > 0 });
   } catch (err) {
     console.error("Erro login professor:", err);
-    res.status(500).json({ error: "Erro complicado" });
+    res.status(500).json({ error: "Erro interno" });
   }
 });
 
@@ -76,7 +76,7 @@ app.post("/alunosLogin", async (req, res) => {
     res.json({ success: rows.length > 0 });
   } catch (err) {
     console.error("Erro login aluno:", err);
-    res.status(500).json({ error: "Erro complicado" });
+    res.status(500).json({ error: "Erro interno" });
   }
 });
 
@@ -89,7 +89,7 @@ app.get("/alunos", async (req, res) => {
     res.json(rows);
   } catch (err) {
     console.error("Erro /alunos:", err);
-    res.status(500).json({ error: "Erro complicado" });
+    res.status(500).json({ error: "Erro ao buscar alunos" });
   }
 });
 
@@ -105,7 +105,8 @@ app.post("/cadastrarAlunos", async (req, res) => {
     res.status(500).json({ error: "Erro ao cadastrar aluno" });
   }
 });
-// 3. ATUALIZAR (PUT)
+
+// 3. ATUALIZAR (PUT) - ESTAVA FALTANDO ISSO!
 app.put("/alunos/:id", async (req, res) => {
   const { id } = req.params;
   const { nome, email } = req.body;
@@ -134,7 +135,7 @@ app.put("/alunos/:id", async (req, res) => {
   }
 });
 
-// 4. EXCLUIR (DELETE)
+// 4. EXCLUIR (DELETE) - ESTAVA FALTANDO ISSO TAMBÉM!
 app.delete("/alunos/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -160,37 +161,27 @@ app.delete("/alunos/:id", async (req, res) => {
 
 app.post("/api/gemini", async (req, res) => {
   try {
-    const { prompt } = req.body;
-    if (!prompt) return res.status(400).json({ error: "prompt obrigatório" });
-
-    const resposta = await Gemini(prompt);
-    res.json({ texto: resposta.text, imagens: resposta.images });
-  } catch (err) {
-    console.error("Erro /api/gemini:", err);
-    res.status(500).json({ error: "Erro no Gemini" });
-  }
-});
-
-app.post("/api/gemini", async (req, res) => {
-  try {
     const { prompt, userId } = req.body;
     if (!prompt) return res.status(400).json({ error: "prompt obrigatório" });
 
-    // salvar histórico
-    const filePath = path.resolve("messages.json");
-    let historico = [];
+    // Salvar histórico (Opcional: verifique se userId foi enviado)
+    if (userId) {
+        const filePath = path.resolve("messages.json");
+        let historico = [];
 
-    if (fs.existsSync(filePath)) {
-      historico = JSON.parse(fs.readFileSync(filePath, "utf8"));
+        if (fs.existsSync(filePath)) {
+            const fileContent = fs.readFileSync(filePath, "utf8");
+            if (fileContent) historico = JSON.parse(fileContent);
+        }
+
+        historico.push({
+            userId,
+            prompt,
+            timestamp: new Date().toISOString(),
+        });
+
+        fs.writeFileSync(filePath, JSON.stringify(historico, null, 2));
     }
-
-    historico.push({
-      userId,
-      prompt,
-      timestamp: new Date().toISOString(),
-    });
-
-    fs.writeFileSync(filePath, JSON.stringify(historico, null, 2));
 
     const resposta = await Gemini(prompt);
     res.json({ texto: resposta.text, imagens: resposta.images });
