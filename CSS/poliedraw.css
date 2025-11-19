@@ -181,7 +181,7 @@ a.buttonBarraLateral {
 }
 
 .style-button {
-    width: 100%;
+    width: 60%;
     display: flex;
     align-items: center;
     gap: 15px;
@@ -191,6 +191,18 @@ a.buttonBarraLateral {
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin: auto;
+    white-space: normal;
+    word-break: break-word;
+}
+@media screen and (max-width: 550px) {
+    .style-button img {
+        display: none;
+    }
+    h1 {
+        font-size: 1.5rem;
+        margin: 0px 0px 0px 20%;
+    }
 }
 
 .style-button img {
@@ -237,8 +249,19 @@ a.buttonBarraLateral {
 
 /* Prompt da barra lateral */
 .sidebar-prompt-container {
-    width: 90%;
+    width: 80%;
     margin: 20px auto;
+}
+@media screen and (max-width: 800px) {
+    .sidebar-prompt-container {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 550px) {
+    .sidebar-prompt-container {
+        width: 70%;
+        margin: 20px 0px 20px 20%;
+    } 
 }
 .sidebar-prompt {
     background-color: var(--barra);
@@ -254,7 +277,7 @@ a.buttonBarraLateral {
 .sidebar-prompt textarea {
     font-size: 14px;
     min-height: 36px;
-    max-height: 120px;
+    max-height: 10px;
     margin: 8px;
     padding: 8px;
 }
@@ -403,6 +426,17 @@ main {
     width: 100%;
     height: 20vh;
     padding-bottom: 100%;
+}
+@media screen and (max-width: 600px) {
+    #caixaPrompt {
+        height: 35vh;
+    }
+    .chat {
+        height: 65vh; 
+    }
+    p {
+        font-size: 12px;
+    }
 }
 .prompt {
     background-color: var(--barra);

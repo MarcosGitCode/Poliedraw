@@ -41,13 +41,29 @@ button {
 .action-btn:hover { opacity: 0.9; }
 
 .save-btn{ background: #2ecc71; border-color:#27ae60; margin-bottom: 10px;
-width: 80px;}
+width: 80%;}
 .cancel-btn{ background: #95a5a6; border-color:#7f8c8d; margin-bottom: 10px;
-width: 80px;}
+width: 80%;}
 .delete-btn{ background: #e74c3c; border-color:#c0392b; margin-bottom: 10px;
-width: 80px;}
+width: 80%;}
 .edit-btn{ background: #3498db; border-color:#2980b9; margin-bottom: 10px;
-width: 80px;}
+width: 80%;}
+@media screen and (max-width: 600px) {
+    #tabelaAlunos th, #tabelaAlunos td {
+        font-size: 0.6rem;
+        padding: 8px;
+    }
+    .edit-btn, .delete-btn, .save-btn, .cancel-btn {
+        padding: 4px 6px;
+        font-size: 0.5rem;
+        width: 90%;
+    }
+    h1{
+        font-size: 1.2rem;
+        margin: auto;
+        margin-bottom: 10%;
+    }
+}
 
 #tabelaAlunos {
     border-collapse: collapse;
