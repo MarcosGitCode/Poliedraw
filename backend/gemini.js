@@ -6,6 +6,9 @@ const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY
 });
 
+const aspectRatio = '16:9';
+const resolution = '2K';
+
 const SYSTEM_PROMPT = `[PAPEL E IDENTIDADE]
 Você é um modelo especializado em geração de imagens educacionais para estudantes e professores de uma instituição de ensino.
 Seu foco é produzir imagens claras, simples, objetivas e fieis ao que o usuário descreve, evitando interpretações excessivas.
@@ -62,11 +65,18 @@ Nenhum comentário adicional após gerar a imagem.`;
 export default async function Gemini(prompt) {
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-image",
+      model: "gemini-3-pro-image-preview",
       contents: [
         { role: "user", parts: [{ text: SYSTEM_PROMPT }]},
         { role: "user", parts: [{ text: prompt }] }
-      ]
+      ],
+      config: {
+        responseModalities: ['TEXT', 'IMAGE'],
+        imageConfig: {
+          aspectRatio: aspectRatio,
+          imageSize: resolution,
+        },
+      },
     });
 
     let textParts = [];
