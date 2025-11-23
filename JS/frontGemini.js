@@ -87,25 +87,59 @@ document.addEventListener('DOMContentLoaded', () => {
                 aiResponseContent.appendChild(textElement);
             }
             
-            // 4. Adicionar as imagens e rastrear o carregamento
-            if (data.imagens && data.imagens.length > 0) {
-                data.imagens.forEach(imgUrl => {
+            // 4. Adicionar as imagens e o botão flutuante
+            const listaImagens = data.imagens || data.images;
+
+            if (listaImagens && listaImagens.length > 0) {
+                listaImagens.forEach((imgUrl, index) => {
+                    
+                    // A. Container (Position Relative)
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'image-wrapper';
+
+                    // B. A Imagem Gerada pela IA
                     const img = document.createElement('img');
                     img.src = imgUrl;
+                    img.style.maxWidth = '100%';
+                    img.style.borderRadius = '8px';
+                    img.style.display = 'block'; // Remove espaços extras embaixo
+
+                    // C. O Botão de Download (Position Absolute)
+                    const downloadBtn = document.createElement('a');
+                    downloadBtn.href = imgUrl;
+                    downloadBtn.download = `imagem-gemini-${Date.now()}-${index}.png`;
+                    downloadBtn.className = 'download-btn';
+                    downloadBtn.title = "Baixar imagem"; // Texto que aparece ao passar o mouse
+
+                    // D. A Imagem do Ícone (dentro do botão)
+                    const iconImg = document.createElement('img');
                     
+                    // -----------------------------------------------------------
+                    // 🔴 COLOQUE AQUI O CAMINHO DA SUA IMAGEM DE ÍCONE
+                    // Pode ser um arquivo local 'assets/download.png' ou URL
+                    iconImg.src = '/assets/navegacao/download.png'; 
+                    // -----------------------------------------------------------
+                    
+                    iconImg.className = 'download-icon-img';
+                    downloadBtn.appendChild(iconImg);
+
+                    // E. Lógica de carregamento
                     const loadPromise = new Promise((resolve) => {
                         img.onload = () => {
                             resolve();
-                            scrollToBottom(); // Rola após o carregamento de CADA imagem
+                            scrollToBottom();
                         };
                         img.onerror = () => resolve(); 
                     });
-
                     imagesLoadedPromises.push(loadPromise);
-                    aiResponseContent.appendChild(img);
+
+                    // F. Montagem: Botão e Imagem dentro do Wrapper
+                    wrapper.appendChild(img);         // 1. Imagem de fundo
+                    wrapper.appendChild(downloadBtn); // 2. Botão por cima
+                    
+                    aiResponseContent.appendChild(wrapper);
                 });
             }
-
             // 5. Rola para o final após o texto ser adicionado
             scrollToBottom(); 
 

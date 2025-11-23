@@ -529,4 +529,43 @@ textarea::-webkit-scrollbar {
     .prompt .send-btn {
         width: 18%;
     }
+}/* O Container agora define o limite para o botão flutuante */
+.image-wrapper {
+    position: relative; /* Essencial para o botão ficar preso aqui */
+    display: inline-block; /* Ajusta o container ao tamanho da imagem */
+    margin-top: 10px;
+    max-width: 100%;
+}
+
+/* O Botão flutuante */
+.download-btn {
+    position: absolute; /* Flutua sobre o container */
+    top: 10px;    /* Distância do topo */
+    right: 10px;  /* Distância da direita */
+    
+    width: 40px;  /* Tamanho do botão */
+    height: 40px;
+    
+    background-color: rgba(9, 109, 0, 0.8); /* Fundo branco meio transparente */
+    border-radius: 50%; /* Deixa redondinho */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Sombra para destacar */
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    z-index: 10; /* Garante que fique em cima da imagem */
+}
+
+.download-btn:hover {
+    transform: scale(1.1); /* Cresce um pouco ao passar o mouse */
+    background-color: #0f9800;
+}
+
+/* Estilo da IMAGEM do ícone dentro do botão */
+.download-icon-img {
+    width: 20px; /* Tamanho do ícone dentro da bolinha */
+    height: 20px;
+    object-fit: contain;
+    pointer-events: none; /* O clique passa direto para o botão */
 }
