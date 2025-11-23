@@ -70,8 +70,6 @@ Use as credenciais abaixo para testar os diferentes perfis de acesso:
 
 ## 👨‍💻 Membros da Equipe
 
-Agradecimentos aos desenvolvedores que tornaram este projeto possível:
-
 * Guilherme Britto
 * Demetrius Damasio
 * Guilherme Calderan
