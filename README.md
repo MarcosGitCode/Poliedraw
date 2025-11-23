@@ -10,10 +10,9 @@ A iniciativa busca unir **criatividade**, **tecnologia** e **educação** em uma
 
 ## 🚀 Funcionalidades
 
-* **🎨 Geração de Imagens por Texto (Prompting):** Crie imagens únicas e detalhadas usando apenas a imaginação.
+* **🎨 Geração de Imagens por Texto:** Crie imagens únicas e detalhadas usando apenas a imaginação.
 * **🧑‍💻 Interface Otimizada:** Design *clean* e amigável, ideal para uso em ambiente de sala de aula.
 * **⬇️ Exportação e Download:** Salve as criações em alta qualidade para uso em trabalhos e apresentações.
-* **📜 Histórico Básico de Criações:** Acompanhamento das imagens geradas por sessão (funcionalidade em desenvolvimento).
 * **🔐 Autenticação:** Separação entre perfis de Professor e Aluno.
 
 ---
@@ -24,7 +23,7 @@ A iniciativa busca unir **criatividade**, **tecnologia** e **educação** em uma
 | :--- | :--- |
 | **Front-end** | HTML, CSS, JavaScript |
 | **Back-end** | Node.js |
-| **IA/API** | API de Geração de Imagens (ex: Gemini API, DALL-E, etc.) |
+| **IA/API** | API de Geração de Imagens: Gemini |
 
 ---
 
@@ -34,16 +33,13 @@ Siga estes passos para configurar e executar o **Poliedraw** em seu ambiente:
 
 1.  **Clone o Repositório:**
     ```bash
-    git clone [URL_DO_SEU_REPOSITORIO]
+    git clone https://github.com/MarcosGitCode/Poliedraw
     cd Poliedraw
     ```
 
 2.  **Instale as Dependências:**
     ```bash
-    # Dependendo da sua configuração, pode ser:
     npm install 
-    # ou
-    yarn install
     ```
 
 3.  **Configure a Chave da API (API Key):**
@@ -58,12 +54,7 @@ Siga estes passos para configurar e executar o **Poliedraw** em seu ambiente:
     ```bash
     # Utilize o comando configurado para iniciar o Node.js
     npm start 
-    # ou
-    node server.js
     ```
-
-O projeto estará acessível no endereço `http://localhost:[PORTA]` (verifique a porta configurada no seu arquivo `server.js` ou `app.js`).
-
 ---
 
 ## 🔑 Credenciais de Teste
@@ -84,6 +75,6 @@ Agradecimentos aos desenvolvedores que tornaram este projeto possível:
 * Guilherme Britto
 * Demetrius Damasio
 * Guilherme Calderan
-* Marcos Salles
+* Marcos de Salles
 * Guilherme Nunes
 * Nikolas Figura
