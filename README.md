@@ -22,7 +22,7 @@ A iniciativa busca unir **criatividade**, **tecnologia** e **educação** em uma
 | Categoria | Tecnologia |
 | :--- | :--- |
 | **Front-end** | HTML, CSS, JavaScript |
-| **Back-end** | Node.js |
+| **Back-end** | Node.js, mySQL |
 | **IA/API** | API de Geração de Imagens: Gemini |
 
 ---
@@ -39,7 +39,7 @@ Siga estes passos para configurar e executar o **Poliedraw** em seu ambiente:
 
 2.  **Instale as Dependências:**
     ```bash
-    npm install 
+    npm install
     ```
 
 3.  **Configure a Chave da API (API Key):**
@@ -48,8 +48,13 @@ Siga estes passos para configurar e executar o **Poliedraw** em seu ambiente:
     ```env
     GEMINI_API_KEY="SUA_CHAVE_DE_API_DO_GEMINI_AQUI"
     ```
-
-4.  **Inicie o Servidor:**
+    
+4.  **Banco de dados**
+    ```bash
+    # Abra o mySQL, em seguida, o arquivo "banco.sql" e execute
+    ```
+    
+5.  **Inicie o Servidor:**
     ```bash
     # Utilize o comando configurado para iniciar o Node.js
     npm start 
