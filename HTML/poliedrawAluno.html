@@ -10,7 +10,7 @@
 <body>
     <!-- cabeçalho -->
 
-    <header style="justify-content: left; ">
+    <header>
         <!-- hamburguer -->
         <div class="mobile-menu">
             <div class="mobile-menu"></div>
@@ -18,37 +18,85 @@
             <div class="line2"></div>
         </div>
 
-        <!-- logo -->
+        <!-- logo para voltar e botão para ir a página cadastro -->
         <a href="/HTML/login.html"><img src="/assets/logoCabecalho.png" alt="logo" class="img-logo" title="Voltar para o login"></a>
+        <script src="/JS/mobile-navbar.js" defer></script>
+
     </header>
 
     <!-- barra lateral -->
     <div class="barraLateral">
         <button class="buttonBarraLateral" id="materiasBtn" aria-expanded="false" title="Matérias">
             <img src="/assets/navegacao/materias.png" alt="matérias">
+            <p>matérias</p>
         </button>
         <button class="buttonBarraLateral" id="detalhesBtn" aria-expanded="false" title="Detalhes">
             <img src="/assets/navegacao/detalhes.png" alt="detalhes">
+            <p>detalhes</p>
         </button>
         <button class="buttonBarraLateral" id="estiloBtn" aria-expanded="false" title="Estilo">
             <img src="/assets/navegacao/estilo.png" alt="estilo">
+            <p>estilo</p>
         </button>
-        <a href="SaveImagens.html" class="buttonBarraLateral"><img src="/assets/navegacao/download.png" alt="salvar"></a>
+        <p>------</p>
+        <a href="SaveImagens2.html" class="buttonBarraLateral"><img src="/assets/navegacao/download.png" alt="salvar" title="Imagem Salvas"><p>imagens salvas</p></a>
+        
     </div>
 
     <!-- menus (iniciam escondidos) -->
     <div class="materiasMenu menu hidden" id="materiasMenu" aria-hidden="true">
         <h1>Matérias</h1>
-        <button class="buttonBarraLateral"><img src="/assets/fisica.png" alt="física"><h2>física</h2></button>
-        <button class="buttonBarraLateral"><img src="/assets/quimica.png" alt="química"><h2>química</h2></button>
+        <button id="fisica" class="buttonBarraLateral"><img src="/assets/fisica.png" alt="física"><h2>física</h2></button>
+        <button id="quimica" class="buttonBarraLateral"><img src="/assets/quimica.png" alt="química"><h2>química</h2></button>
     </div>
 
     <div class="detalhesMenu menu hidden" id="detalhesMenu" aria-hidden="true">
         <h1>Detalhes</h1>
+        <!-- prompt da barra lateral -->
+        <div class="sidebar-prompt-container">
+            <div class="prompt sidebar-prompt">
+                <textarea id="sidebarPromptInput" placeholder="Digite seu texto aqui..." rows="2" aria-label="Campo de texto da barra lateral"></textarea>
+                <button id="botaoDetalhe" class="send-btn" title="Enviar">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
 
     <div class="estiloMenu menu hidden" id="estiloMenu" aria-hidden="true">
         <h1>Estilo</h1>
+        <div class="style-buttons">
+            <button id="anime" class="style-button" data-style="anime">
+                <img src="/assets/navegacao/anime.png" alt="estilo anime">
+                <h2>Anime</h2>
+            </button>
+            <button id="realista" class="style-button" data-style="realistic">
+                <img src="/assets/navegacao/realista.png" alt="estilo realista">
+                <h2>Realista</h2>
+            </button>
+            <button id="grafico" class="style-button" data-style="grafico">
+                <img src="/assets/navegacao/grafico.png" alt="estilo grafico">
+                <h2>grafico</h2>
+            </button>
+            <button id="tabela" class="style-button" data-style="tabela">
+                <img src="/assets/navegacao/tabela.png" alt="estilo tabela">
+                <h2>tabela</h2>
+            </button>
+            <button id="3D" class="style-button" data-style="3D">
+                <img src="/assets/navegacao/3D.png" alt="estilo 3D">
+                <h2>3D</h2>
+            </button>
+            <button id="cartoon" class="style-button" data-style="cartoon">
+                <img src="/assets/navegacao/cartoon.png" alt="estilo cartoon">
+                <h2>cartoon</h2>
+            </button>
+            <button id="pixelart" class="style-button" data-style="pixelart">
+                <img src="/assets/navegacao/pixelart.png" alt="estilo pixelart">
+                <h2>pixel art</h2>
+            </button>
+        </div>
     </div>
 
     <!-- main -->
@@ -61,7 +109,7 @@
         <div id="caixaPrompt">
             <div class="prompt">
             <textarea id="promptInput" placeholder="Digite seu texto aqui..." rows="2" aria-label="Campo de texto"></textarea>
-                <button class="send-btn" title="Enviar">
+                <button id="send-btno" class="send-btn" title="Enviar">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                         <path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -94,5 +142,8 @@
 
     <!-- hamburguer -->
     <script src="../JS/mobile-menu.js" type="module" defer></script>
+
+    <!-- estilo menu -->
+    <script src="../JS/estiloMenu.js" type="module" defer></script>
 </body>
 </html>
