@@ -113,12 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // D. A Imagem do Ícone (dentro do botão)
                     const iconImg = document.createElement('img');
-                    
-                    // -----------------------------------------------------------
-                    // 🔴 COLOQUE AQUI O CAMINHO DA SUA IMAGEM DE ÍCONE
-                    // Pode ser um arquivo local 'assets/download.png' ou URL
                     iconImg.src = '/assets/navegacao/download.png'; 
-                    // -----------------------------------------------------------
                     
                     iconImg.className = 'download-icon-img';
                     downloadBtn.appendChild(iconImg);
