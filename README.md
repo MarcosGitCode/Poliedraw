@@ -46,7 +46,6 @@ Siga estes passos para configurar e executar o **Poliedraw** em seu ambiente:
     * Crie um arquivo chamado **`.env`** na raiz do projeto.
     * Adicione sua chave da API de geração de imagens (ex: API Key do Gemini) neste arquivo. **Isso é crucial para o funcionamento da IA.**
     ```env
-    # Exemplo: Chave de API do Gemini
     GEMINI_API_KEY="SUA_CHAVE_DE_API_DO_GEMINI_AQUI"
     ```
 
