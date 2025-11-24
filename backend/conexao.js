@@ -226,7 +226,40 @@ app.post("/api/gemini", async (req, res) => {
     res.status(500).json({ error: "Erro no Gemini" });
   }
 });
+app.delete("/imagens/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        const [result] = await db.query("DELETE FROM imagens_geradas WHERE id_imagem = ?", [id]);
+        
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: "Imagem não encontrada" });
+        }
+        
+        res.json({ success: true, message: "Imagem excluída com sucesso!" });
+    } catch (err) {
+        console.error("Erro ao excluir imagem:", err);
+        res.status(500).json({ error: "Erro interno ao excluir" });
+    }
+});
 
+// ROTA PARA EXCLUIR IMAGEM
+app.delete("/imagens/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        const [result] = await db.query("DELETE FROM imagens_geradas WHERE id_imagem = ?", [id]);
+        
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: "Imagem não encontrada" });
+        }
+        
+        res.json({ success: true, message: "Imagem excluída com sucesso!" });
+    } catch (err) {
+        console.error("Erro ao excluir imagem:", err);
+        res.status(500).json({ error: "Erro interno ao excluir" });
+    }
+});
+
+// app.listen... (mantém o que já estava)
 const PORT = Number(process.env.PORT || 3000);
 app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));
 
