@@ -46,8 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // garantir estado inicial consistente
-    if (!sidebar.classList.contains('open')) {
-        mobileMenu.setAttribute('aria-expanded', 'false');
-        closeAllMenus();
-    }
+    // FORÇAR ESTADO INICIAL: ABERTO
+    // 1. Adiciona a classe visual
+    sidebar.classList.add('open'); 
+    
+    // 2. Informa aos leitores de tela que está expandido
+    mobileMenu.setAttribute('aria-expanded', 'true'); 
+    
+    // 3. Trava o scroll da página (importante para consistência)
+    document.body.style.overflow = 'hidden';
 });
