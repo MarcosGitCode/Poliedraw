@@ -6,115 +6,119 @@ document.addEventListener("DOMContentLoaded", function() {
     const botaoQuimica = document.getElementById("quimica");
     const botaoFisica = document.getElementById("fisica");
     
-    // Dropdowns (NOVOS)
+    // Dropdowns
     const selectFisica = document.getElementById("select-fisica");
     const selectQuimica = document.getElementById("select-quimica");
 
     // Botões de Detalhes e Estilo
     const botaoDetalhe = document.getElementById("botaoDetalhe");
     const detalheInput = document.getElementById("sidebarPromptInput");
-    const botaoApagarPrompt = document.getElementById("apagarPrompt"); // (Verifique se esse botão existe no HTML, senão vai dar erro)
+    const botaoApagarPrompt = document.getElementById("apagarPrompt");
     
-    // Botões de estilo (Agrupados para facilitar)
+    // Botões de estilo
     const botoesEstilo = document.querySelectorAll(".style-button");
 
     // --- VARIÁVEIS DE CONTROLE ---
     let temaSelecionado = false; 
     let detalheAdicionado = false;
-    let assuntoSelecionado = ""; // AQUI ESTÁ A VARIÁVEL QUE VOCÊ PEDIU
+    let assuntoSelecionado = ""; 
 
     // --- FUNÇÕES AUXILIARES ---
-
-    // Função para atualizar o prompt quando um dropdown muda
     function atualizarPromptComDropdown(materia, selectElement) {
-        // Pega o TEXTO da opção (ex: "Cinemática") e não o value (ex: "cinematica")
-        // Se quiser o value, use selectElement.value
+        if (!selectElement) return;
         let textoOpcao = selectElement.options[selectElement.selectedIndex].text;
-        
-        // Guarda na variável let
         assuntoSelecionado = textoOpcao;
-
-        // Atualiza a caixa de texto
-        textarea.value = `Crie uma imagem de ${materia} sobre ${assuntoSelecionado}`;
-        
-        // Libera para adicionar detalhes
-        temaSelecionado = true;
+        if (textarea) {
+            textarea.value = `Crie uma imagem de ${materia} sobre ${assuntoSelecionado}`;
+            temaSelecionado = true;
+        }
     }
 
-    // --- EVENTOS ---
+    // --- EVENTOS (COM PROTEÇÃO CONTRA ERROS) ---
 
-    // 1. Clique no botão grande "Física" (apenas inicia o texto)
-    botaoFisica.addEventListener("click", function() {
-        textarea.value = "Crie uma imagem de física sobre";
-        selectFisica.value = ""; // Reseta o dropdown para o padrão
-        temaSelecionado = true; 
-    });
-
-    // 2. Mudança no Dropdown de Física
-    selectFisica.addEventListener("change", function() {
-        atualizarPromptComDropdown("física", selectFisica);
-    });
-
-    // 3. Clique no botão grande "Química"
-    botaoQuimica.addEventListener("click", function() {
-        textarea.value = "Crie uma imagem de química sobre";
-        selectQuimica.value = ""; // Reseta o dropdown
-        temaSelecionado = true; 
-    });
-
-    // 4. Mudança no Dropdown de Química
-    selectQuimica.addEventListener("change", function() {
-        atualizarPromptComDropdown("química", selectQuimica);
-    });
-
-    // 5. Botão de Detalhes
-    botaoDetalhe.addEventListener("click", function() {
-        if (!temaSelecionado) {
-            alert("Escolha primeiro uma matéria ou assunto!");
-            return; 
-        }
-
-        const promptDetalhe = detalheInput.value.trim();
-        if (promptDetalhe !== "") {
-            textarea.value += " '" + promptDetalhe + "'";
-            // detalheAdicionado = true; // Opcional: dependerá se você obriga ter detalhe para escolher estilo
-            detalheInput.value = ""; // Limpa o campo de detalhe após enviar
-        }
-        // Vamos permitir escolher estilo mesmo sem detalhe extra, se já tiver tema
-        detalheAdicionado = true; 
-    });
-
-    // 6. Botões de Estilo (Lógica otimizada)
-    botoesEstilo.forEach(botao => {
-        botao.addEventListener("click", function() {
-            if (!temaSelecionado) {
-                alert("Escolha o tema e os detalhes antes do estilo!");
-                return;
-            }
-
-            // Remove estilo anterior se houver (regex)
-            textarea.value = textarea.value.replace(/ no estilo.*$/i, "");
-
-            // Pega o nome do estilo (pode pegar do h2 ou criar um atributo data-texto)
-            let estiloNome = this.querySelector("h2").innerText.toLowerCase();
-            
-            // Ajuste gramatical simples
-            if (estiloNome === "grafico") estiloNome = "de um gráfico";
-            else if (estiloNome === "tabela") estiloNome = "de uma tabela";
-            else if (estiloNome === "cartoon") estiloNome = "de cartoon";
-            else if (estiloNome === "anime") estiloNome = "de anime";
-            else if (estiloNome === "pixel art") estiloNome = "de pixel art";
-            
-            textarea.value += " no estilo " + estiloNome;
+    // 1. Botão Física
+    if (botaoFisica) {
+        botaoFisica.addEventListener("click", function() {
+            if(textarea) textarea.value = "Crie uma imagem de física sobre";
+            if(selectFisica) selectFisica.value = ""; 
+            temaSelecionado = true; 
         });
-    });
+    }
 
-    // 7. Botão Limpar (Opcional, se existir no HTML)
+    // 2. Dropdown Física
+    if (selectFisica) {
+        selectFisica.addEventListener("change", function() {
+            atualizarPromptComDropdown("física", selectFisica);
+        });
+    }
+
+    // 3. Botão Química
+    if (botaoQuimica) {
+        botaoQuimica.addEventListener("click", function() {
+            if(textarea) textarea.value = "Crie uma imagem de química sobre";
+            if(selectQuimica) selectQuimica.value = ""; 
+            temaSelecionado = true; 
+        });
+    }
+
+    // 4. Dropdown Química
+    if (selectQuimica) {
+        selectQuimica.addEventListener("change", function() {
+            atualizarPromptComDropdown("química", selectQuimica);
+        });
+    }
+
+    // 5. Botão de Detalhes (O provável causador do erro na linha 71)
+    if (botaoDetalhe) {
+        botaoDetalhe.addEventListener("click", function() {
+            if (!temaSelecionado) {
+                alert("Escolha primeiro uma matéria ou assunto!");
+                return; 
+            }
+            if (detalheInput && textarea) {
+                const promptDetalhe = detalheInput.value.trim();
+                if (promptDetalhe !== "") {
+                    textarea.value += " '" + promptDetalhe + "'";
+                    detalheInput.value = ""; 
+                }
+                detalheAdicionado = true; 
+            }
+        });
+    }
+
+    // 6. Botões de Estilo
+    if (botoesEstilo) {
+        botoesEstilo.forEach(botao => {
+            botao.addEventListener("click", function() {
+                if (!temaSelecionado) {
+                    alert("Escolha o tema e os detalhes antes do estilo!");
+                    return;
+                }
+                if (textarea) {
+                    textarea.value = textarea.value.replace(/ no estilo.*$/i, "");
+                    const h2 = this.querySelector("h2");
+                    if (h2) {
+                        let estiloNome = h2.innerText.toLowerCase();
+                        
+                        if (estiloNome === "grafico") estiloNome = "de um gráfico";
+                        else if (estiloNome === "tabela") estiloNome = "de uma tabela";
+                        else if (estiloNome === "cartoon") estiloNome = "de cartoon";
+                        else if (estiloNome === "anime") estiloNome = "de anime";
+                        else if (estiloNome === "pixel art") estiloNome = "de pixel art";
+                        
+                        textarea.value += " no estilo " + estiloNome;
+                    }
+                }
+            });
+        });
+    }
+
+    // 7. Botão Limpar
     if(botaoApagarPrompt) {
         botaoApagarPrompt.addEventListener("click", function() {
-            textarea.value = "";
-            selectFisica.value = "";
-            selectQuimica.value = "";
+            if(textarea) textarea.value = "";
+            if(selectFisica) selectFisica.value = "";
+            if(selectQuimica) selectQuimica.value = "";
             temaSelecionado = false;
             detalheAdicionado = false;
         });

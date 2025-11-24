@@ -1,63 +1,66 @@
 document.addEventListener("DOMContentLoaded", () => {
-      const form = document.getElementById("loginForm");
-      let tipoUsuario = null;
+    const form = document.getElementById("loginForm");
+    let tipoUsuario = null; // Começa nulo
 
-      document.getElementById("professor").addEventListener("click", () => {
+    const btnProfessor = document.getElementById("professor");
+    const btnAluno = document.getElementById("aluno");
+
+    // Seleção visual dos botões
+    btnProfessor.addEventListener("click", () => {
         tipoUsuario = "professor";
-      });
-      document.getElementById("aluno").addEventListener("click", () => {
-        tipoUsuario = "aluno";
-      });
+        btnProfessor.style.backgroundColor = "#AE1E41"; // Cor ativa
+        btnAluno.style.backgroundColor = "#212121";
+    });
 
-      form.addEventListener("submit", async (event) => {
+    btnAluno.addEventListener("click", () => {
+        tipoUsuario = "aluno";
+        btnAluno.style.backgroundColor = "#AE1E41"; // Cor ativa
+        btnProfessor.style.backgroundColor = "#212121";
+    });
+
+    form.addEventListener("submit", async (event) => {
         event.preventDefault();
+
+        if (!tipoUsuario) {
+            alert("Por favor, selecione se você é Professor ou Aluno.");
+            return;
+        }
 
         const email = document.getElementById("username").value;
         const senha = document.getElementById("password").value;
 
         try {
-          const endpoint = 
-            tipoUsuario === "professor"
-              ? "http://localhost:3000/professores"
-              : "http://localhost:3000/alunosLogin";
+            const endpoint = 
+              tipoUsuario === "professor"
+                ? "http://localhost:3000/professores"
+                : "http://localhost:3000/alunosLogin";
 
-          const response = await fetch(endpoint, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, senha }),
-          });
+            const response = await fetch(endpoint, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, senha }),
+            });
 
-          const result = await response.json();
+            const result = await response.json();
 
-          if (result.success) {
-            if (tipoUsuario === "professor") {
-              window.location.href = "./poliedraw.html";
+            if (result.success) {
+                // --- AQUI ESTÁ A MÁGICA: SALVAR QUEM LOGOU ---
+                localStorage.setItem("usuarioId", result.id);
+                localStorage.setItem("usuarioTipo", tipoUsuario); 
+                localStorage.setItem("usuarioNome", result.nome);
+
+                // Redirecionamento
+                if (tipoUsuario === "professor") {
+                    window.location.href = "./poliedraw.html";
+                } else {
+                    window.location.href = "./poliedrawAluno.html";
+                }
             } else {
-              window.location.href = "./poliedrawAluno.html";
+                alert("Usuário ou senha incorretos!");
             }
-          } else {
-            alert("Usuário ou senha incorretos!");
-          }
         } catch (err) {
-          alert("Erro ao conectar com o servidor!");
-          console.error(err);
+            alert("Erro ao conectar com o servidor!");
+            console.error(err);
         }
-      });
-    });
-
-//mudar cor do botão selecionado//
-document.addEventListener("DOMContentLoaded", () => {
-    const professorBtn = document.getElementById("professor");
-    const alunoBtn = document.getElementById("aluno");
-    const caixaLogin = document.getElementById("caixaLogin");
-
-    professorBtn.addEventListener("click", () => {
-        professorBtn.style.backgroundColor = "#212121";
-        alunoBtn.style.backgroundColor = "#464646";
-    });
-
-    alunoBtn.addEventListener("click", () => {
-        alunoBtn.style.backgroundColor = "#212121";
-        professorBtn.style.backgroundColor = "#464646";
     });
 });

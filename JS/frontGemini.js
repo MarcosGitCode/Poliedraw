@@ -1,209 +1,148 @@
+console.log("1. O Script frontGemini foi carregado!");
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Seleção dos elementos da interface
+    console.log("2. A página terminou de carregar (DOM ready).");
+
+    // Seleção dos elementos
     const textarea = document.getElementById('promptInput');
-    const chatContainer = document.querySelector('.chat'); // Renomeei para maior clareza
+    const chatContainer = document.querySelector('.chat');
     const btn = document.getElementById("send-btno");
 
-    
-    // Função para rolar o chat para o final
+    // DIAGNÓSTICO
+    if (!textarea) console.error("ERRO GRAVE: Não achei a caixa de texto (id='promptInput')");
+    if (!chatContainer) console.error("ERRO GRAVE: Não achei o chat (class='chat')");
+    if (!btn) {
+        console.error("ERRO GRAVE: Não achei o botão (id='send-btno')");
+        return; // Para tudo se não tiver botão
+    } else {
+        console.log("3. Botão encontrado com sucesso! Adicionando evento de clique...");
+    }
+
+    // --- FUNÇÕES ---
+
     function scrollToBottom() {
-        chatContainer.scrollTo({
-            top: chatContainer.scrollHeight,
-            behavior: 'smooth' 
-        });
+        if(chatContainer) {
+            chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: 'smooth' });
+        }
     }
 
-    function criarUserId() {
-        const id = crypto.randomUUID();
-        localStorage.setItem("userId", id);
-        return id;
-    }
-
-    /**
-     * Cria e adiciona um elemento de mensagem ao chat.
-     * @param {string} content - O texto ou HTML da mensagem.
-     * @param {string} type - 'user' ou 'ai' para estilização.
-     */
     function appendMessage(content, type) {
-        const messageWrapper = document.createElement('div');
-        messageWrapper.classList.add('message-wrapper', `${type}-message-wrapper`);
+        const wrapper = document.createElement('div');
+        wrapper.className = `message-wrapper ${type}-message-wrapper`;
+        const bubble = document.createElement('div');
+        bubble.className = `message-bubble ${type}-message-bubble`;
         
-        const messageBubble = document.createElement('div');
-        messageBubble.classList.add('message-bubble', `${type}-message-bubble`);
-        
-        // Se for mensagem de texto simples
         if (typeof content === 'string') {
-            if (type === 'user') {
-                // Texto do prompt
-                const textEl = document.createElement('p');
-                textEl.className = 'user-prompt-text';
-                textEl.innerText = content;
-                messageBubble.appendChild(textEl);
-
-                // Botão de copiar (agora com ícone)
-                const copyBtn = document.createElement('button');
-                copyBtn.className = 'copy-prompt-btn';
-                copyBtn.type = 'button';
-                copyBtn.title = 'Copiar prompt';
-
-                const copyIcon = document.createElement('img');
-                copyIcon.src = '/assets/copy-regular-full.svg';
-                copyIcon.alt = 'Copiar';
-                copyIcon.className = 'copy-icon';
-                copyBtn.appendChild(copyIcon);
-
-                copyBtn.addEventListener('click', async (e) => {
-                    e.stopPropagation();
-                    try {
-                        await navigator.clipboard.writeText(content);
-                        const prev = copyBtn.innerHTML;
-                        copyBtn.innerHTML = 'Copiado!';
-                        setTimeout(() => copyBtn.innerHTML = prev, 1200);
-                    } catch {
-                        // fallback para copiar via textarea
-                        const ta = document.createElement('textarea');
-                        ta.value = content;
-                        document.body.appendChild(ta);
-                        ta.select();
-                        document.execCommand('copy');
-                        document.body.removeChild(ta);
-                        const prev = copyBtn.innerHTML;
-                        copyBtn.innerHTML = 'Copiado!';
-                        setTimeout(() => copyBtn.innerHTML = prev, 1200);
-                    }
-                });
-
-                messageBubble.appendChild(copyBtn);
-            } else {
-                messageBubble.innerText = content;
-            }
+            const p = document.createElement('p');
+            p.innerText = content;
+            bubble.appendChild(p);
         } else {
-            // Se for um elemento (ex: div de resposta da IA), anexamos o conteúdo
-            messageBubble.appendChild(content);
+            bubble.appendChild(content);
         }
 
-        messageWrapper.appendChild(messageBubble);
-        chatContainer.appendChild(messageWrapper);
+        wrapper.appendChild(bubble);
+        chatContainer.appendChild(wrapper);
         scrollToBottom();
-        return messageBubble; // Retorna o elemento da bolha para manipulação posterior
     }
 
+    async function sendPrompt() {
+        const prompt = textarea.value.trim();
+        console.log("Tentando enviar prompt:", prompt);
 
-    async function sendPrompt(prompt) {
-        if (!prompt) return;
+        if (!prompt) {
+            console.log("Prompt vazio, ignorando.");
+            return;
+        }
 
-        // 1. Exibir a mensagem do usuário imediatamente
+        // 1. Mostra msg do usuário
         appendMessage(prompt, 'user');
-        textarea.value = ''; // Limpa o campo de texto
+        textarea.value = '';
 
-        // 2. Preparar e exibir a "bolha" de resposta da IA (com 'Enviando...')
-        const aiResponseContent = document.createElement('div');
-        aiResponseContent.className = 'ai-response-content';
-        aiResponseContent.innerHTML = '<p>Enviando...</p>';
-        
-        const aiMessageBubble = appendMessage(aiResponseContent, 'ai');
+        // 2. Mostra "Carregando"
+        const loadingDiv = document.createElement('div');
+        loadingDiv.innerText = "Gerando imagem...";
+        loadingDiv.className = "ai-response-content";
+        appendMessage(loadingDiv, 'ai');
 
-        const userId = localStorage.getItem("userId") || criarUserId();
-        
         try {
-            // Chamada à API
+            const userId = localStorage.getItem("userId") || "user-anonimo";
+            console.log("Enviando requisição para o backend...");
+
             const res = await fetch('http://localhost:3000/api/gemini', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    prompt,
-                    userId
-                })
+                body: JSON.stringify({ prompt, userId })
             });
-            
+
+            console.log("Resposta do backend recebida. Status:", res.status);
+
+            if (!res.ok) throw new Error(`Erro HTTP: ${res.status}`);
+
             const data = await res.json();
-            
-            // Limpa o conteúdo de 'Enviando...'
-            aiResponseContent.innerHTML = ''; 
-            
-            let imagesLoadedPromises = []; 
-            
-            // 3. Adicionar o texto da IA
+            loadingDiv.innerHTML = ""; // Limpa o carregando
+
+            // Texto
             if (data.texto) {
-                const textElement = document.createElement('p');
-                textElement.innerText = data.texto;
-                aiResponseContent.appendChild(textElement);
+                const p = document.createElement('p');
+                p.innerText = data.texto;
+                loadingDiv.appendChild(p);
             }
-            
-            // 4. Adicionar as imagens e o botão flutuante
+
+            // Imagens
             const listaImagens = data.imagens || data.images;
-
             if (listaImagens && listaImagens.length > 0) {
-                listaImagens.forEach((imgUrl, index) => {
-                    
-                    // A. Container (Position Relative)
-                    const wrapper = document.createElement('div');
-                    wrapper.className = 'image-wrapper';
+                
+                // SALVAMENTO AUTOMÁTICO
+                const dbUserId = localStorage.getItem("usuarioId");
+                const dbUserType = localStorage.getItem("usuarioTipo");
 
-                    // B. A Imagem Gerada pela IA
+                listaImagens.forEach((imgUrl) => {
+                    // Exibir
                     const img = document.createElement('img');
                     img.src = imgUrl;
-                    img.style.maxWidth = '100%';
-                    img.style.borderRadius = '8px';
-                    img.style.display = 'block'; // Remove espaços extras embaixo
+                    img.style.maxWidth = "100%";
+                    img.style.borderRadius = "8px";
+                    img.style.marginTop = "10px";
+                    loadingDiv.appendChild(img);
 
-                    // C. O Botão de Download (Position Absolute)
-                    const downloadBtn = document.createElement('a');
-                    downloadBtn.href = imgUrl;
-                    downloadBtn.download = `imagem-gemini-${Date.now()}-${index}.png`;
-                    downloadBtn.className = 'download-btn';
-                    downloadBtn.title = "Baixar imagem"; // Texto que aparece ao passar o mouse
-
-                    // D. A Imagem do Ícone (dentro do botão)
-                    const iconImg = document.createElement('img');
-                    iconImg.src = '/assets/navegacao/download.png'; 
-                    
-                    iconImg.className = 'download-icon-img';
-                    downloadBtn.appendChild(iconImg);
-
-                    // E. Lógica de carregamento
-                    const loadPromise = new Promise((resolve) => {
-                        img.onload = () => {
-                            resolve();
-                            scrollToBottom();
-                        };
-                        img.onerror = () => resolve(); 
-                    });
-                    imagesLoadedPromises.push(loadPromise);
-
-                    // F. Montagem: Botão e Imagem dentro do Wrapper
-                    wrapper.appendChild(img);         // 1. Imagem de fundo
-                    wrapper.appendChild(downloadBtn); // 2. Botão por cima
-                    
-                    aiResponseContent.appendChild(wrapper);
+                    // Salvar no Banco
+                    if (dbUserId && dbUserType) {
+                        console.log("Salvando imagem no banco...");
+                        fetch('http://localhost:3000/salvarImagem', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                id_usuario: dbUserId,
+                                tipo_usuario: dbUserType,
+                                prompt: prompt,
+                                imagem: imgUrl
+                            })
+                        }).then(r => console.log("Salvo OK:", r.status))
+                          .catch(e => console.error("Erro ao salvar:", e));
+                    }
                 });
             }
-            // 5. Rola para o final após o texto ser adicionado
-            scrollToBottom(); 
+            scrollToBottom();
 
-            // Espera o carregamento de todas as imagens antes de considerar a resposta finalizada
-            await Promise.all(imagesLoadedPromises);
-
-
-        } catch (err) {
-            console.error('Erro ao chamar o backend:', err);
-            aiResponseContent.innerHTML = '<p style="color: red;">Erro na requisição. Verifique o console.</p>';
-            scrollToBottom(); 
+        } catch (error) {
+            console.error("Erro na função sendPrompt:", error);
+            loadingDiv.innerHTML = "<p style='color:red'>Erro ao conectar com a IA.</p>";
         }
     }
 
-    // Event Listener para o botão de envio
-    btn.addEventListener("click", () => {
-        const prompt = textarea.value.trim();
-        sendPrompt(prompt);
+    // --- EVENTOS ---
+
+    btn.addEventListener("click", (e) => {
+        console.log("4. CLIQUE DETECTADO NO BOTÃO!"); // Se isso não aparecer, o botão está morto
+        e.preventDefault(); // Impede recarregar
+        sendPrompt();
     });
 
-    // Event Listener para a tecla Enter no textarea
     textarea.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
+            console.log("Enter pressionado!");
             e.preventDefault();
-            const prompt = textarea.value.trim();
-            sendPrompt(prompt);
+            sendPrompt();
         }
     });
 });
