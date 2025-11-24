@@ -195,16 +195,6 @@ a.buttonBarraLateral {
     white-space: normal;
     word-break: break-word;
 }
-@media screen and (max-width: 550px) {
-    .style-button img {
-        display: none;
-    }
-    h1 {
-        font-size: 1.5rem;
-        margin: 0px 0px 0px 20%;
-    }
-}
-
 .style-button img {
     width: 40px;
     height: 40px;
@@ -259,8 +249,7 @@ a.buttonBarraLateral {
 }
 @media screen and (max-width: 550px) {
     .sidebar-prompt-container {
-        width: 70%;
-        margin: 20px 0px 20px 20%;
+        width: 90%;
     } 
 }
 .sidebar-prompt {
@@ -294,7 +283,8 @@ a.buttonBarraLateral {
         width: 6%;
     }
     .menu {
-        width: 23%;
+        left: 6%;
+        width: 26%;
     }
 }
 @media screen and (max-width: 1000px) {
@@ -302,6 +292,7 @@ a.buttonBarraLateral {
         width: 7%;
     }
     .menu {
+        left: 7%;
         width: 40%;
     }
 }
@@ -312,6 +303,7 @@ a.buttonBarraLateral {
         transform: translateX(-110%); 
     }
     .menu {
+        left: 9%;
         width: 50%;
     }
 }
@@ -322,6 +314,9 @@ a.buttonBarraLateral {
         transform: translateX(-110%);
         opacity: 0;
     }
+    .menu {
+        left: 10%;
+    }
 }
 @media screen and (max-width: 500px) {
     .barraLateral {
@@ -330,6 +325,9 @@ a.buttonBarraLateral {
         transform: translateX(-110%);
         opacity: 0;
     }
+    .menu {
+        left: 12%;
+    }
 }
 @media screen and (max-width: 400px) {
     .barraLateral {
@@ -337,6 +335,9 @@ a.buttonBarraLateral {
         display: flex;
         transform: translateX(-110%);
         opacity: 0;
+    }
+    .menu {
+        left: 15%;
     }
 }
 
@@ -569,12 +570,29 @@ textarea::-webkit-scrollbar {
     object-fit: contain;
     pointer-events: none; /* O clique passa direto para o botão */
 }
-/* Estilo para deixar o dropdown mais bonito */
+
+/* Estilo para deixar o dropdown */
 
 .container {
-    max-width: 400px;
+    max-width: 180px;
 }
-
+@media screen and (max-width: 520px) {
+    .container {
+        max-width: 120px;
+}
+}
+@media screen and (max-width: 420px) {
+    .container {
+        max-width: 100px;
+}
+}
+@media screen and (max-width: 350px) {
+    .container {
+        justify-content: left;
+        right: 100px;
+        max-width: 100px;
+}
+}
 label {
     font-weight: bold;
     display: block;
@@ -588,13 +606,4 @@ select {
     border: 1px solid #ccc;
     font-size: 16px;
     background-color: var(--fundo);
-}
-
-/* Estilo da área de resultado */
-#resultado {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #e8f4f8;
-    border-left: 5px solid #007bff;
-    display: none; /* Escondido até selecionar algo */
 }
