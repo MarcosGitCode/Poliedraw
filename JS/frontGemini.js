@@ -138,29 +138,81 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dbUserType = localStorage.getItem("usuarioTipo");
 
                 listaImagens.forEach((imgUrl) => {
-                    // Exibir
+                    // Exibir dentro de um container com botão de download
+                    const imgContainer = document.createElement('div');
+                    imgContainer.style.position = 'relative';
+                    imgContainer.style.marginTop = '10px';
+
                     const img = document.createElement('img');
                     img.src = imgUrl;
                     img.style.maxWidth = "100%";
                     img.style.borderRadius = "8px";
-                    img.style.marginTop = "10px";
-                    loadingDiv.appendChild(img);
+                    img.style.display = "block";
+                    imgContainer.appendChild(img);
 
-                    // Salvar no Banco
-                    if (dbUserId && dbUserType) {
-                        console.log("Salvando imagem no banco...");
-                        fetch('http://localhost:3000/salvarImagem', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                id_usuario: dbUserId,
-                                tipo_usuario: dbUserType,
-                                prompt: prompt,
-                                imagem: imgUrl
-                            })
-                        }).then(r => console.log("Salvo OK:", r.status))
-                          .catch(e => console.error("Erro ao salvar:", e));
-                    }
+                    // Botão de download (pequeno, no canto direito superior)
+                    const downloadBtn = document.createElement('button');
+                    downloadBtn.type = 'button';
+                    downloadBtn.title = 'Baixar imagem';
+                    // usa imagem de download e aumenta o tamanho do botão
+                    downloadBtn.innerHTML = '<img src="/assets/navegacao/download.png" alt="baixar" style="width:20px;height:20px;display:block;"/>';
+                    downloadBtn.style.position = 'absolute';
+                    downloadBtn.style.top = '6px';
+                    downloadBtn.style.right = '6px';
+                    downloadBtn.style.background = '#AE1E41';
+                    downloadBtn.style.color = '#fff';
+                    downloadBtn.style.border = 'none';
+                    downloadBtn.style.borderRadius = '8px';
+                    downloadBtn.style.padding = '8px';
+                    downloadBtn.style.minWidth = '40px';
+                    downloadBtn.style.minHeight = '40px';
+                    downloadBtn.style.display = 'inline-flex';
+                    downloadBtn.style.alignItems = 'center';
+                    downloadBtn.style.justifyContent = 'center';
+                    downloadBtn.style.cursor = 'pointer';
+                    downloadBtn.style.fontSize = '14px';
+                    downloadBtn.style.lineHeight = '1';
+                    downloadBtn.style.zIndex = '5';
+
+                    downloadBtn.addEventListener('click', async () => {
+                        downloadBtn.disabled = true;
+                        try {
+                            const res = await fetch(imgUrl);
+                            const blob = await res.blob();
+                            const blobUrl = URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = blobUrl;
+                            const timestamp = Date.now();
+                            a.download = `poliedraw-${timestamp}.png`;
+                            document.body.appendChild(a);
+                            a.click();
+                            a.remove();
+                            URL.revokeObjectURL(blobUrl);
+                        } catch (err) {
+                            console.error('Erro ao baixar imagem:', err);
+                        } finally {
+                            downloadBtn.disabled = false;
+                        }
+                    });
+
+                    imgContainer.appendChild(downloadBtn);
+                    loadingDiv.appendChild(imgContainer);
+
+                     // Salvar no Banco
+                     if (dbUserId && dbUserType) {
+                         console.log("Salvando imagem no banco...");
+                         fetch('http://localhost:3000/salvarImagem', {
+                             method: 'POST',
+                             headers: { 'Content-Type': 'application/json' },
+                             body: JSON.stringify({
+                                 id_usuario: dbUserId,
+                                 tipo_usuario: dbUserType,
+                                 prompt: prompt,
+                                 imagem: imgUrl
+                             })
+                         }).then(r => console.log("Salvo OK:", r.status))
+                           .catch(e => console.error("Erro ao salvar:", e));
+                     }
                 });
             }
             scrollToBottom();
