@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Seleção dos elementos
     const mainTextarea = document.getElementById('promptInput');
     const chatContainer = document.querySelector('.chat');
-    const sendButtons = document.getElementById(".send-btn"); // pega todos os botões de envio
+    const sendButtons = document.querySelectorAll(".send-btn"); // pega todos os botões de envio
 
     // DIAGNÓSTICO
     if (!mainTextarea) console.error("ERRO GRAVE: Não achei a caixa de texto (id='promptInput')");

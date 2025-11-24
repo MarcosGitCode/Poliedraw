@@ -276,6 +276,12 @@ a.buttonBarraLateral {
     height: 36px;
     margin: 6px;
 }
+.sidebar-prompt .send-btnoo {
+    min-width: 36px;
+    width: auto;
+    height: 36px;
+    margin: 6px;
+}
 
 /*Barra lateral responsividade*/
 @media screen and (max-width: 1500px) {
@@ -482,8 +488,22 @@ main {
     align-items: center;
     justify-content: center;
 }
+.prompt .send-btnoo {
+    position: relative;
+    background: rgba(0, 0, 0, 0.262);
+    border: none;
+    border-radius: 100px;
+    aspect-ratio: 1 / 1;
+    width: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .prompt .send-btn:hover {
+    background: rgba(0, 0, 0, 0.487);
+}
+.prompt .send-btnoo:hover {
     background: rgba(0, 0, 0, 0.487);
 }
 textarea {
@@ -518,8 +538,21 @@ textarea::-webkit-scrollbar {
         width: 100%;
     }
 }
+@media screen and (max-width: 1000px) {
+    .prompt .send-btnoo {
+    width: 12%;
+    }
+    .prompt {
+        width: 100%;
+    }
+}
 @media screen and (max-width: 1500px) {
     .prompt .send-btn {
+        width: 8%;
+    }
+}
+@media screen and (max-width: 1500px) {
+    .prompt .send-btnoo {
         width: 8%;
     }
 }
@@ -528,8 +561,18 @@ textarea::-webkit-scrollbar {
         width: 9%;
     }
 }
+@media screen and (max-width: 1300px) {
+    .prompt .send-btnoo {
+        width: 9%;
+    }
+}
 @media screen and (max-width: 1100px) {
     .prompt .send-btn {
+        width: 10%;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .prompt .send-btnoo {
         width: 10%;
     }
 }
@@ -538,8 +581,18 @@ textarea::-webkit-scrollbar {
         width: 12%;
     }
 }
+@media screen and (max-width: 750px) {
+    .prompt .send-btnoo {
+        width: 12%;
+    }
+}
 @media screen and (max-width: 600px) {
     .prompt .send-btn {
+        width: 15%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .prompt .send-btnoo {
         width: 15%;
     }
 }
@@ -548,6 +601,11 @@ textarea::-webkit-scrollbar {
         width: 18%;
     }
 }/* O Container agora define o limite para o botão flutuante */
+@media screen and (max-width: 450px) {
+    .prompt .send-btnoo {
+        width: 18%;
+    }
+}
 .image-wrapper {
     position: relative; /* Essencial para o botão ficar preso aqui */
     display: inline-block; /* Ajusta o container ao tamanho da imagem */
