@@ -148,3 +148,14 @@ body {
 .botaoOpcao button#aluno {
     border-radius: 0px 16px 0px 0px;
 }
+/*rodapé*/
+.rodape {
+    display: block;
+    position: absolute;
+    margin-top: 90vh ;
+    height: 10vh;
+    width: 100%;
+    background-color:#212121;
+    justify-content: center;
+    text-align: center;
+}
