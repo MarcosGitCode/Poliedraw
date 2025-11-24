@@ -33,7 +33,50 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Se for mensagem de texto simples
         if (typeof content === 'string') {
-            messageBubble.innerText = content;
+            if (type === 'user') {
+                // Texto do prompt
+                const textEl = document.createElement('p');
+                textEl.className = 'user-prompt-text';
+                textEl.innerText = content;
+                messageBubble.appendChild(textEl);
+
+                // Botão de copiar (agora com ícone)
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'copy-prompt-btn';
+                copyBtn.type = 'button';
+                copyBtn.title = 'Copiar prompt';
+
+                const copyIcon = document.createElement('img');
+                copyIcon.src = '/assets/copy-regular-full.svg';
+                copyIcon.alt = 'Copiar';
+                copyIcon.className = 'copy-icon';
+                copyBtn.appendChild(copyIcon);
+
+                copyBtn.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    try {
+                        await navigator.clipboard.writeText(content);
+                        const prev = copyBtn.innerHTML;
+                        copyBtn.innerHTML = 'Copiado!';
+                        setTimeout(() => copyBtn.innerHTML = prev, 1200);
+                    } catch {
+                        // fallback para copiar via textarea
+                        const ta = document.createElement('textarea');
+                        ta.value = content;
+                        document.body.appendChild(ta);
+                        ta.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(ta);
+                        const prev = copyBtn.innerHTML;
+                        copyBtn.innerHTML = 'Copiado!';
+                        setTimeout(() => copyBtn.innerHTML = prev, 1200);
+                    }
+                });
+
+                messageBubble.appendChild(copyBtn);
+            } else {
+                messageBubble.innerText = content;
+            }
         } else {
             // Se for um elemento (ex: div de resposta da IA), anexamos o conteúdo
             messageBubble.appendChild(content);

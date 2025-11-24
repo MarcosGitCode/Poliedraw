@@ -393,6 +393,8 @@ main {
     background-color: var(--cabeçalho); 
     color: var(--corLetra);
     border-bottom-right-radius: 5px; 
+    position: relative;
+    padding-right: 88px; /* espaço para o botão */
 }
 .ai-message-wrapper {
     justify-content: flex-start;
@@ -414,11 +416,26 @@ main {
     border-radius: 8px !important;
 }
 
-@media screen and (max-width: 720px) {
-    .message-bubble {
-        max-width: 90%;
-    }
+/* Botão de copiar prompt */
+.copy-prompt-btn {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    background: transparent;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
+.copy-prompt-btn:active { transform: translateY(1px); }
+.copy-prompt-btn .copy-icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
 /*barra para prompt*/
 #caixaPrompt {
     background-color: var(--fundo);
