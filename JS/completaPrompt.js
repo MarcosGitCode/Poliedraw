@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const selectQuimica = document.getElementById("select-quimica");
 
     // Botões de Detalhes e Estilo
-    const botaoDetalhe = document.getElementById("botaoDetalhe");
+    const botaoDetalhe = document.getElementById("send-btno");
     const detalheInput = document.getElementById("sidebarPromptInput");
     const botaoApagarPrompt = document.getElementById("apagarPrompt");
     
