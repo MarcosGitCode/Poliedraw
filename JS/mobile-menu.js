@@ -35,17 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // se abriu, não abrir nenhum menu — apenas mostra os botões (CSS .open deve controlar a visualização)
     });
-
-    // fechar ao clicar fora: fecha sidebar e menus
-    document.addEventListener('click', (e) => {
-        if (!sidebar.classList.contains('open')) return;
-        if (sidebar.contains(e.target) || mobileMenu.contains(e.target)) return;
-        sidebar.classList.remove('open');
-        mobileMenu.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-        closeAllMenus();
-    });
-
     // fechar com ESC: fecha sidebar e menus
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && sidebar.classList.contains('open')) {
