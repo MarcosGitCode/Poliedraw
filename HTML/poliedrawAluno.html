@@ -44,10 +44,71 @@
     </div>
 
     <!-- menus (iniciam escondidos) -->
-    <div class="materiasMenu menu hidden" id="materiasMenu" aria-hidden="true">
-        <h1>Matérias</h1>
-        <button id="fisica" class="buttonBarraLateral"><img src="/assets/fisica.png" alt="física"><h2>física</h2></button>
-        <button id="quimica" class="buttonBarraLateral"><img src="/assets/quimica.png" alt="química"><h2>química</h2></button>
+        <!-- física -->
+    <button id="fisica" class="buttonBarraLateral"><img src="/assets/fisica.png" alt="física"><h2>física</h2></button>
+        <!-- assuntos de física -->
+    <div class="container">
+        <label>Assuntos de Física:</label>
+        <select id="select-fisica">
+            <option value="" disabled selected>Assunto...</option>
+
+            <optgroup label="1. Mecânica">
+            <option value="cinematica">Cinemática (MRU / MRUV)</option>
+            <option value="leis-newton">Leis de Newton</option>
+            <option value="energia">Trabalho e Energia</option>
+            <option value="gravitacao">Gravitação Universal</option>
+            </optgroup>
+
+            <optgroup label="2. Termologia">
+            <option value="escalas">Escalas Termométricas</option>
+            <option value="calorimetria">Calorimetria</option>
+            <option value="termodinamica">Leis da Termodinâmica</option>
+            </optgroup>
+
+            <optgroup label="3. Óptica e Ondulatória">
+            <option value="espelhos">Espelhos e Lentes</option>
+            <option value="refacao">Refração da Luz</option>
+            <option value="ondas">Ondas Sonoras e Eletromagnéticas</option>
+            </optgroup>
+
+            <optgroup label="4. Eletricidade">
+            <option value="eletrostatica">Eletrostática (Cargas e Campos)</option>
+            <option value="circuitos">Circuitos Elétricos (Lei de Ohm)</option>
+            <option value="magnetismo">Eletromagnetismo</option>
+            </optgroup>
+        </select>
+    </div>
+
+        <!-- quimica -->
+    <button id="quimica" class="buttonBarraLateral"><img src="/assets/quimica.png" alt="química"><h2>química</h2></button>
+    <!-- assuntos de quimica -->
+    <div class="container">
+        <label>Assuntos de Química:</label>
+        <select id="select-quimica">
+            <option value="" disabled selected>Assunto...</option>
+
+            <optgroup label="1. Química Geral & Inorgânica">
+            <option value="atomistica">Estrutura Atômica (P, N, E)</option>
+            <option value="tabela">Tabela Periódica</option>
+            <option value="ligacoes">Ligações Químicas (Iônica/Covalente)</option>
+            <option value="inorganica">Funções Inorgânicas (Ácidos/Bases)</option>
+            </optgroup>
+
+            <optgroup label="2. Físico-Química">
+            <option value="solucoes">Soluções e Concentração</option>
+            <option value="termoquimica">Termoquímica (Entalpia)</option>
+            <option value="cinetica">Cinética Química</option>
+            <option value="eletroquimica">Eletroquímica (Pilhas)</option>
+            </optgroup>
+
+            <optgroup label="3. Química Orgânica">
+            <option value="carbono">Classificação do Carbono</option>
+            <option value="hidrocarbonetos">Hidrocarbonetos (Alcanos/Alcenos)</option>
+            <option value="oxigenadas">Funções Oxigenadas (Álcool/Cetona...)</option>
+            <option value="isomeria">Isomeria Plana e Espacial</option>
+            </optgroup>
+        </select>
+        </div>
     </div>
 
     <div class="detalhesMenu menu hidden" id="detalhesMenu" aria-hidden="true">
