@@ -6,8 +6,8 @@ const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY
 });
 
-const aspectRatio = "16:9";
-const resolution = "2k";
+const aspectRatio = "1:1";
+const resolution = "1k";
 
 const SYSTEM_PROMPT = `[PAPEL E IDENTIDADE]
 Você é um modelo especializado em geração de imagens educacionais para estudantes e professores de uma instituição de ensino.
