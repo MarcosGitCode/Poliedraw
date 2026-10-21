@@ -1,162 +1,218 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
-/* variáveis */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+/* Variáveis de Tema */
 :root {
-    --corLetra: white;
-    --corLetra2: black;
-    --corDoImput: #464646;
+    --corLetra: #ffffff;
+    --corLetra2: #ffffff;
+    --fundo: #212121;
+    --fundoCard: #181818;
+    --corDoInput: #363636;
+    --corDoInputFocus: #424242;
     --botaoCadastrar: #AE1E41;
-    --popupFundo: #212121;
+    --botaoCadastrarHover: #8f1734;
+    --popupFundo: #242424;
 }
 
-/* configurações globais */
+/* Configurações Globais */
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Quicksand', Arial, sans-serif;
     color: var(--corLetra);
 }
-h1 {
-    font-size: 3em;
-    text-align: center;
-}
-p {
-    font-size: 1.3em;
+
+body {
+    background-color: var(--fundo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-/*caixa do cadastro*/
+/* Conteúdo Principal Centralizado (Sobrescrevendo margens do poliedraw.css) */
+main {
+    flex: 1;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    margin-inline: auto !important;
+    padding: 40px 20px !important;
+    min-height: calc(100vh - 64px) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: transparent !important;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 28px;
+    letter-spacing: -0.5px;
+}
+
+/* Card de Cadastro Harmônico e Alinhado */
 .caixaCadastro {
+    background: var(--fundoCard);
     padding: 40px 32px;
+    border-radius: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 0;
     width: 100%;
-    max-width: 350px;
+    max-width: 380px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: transform 0.2s ease;
 }
 
 .caixaCadastro input[type="text"],
 .caixaCadastro input[type="password"] {
     width: 100%;
-    padding: 12px 16px;
+    padding: 14px 18px;
     margin-bottom: 18px;
-    border: none;
-    border-radius: 16px;
-    background: var(--corDoImput);
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background: var(--corDoInput);
     font-size: 1rem;
+    color: #ffffff;
     outline: none;
-    transition: box-shadow 0.2s;
-    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.caixaCadastro input::placeholder {
+    color: #9e9e9e;
 }
 
 .caixaCadastro input[type="text"]:focus,
 .caixaCadastro input[type="password"]:focus {
-    box-shadow: 0 0 0 2px var(--botaoCadastrar);
+    background: var(--corDoInputFocus);
+    border-color: var(--botaoCadastrar);
+    box-shadow: 0 0 0 3px rgba(174, 30, 65, 0.3);
 }
 
-/*botão para cadastrar e */
+/* Botão Cadastrar Sincronizado */
 .botaoCadastrar {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    gap: 10px;
+    margin-top: 6px;
 }
 
 .botaoCadastrar button {
     background: var(--botaoCadastrar);
     border: none;
-    border-radius: 16px;
-    font-size: 1.1rem;
+    border-radius: 14px;
+    font-size: 1.05rem;
     font-weight: 700;
-    padding: 12px 36px;
+    padding: 14px 0;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(60,60,60,0.08);
     width: 100%;
-    max-width: 200px;
+    color: #ffffff;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(174, 30, 65, 0.35);
 }
 
 .botaoCadastrar button:hover {
-    background: #ae1e428f;
+    background: var(--botaoCadastrarHover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(174, 30, 65, 0.45);
 }
 
-/*responsividade*/
-@media (max-width: 768px) {
-    .caixaLogin {
-        padding: 40px 20px;
-        max-width: 70vw;
-        margin-top: 10%;
-    }
-    .logo {
-        max-width: 80px;
-        width: 40vw;
-    }
-    .botaoAvancar button {
-        padding: 12px 0;
-        font-size: 1rem;
-        max-width: 100%;
-    }
+.botaoCadastrar button:active {
+    transform: translateY(0);
 }
 
-/*main*/
-main {
-    justify-items: center;
-    padding-top: 5%;
+#mensagem {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    text-align: center;
+    min-height: 22px;
 }
 
-/* Fundo do pop-up (overlay) */
+/* Modal Popup de Confirmação */
 .popup-bg {
     display: none;
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.744);
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
     justify-content: center;
     align-items: center;
+    z-index: 2000;
 }
 
-/* Caixa do pop-up */
 .popup {
     background-color: var(--popupFundo);
-    padding: 20px 30px;
-    border-radius: 16px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    max-width: 30vh;
+    padding: 36px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 90%;
+    max-width: 360px;
     text-align: center;
-    animation: aparecer 0.3s ease-out;
-    padding: 40px;
+    animation: aparecer 0.25s ease-out;
 }
+
+.popup p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    line-height: 1.4;
+    color: #ffffff;
+}
+
+.popup button {
+    border: none;
+    border-radius: 12px;
+    padding: 10px 26px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 0 6px;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    min-width: 90px;
+}
+
+.popup button:hover {
+    transform: scale(1.05);
+    opacity: 0.92;
+}
+
+.popup button:active {
+    transform: scale(0.98);
+}
+
+.nao {
+    background-color: #e74c3c;
+    color: #ffffff;
+}
+
+.sim {
+    background-color: #27ae60;
+    color: #ffffff;
+}
+
 @keyframes aparecer {
-    from { transform: scale(0.8); opacity: 0; }
+    from { transform: scale(0.88); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
 
-/* Botão de não*/
-.nao {
-    margin-inline: 1%;
-    margin-top: 15px;
-    background-color: #ff4b4b;
-    border: none;
-    border-radius: 10px;
-    padding: 2%;
-    width: 20%;
-    color: var(--corLetra2)
-}
-.nao:hover {
-    transform: scale(1.1);
-    transition: transform 0.2s;
-}
-/* Botão de sim*/
-.sim {
-    margin-inline: 1%;
-    margin-top: 15px;
-    background-color: #2bff00;
-    border: none;
-    border-radius: 10px;
-    padding: 2%;
-    width: 20%;
-    height: 20%;
-    color: var(--corLetra2)
-}
-.sim:hover {
-    transform: scale(1.1);
-    transition: transform 0.2s;
+/* Responsividade Mobile */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.9rem;
+        margin-bottom: 20px;
+    }
+    .caixaCadastro {
+        padding: 32px 20px;
+        border-radius: 20px;
+    }
 }
