@@ -1,0 +1,21 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: poliedraw-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: imtdb
+      MYSQL_DATABASE: poliedro_ai
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./BD/banco.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pimtdb"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  mysql_data:

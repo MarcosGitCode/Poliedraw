@@ -14,3 +14,4 @@ yarn-error.log*
 # IDEs (opcional, mas recomendável)
 .vscode/
 .idea/
+.maestri/
