@@ -36,7 +36,10 @@ O backend integra o modelo Google Gemini 2.5 Flash Image por meio de @google/gen
 | RNF01 | Node.js, ES Modules e Express 5. |
 | RNF02 | Payload JSON de até 50 MB para imagens Base64. |
 | RNF03 | Infraestrutura externa via .env. |
-| RNF04 | MySQL é o banco ativo; SQLite está instalado, mas não possui adaptador conectado no runtime. |
+| RNF04 | Arquitetura de banco dual: MySQL 8.0 como principal e SQLite 3 como fallback automático integrado. |
+| RNF05 | Senhas com hashing criptográfico seguro (bcrypt). |
+| RNF06 | Arquitetura de IA resiliente: suporte a Google Gemini e fallback sem chave para Pollinations.ai. |
+| RNF07 | Execução Zero-Friction multiplataforma via `./start.sh` (Linux/macOS) e `start.bat`/`start.ps1` (Windows). |
 
 ## 2. Arquitetura e fluxo
 

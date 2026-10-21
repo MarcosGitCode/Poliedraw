@@ -1,4 +1,5 @@
 import mysql from 'mysql2/promise';
+import bcrypt from 'bcryptjs';
 import 'dotenv/config';
 
 const DB_HOST = process.env.DB_HOST || 'localhost';
@@ -69,29 +70,39 @@ export async function runSeed() {
     );
   `);
 
-  // 4. Insere usuários de teste padrão de forma idempotente
-  const [prof] = await db.query('SELECT id_professor FROM professores WHERE email = ?', ['gui@sistemapoliedro']);
+  // 4. Insere usuários de teste com senhas hasheadas via bcrypt
+  const [prof] = await db.query('SELECT id_professor, senha FROM professores WHERE email = ?', ['gui@sistemapoliedro']);
   if (prof.length === 0) {
+    const profHash = await bcrypt.hash('4343', 10);
     await db.query('INSERT INTO professores (nome, email, senha) VALUES (?, ?, ?)', [
       'Guilherme 43',
       'gui@sistemapoliedro',
-      '4343'
+      profHash
     ]);
-    console.log('✅ [Seed] Professor de teste inserido (gui@sistemapoliedro / 4343)');
+    console.log('✅ [Seed] Professor de teste inserido com senha segura bcrypt (gui@sistemapoliedro / 4343)');
+  } else if (!prof[0].senha.startsWith('$2a$') && !prof[0].senha.startsWith('$2b$')) {
+    const profHash = await bcrypt.hash('4343', 10);
+    await db.query('UPDATE professores SET senha = ? WHERE email = ?', [profHash, 'gui@sistemapoliedro']);
+    console.log('🔐 [Seed] Senha do professor atualizada para hash bcrypt.');
   }
 
-  const [aluno] = await db.query('SELECT id_aluno FROM alunos WHERE email = ?', ['aluno@sistemapoliedro']);
+  const [aluno] = await db.query('SELECT id_aluno, senha FROM alunos WHERE email = ?', ['aluno@sistemapoliedro']);
   if (aluno.length === 0) {
+    const alunoHash = await bcrypt.hash('43', 10);
     await db.query('INSERT INTO alunos (nome, email, senha) VALUES (?, ?, ?)', [
       'Guilherme43',
       'aluno@sistemapoliedro',
-      '43'
+      alunoHash
     ]);
-    console.log('✅ [Seed] Aluno de teste inserido (aluno@sistemapoliedro / 43)');
+    console.log('✅ [Seed] Aluno de teste inserido com senha segura bcrypt (aluno@sistemapoliedro / 43)');
+  } else if (!aluno[0].senha.startsWith('$2a$') && !aluno[0].senha.startsWith('$2b$')) {
+    const alunoHash = await bcrypt.hash('43', 10);
+    await db.query('UPDATE alunos SET senha = ? WHERE email = ?', [alunoHash, 'aluno@sistemapoliedro']);
+    console.log('🔐 [Seed] Senha do aluno atualizada para hash bcrypt.');
   }
 
   await db.end();
-  console.log('✨ [Seed] Banco de dados pronto para uso!');
+  console.log('✨ [Seed] Banco de dados pronto e seguro!');
 }
 
 if (process.argv[1]?.endsWith('seed.js')) {

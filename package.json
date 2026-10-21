@@ -22,6 +22,7 @@
   "homepage": "https://github.com/MarcosGitCode/Poliedraw#readme",
   "dependencies": {
     "@google/genai": "^1.28.0",
+    "bcryptjs": "^3.0.3",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
@@ -32,5 +33,7 @@
     "sqlite3": "^5.1.7"
   },
   "type": "module",
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6"
+  }
 }
