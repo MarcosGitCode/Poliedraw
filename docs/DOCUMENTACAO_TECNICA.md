@@ -238,6 +238,17 @@ Servidor: http://localhost:3000.
 
 O script dev depende de nodemon, que não está declarado nas devDependencies observadas. Use npm start ou disponibilize nodemon no ambiente.
 
+### Credenciais de Teste Homologadas (Ambiente Local)
+
+Para homologação e validação imediata da plataforma, os seguintes usuários de teste são provisionados automaticamente pelos scripts de inicialização:
+
+| Perfil | E-mail / Usuário | Senha | Nome Registrado | Permissões / Fluxo |
+|---|---|---|---|---|
+| **Professor** | `gui@sistemapoliedro` | `4343` | Guilherme 43 | Acesso total à interface do professor, geração de imagens com IA, gerenciamento e CRUD de alunos. |
+| **Aluno** | `aluno@sistemapoliedro` | `43` | Guilherme43 | Interface simplificada do aluno, geração de ilustrações educativas e galeria pessoal de criações. |
+
+> Todas as senhas são armazenadas no banco com hash criptográfico **bcrypt** e validadas de forma segura na autenticação.
+
 ### Verificação rápida
 
     curl -s -X POST http://localhost:3000/alunosLogin \
