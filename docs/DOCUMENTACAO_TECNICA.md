@@ -81,7 +81,7 @@ A separação é feita por tabela e endpoint: professores/POST /professores e al
 
 ## 3. API completa
 
-Base local: http://localhost:3000. Formato padrão: JSON.
+Base local: http://localhost:3001. Formato padrão: JSON.
 
 ### POST /professores
 
@@ -231,7 +231,7 @@ O script cria poliedro_ai, quatro tabelas e registros de exemplo. O backend tamb
     npm start
     # node backend/conexao.js
 
-Servidor: http://localhost:3000.
+Servidor: http://localhost:3001.
 
     npm run dev
     # nodemon backend/conexao.js
@@ -251,7 +251,7 @@ Para homologação e validação imediata da plataforma, os seguintes usuários 
 
 ### Verificação rápida
 
-    curl -s -X POST http://localhost:3000/alunosLogin \
+    curl -s -X POST http://localhost:3001/alunosLogin \
       -H 'Content-Type: application/json' \
       -d '{"email":"aluno@sistemapoliedro","senha":"43"}'
 

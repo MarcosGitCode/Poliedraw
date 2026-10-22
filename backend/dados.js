@@ -1,7 +1,7 @@
 // Função principal para carregar a tabela
 async function carregarAlunos() {
     try {
-        const response = await fetch('http://localhost:3000/alunos');
+        const response = await fetch('http://localhost:3001/alunos');
         const alunos = await response.json();
         
         const tbody = document.querySelector('#tabelaAlunos tbody');
@@ -36,7 +36,7 @@ async function carregarAlunos() {
 // Função para ATUALIZAR (Editada para usar PATCH e tratar erros)
 async function updateAluno(id, data) {
     try {
-        const resp = await fetch(`http://localhost:3000/alunos/${id}`, {
+        const resp = await fetch(`http://localhost:3001/alunos/${id}`, {
             method: 'PUT', 
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -58,7 +58,7 @@ async function updateAluno(id, data) {
 async function deleteAluno(id) {
     if (!confirm('Deseja realmente excluir este aluno?')) return;
     try {
-        const resp = await fetch(`http://localhost:3000/alunos/${id}`, { method: 'DELETE' });
+        const resp = await fetch(`http://localhost:3001/alunos/${id}`, { method: 'DELETE' });
         if (!resp.ok) throw new Error('Falha ao excluir');
         carregarAlunos();
     } catch (err) {

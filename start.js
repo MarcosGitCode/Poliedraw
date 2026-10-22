@@ -22,7 +22,7 @@ if (!fs.existsSync(envPath)) {
   } else {
     fs.writeFileSync(
       envPath,
-      'PORT=3000\nFRONTEND_PORT=5502\nDB_HOST=localhost\nDB_PORT=3306\nDB_USER=root\nDB_PASS=imtdb\nDB_NAME=poliedro_ai\nGEMINI_API_KEY=\n'
+      'PORT=3001\nFRONTEND_PORT=5502\nDB_HOST=localhost\nDB_PORT=3306\nDB_USER=root\nDB_PASS=imtdb\nDB_NAME=poliedro_ai\nGEMINI_API_KEY=\n'
     );
     console.log('📄 [Config] Arquivo .env padrão criado.');
   }
@@ -162,7 +162,7 @@ async function main() {
     console.log('\n========================================================');
     console.log('🎉 POLIEDRAW RODANDO COM SUCESSO!');
     console.log(`👉 Acesse a aplicação em: \x1b[36m${frontendUrl}\x1b[0m`);
-    console.log(`👉 API Backend em:        \x1b[32mhttp://localhost:3000\x1b[0m`);
+    console.log(`👉 API Backend em:        \x1b[32mhttp://localhost:3001\x1b[0m`);
     console.log('\n🔑 Credenciais de Teste:');
     console.log('   - Professor: gui@sistemapoliedro   | Senha: 4343');
     console.log('   - Aluno:     aluno@sistemapoliedro | Senha: 43');

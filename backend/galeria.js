@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     btnConfirmar.onclick = async () => {
         if (!idParaExcluir) return;
         try {
-            const res = await fetch(`http://localhost:3000/imagens/${idParaExcluir}`, { method: 'DELETE' });
+            const res = await fetch(`http://localhost:3001/imagens/${idParaExcluir}`, { method: 'DELETE' });
             const data = await res.json();
             if (data.success) {
                 fecharPopup();
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:3000/minhasImagens?id=${idUsuario}&tipo=${tipoUsuario}`);
+            const response = await fetch(`http://localhost:3001/minhasImagens?id=${idUsuario}&tipo=${tipoUsuario}`);
             const imagens = await response.json();
 
             if (imagens.length === 0) {

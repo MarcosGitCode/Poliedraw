@@ -19,9 +19,11 @@ const app = express();
 // Proteção CORS com lista de origens autorizadas locais
 const allowedOrigins = [
   "http://localhost:3000",
+  "http://localhost:3001",
   "http://localhost:5500",
   "http://localhost:5502",
   "http://127.0.0.1:3000",
+  "http://127.0.0.1:3001",
   "http://127.0.0.1:5500",
   "http://127.0.0.1:5502"
 ];
@@ -396,7 +398,7 @@ app.post("/api/gemini", async (req, res) => {
   }
 });
 
-const PORT = Number(process.env.PORT || 3000);
+const PORT = Number(process.env.PORT || 3001);
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
   console.log(`Acesse a interface web em: http://localhost:${PORT}/HTML/login.html`);

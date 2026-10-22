@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const endpoint = 
               tipoUsuario === "professor"
-                ? "http://localhost:3000/professores"
-                : "http://localhost:3000/alunosLogin";
+                ? "http://localhost:3001/professores"
+                : "http://localhost:3001/alunosLogin";
 
             const response = await fetch(endpoint, {
               method: "POST",

@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const userId = localStorage.getItem("userId") || "user-anonimo";
             console.log("Enviando requisição para o backend...");
 
-            const res = await fetch('http://localhost:3000/api/gemini', {
+            const res = await fetch('http://localhost:3001/api/gemini', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ prompt, userId })
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
                      // Salvar no Banco
                      if (dbUserId && dbUserType) {
                          console.log("Salvando imagem no banco...");
-                         fetch('http://localhost:3000/salvarImagem', {
+                         fetch('http://localhost:3001/salvarImagem', {
                              method: 'POST',
                              headers: { 'Content-Type': 'application/json' },
                              body: JSON.stringify({
