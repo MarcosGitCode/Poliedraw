@@ -235,10 +235,19 @@ a.buttonBarraLateral {
     margin-bottom: 5%;
     width: 80%;
 }
+.materiasMenu {
+    overflow-y: auto;
+}
 .materiasMenu .buttonBarraLateral img {
     width: 100%;
     height: auto;
     padding: 10%;
+}
+.materiasMenu .buttonBarraLateral .subject-icon {
+    display: block;
+    width: 42px;
+    height: 42px;
+    margin: 10px auto;
 }
 
 /* Prompt da barra lateral */

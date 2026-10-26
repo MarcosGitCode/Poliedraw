@@ -137,10 +137,22 @@ async function setupDatabase() {
 
 // 5. Função para abrir o navegador
 function openBrowser(url) {
-  const cmd = process.platform === 'win32' ? 'start' : process.platform === 'darwin' ? 'open' : 'xdg-open';
+  const isWindows = process.platform === 'win32';
+  const cmd = isWindows ? 'rundll32.exe' : process.platform === 'darwin' ? 'open' : 'xdg-open';
+  const args = isWindows ? ['url.dll,FileProtocolHandler', url] : [url];
+
+  const reportError = error => {
+    console.warn(`⚠️ [Frontend] Não foi possível abrir o navegador automaticamente: ${error.message}`);
+    console.log(`👉 Abra manualmente: ${url}`);
+  };
+
   try {
-    spawn(cmd, [url], { detached: true, stdio: 'ignore' }).unref();
-  } catch {}
+    const browserProc = spawn(cmd, args, { detached: true, stdio: 'ignore' });
+    browserProc.once('error', reportError);
+    browserProc.unref();
+  } catch (error) {
+    reportError(error);
+  }
 }
 
 // 6. Bootstrap Principal

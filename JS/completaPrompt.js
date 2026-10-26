@@ -5,10 +5,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Botões principais
     const botaoQuimica = document.getElementById("quimica");
     const botaoFisica = document.getElementById("fisica");
+    const botaoHistoria = document.getElementById("historia");
     
     // Dropdowns
     const selectFisica = document.getElementById("select-fisica");
     const selectQuimica = document.getElementById("select-quimica");
+    const selectHistoria = document.getElementById("select-historia");
+    const selectsMateria = [selectFisica, selectQuimica, selectHistoria].filter(Boolean);
 
     // Botões de Detalhes e Estilo
     const botaoDetalhe = document.getElementById("send-btno");
@@ -24,25 +27,39 @@ document.addEventListener("DOMContentLoaded", function() {
     let assuntoSelecionado = ""; 
 
     // --- FUNÇÕES AUXILIARES ---
+    function atualizarPrompt(texto) {
+        if (!textarea) return;
+        textarea.value = texto;
+        textarea.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+
     function atualizarPromptComDropdown(materia, selectElement) {
         if (!selectElement) return;
-        let textoOpcao = selectElement.options[selectElement.selectedIndex].text;
+        const textoOpcao = selectElement.options[selectElement.selectedIndex].text;
         assuntoSelecionado = textoOpcao;
         if (textarea) {
-            textarea.value = `Crie uma imagem de ${materia} sobre ${assuntoSelecionado}`;
+            selectsMateria.forEach(select => {
+                if (select !== selectElement) select.value = "";
+            });
+            atualizarPrompt(`Crie uma imagem de ${materia} sobre ${assuntoSelecionado}`);
             temaSelecionado = true;
         }
+    }
+
+    function selecionarMateria(materia, selectElement) {
+        atualizarPrompt(`Crie uma imagem de ${materia} sobre`);
+        selectsMateria.forEach(select => {
+            select.value = "";
+        });
+        temaSelecionado = true;
+        selectElement?.focus();
     }
 
     // --- EVENTOS (COM PROTEÇÃO CONTRA ERROS) ---
 
     // 1. Botão Física
     if (botaoFisica) {
-        botaoFisica.addEventListener("click", function() {
-            if(textarea) textarea.value = "Crie uma imagem de física sobre";
-            if(selectFisica) selectFisica.value = ""; 
-            temaSelecionado = true; 
-        });
+        botaoFisica.addEventListener("click", () => selecionarMateria("física", selectFisica));
     }
 
     // 2. Dropdown Física
@@ -54,11 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 3. Botão Química
     if (botaoQuimica) {
-        botaoQuimica.addEventListener("click", function() {
-            if(textarea) textarea.value = "Crie uma imagem de química sobre";
-            if(selectQuimica) selectQuimica.value = ""; 
-            temaSelecionado = true; 
-        });
+        botaoQuimica.addEventListener("click", () => selecionarMateria("química", selectQuimica));
     }
 
     // 4. Dropdown Química
@@ -68,7 +81,18 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 5. Botão de Detalhes (O provável causador do erro na linha 71)
+    // 5. Botão História e dropdown
+    if (botaoHistoria) {
+        botaoHistoria.addEventListener("click", () => selecionarMateria("história", selectHistoria));
+    }
+
+    if (selectHistoria) {
+        selectHistoria.addEventListener("change", function() {
+            atualizarPromptComDropdown("história", selectHistoria);
+        });
+    }
+
+    // 6. Botão de Detalhes
     if (botaoDetalhe) {
         botaoDetalhe.addEventListener("click", function() {
             if (!temaSelecionado) {
@@ -86,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 6. Botões de Estilo
+    // 7. Botões de Estilo
     if (botoesEstilo) {
         botoesEstilo.forEach(botao => {
             botao.addEventListener("click", function() {
@@ -113,12 +137,13 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 7. Botão Limpar
+    // 8. Botão Limpar
     if(botaoApagarPrompt) {
         botaoApagarPrompt.addEventListener("click", function() {
             if(textarea) textarea.value = "";
-            if(selectFisica) selectFisica.value = "";
-            if(selectQuimica) selectQuimica.value = "";
+            selectsMateria.forEach(select => {
+                select.value = "";
+            });
             temaSelecionado = false;
             detalheAdicionado = false;
         });

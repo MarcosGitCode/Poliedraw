@@ -41,8 +41,8 @@ Nenhum comentário adicional após gerar a imagem.`;
  */
 async function generateWithPollinations(prompt) {
   try {
-    const didacticPrompt = `educational diagram or illustration, clear, clean didactic style: ${prompt}`;
-    const encodedPrompt = encodeURIComponent(didacticPrompt);
+    const faithfulPrompt = `Create an image following this description as literally as possible. Preserve the requested subjects, exact quantities, colors, text, composition, and style. Do not add, omit, or substitute elements. Description: ${prompt}`;
+    const encodedPrompt = encodeURIComponent(faithfulPrompt);
     const url = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=1024&height=1024&nologo=true`;
     
     console.log(`🎨 [IA Gratuita] Gerando imagem via Pollinations.ai para: "${prompt}"...`);
@@ -64,7 +64,48 @@ async function generateWithPollinations(prompt) {
   }
 }
 
+const COLOR_MAP = new Map([
+  ["amarelo", "#f2c94c"],
+  ["azul", "#2878d0"],
+  ["branco", "#ffffff"],
+  ["cinza", "#737373"],
+  ["laranja", "#f28c28"],
+  ["marrom", "#8b5a2b"],
+  ["preto", "#171717"],
+  ["rosa", "#e84393"],
+  ["roxo", "#7b3fb5"],
+  ["verde", "#259447"],
+  ["vermelho", "#d93636"]
+]);
+
+function generateNumberImage(prompt) {
+  const match = prompt.match(/\b(?:n[uú]meros?|algarismos?)\s*(?:de|:)?\s*(\d{1,18})\b/i);
+  if (!match) return null;
+
+  const number = match[1];
+  const requestedColors = [...prompt.matchAll(/\b(amarelo|azul|branco|cinza|laranja|marrom|preto|rosa|roxo|verde|vermelho)\b/gi)]
+    .map(color => COLOR_MAP.get(color[1].toLocaleLowerCase("pt-BR")));
+  const colors = [...new Set(requestedColors)];
+  const fontSize = Math.min(260, Math.floor(720 / number.length));
+  const fill = colors.length > 1
+    ? `<defs><linearGradient id="number-gradient">${colors.map((color, index) => {
+      const offset = (index / (colors.length - 1)) * 100;
+      return `<stop offset="${offset}%" stop-color="${color}"/>`;
+    }).join("")}</linearGradient></defs><text fill="url(#number-gradient)"`
+    : `<text fill="${colors[0] || "#222222"}"`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><rect width="100%" height="100%" fill="#ffffff"/>${fill} x="512" y="512" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="${fontSize}" font-weight="700">${number}</text></svg>`;
+
+  console.log(`🔢 [Imagem Numérica] Renderizando o número ${number} com os algarismos exatos.`);
+  return {
+    text: `Número ${number} renderizado com os algarismos exatos.`,
+    images: [`data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`]
+  };
+}
+
 export default async function Gemini(prompt) {
+  const numberImage = generateNumberImage(prompt);
+  if (numberImage) return numberImage;
+
   const apiKey = (process.env.GEMINI_API_KEY || "").trim();
 
   // 1. Tenta usar o Google Gemini 2.5 Flash oficial se a chave estiver presente

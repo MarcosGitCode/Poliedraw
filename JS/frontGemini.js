@@ -183,7 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             const a = document.createElement('a');
                             a.href = blobUrl;
                             const timestamp = Date.now();
-                            a.download = `poliedraw-${timestamp}.png`;
+                            const extension = blob.type === 'image/svg+xml'
+                                ? 'svg'
+                                : blob.type === 'image/jpeg' ? 'jpg' : 'png';
+                            a.download = `poliedraw-${timestamp}.${extension}`;
                             document.body.appendChild(a);
                             a.click();
                             a.remove();

@@ -22,7 +22,7 @@ start.bat
 ```
 *(ou via PowerShell: `.\start.ps1`)*
 
-> O script instala as dependências, sobe o banco de dados (MySQL via Docker/Podman ou SQLite local automático), aplica os seeds dos usuários de teste, inicializa o backend na porta `3000`, serve o frontend na porta `5502` e abre a aplicação automaticamente no seu navegador padrão!
+> O script instala as dependências, sobe o banco de dados (MySQL via Docker/Podman ou SQLite local automático), aplica os seeds dos usuários de teste, inicializa o backend na porta `3001`, serve o frontend na porta `5502` e abre a aplicação automaticamente no seu navegador padrão!
 
 ---
 
@@ -31,12 +31,14 @@ start.bat
 O Poliedraw opera com arquitetura de IA flexível:
 
 1. **Modo Zero-Key (Gratuito sem Chave):**  
-   Se nenhuma chave for informada, o sistema utiliza o provedor comunitário aberto **Pollinations.ai** (base FLUX / SDXL), gerando imagens normalmente sem exigir cartão de crédito ou conta Google.
+   Se nenhuma chave for informada, o sistema utiliza o provedor comunitário **Pollinations.ai**, sem exigir uma chave do Google. A fidelidade varia conforme o modelo e o pedido; descrições claras ajudam, mas textos e números exatos podem não sair corretamente.
 2. **Modo Google Gemini Oficial:**  
    Se desejar utilizar o **Google Gemini 2.5 Flash Image**, basta adicionar sua chave no arquivo `.env`:
    ```env
    GEMINI_API_KEY=sua_chave_do_google_ai_studio
    ```
+
+Pedidos explícitos no formato “número 43” ou “algarismo 43” são renderizados diretamente para preservar os dígitos exatos. Cores conhecidas mencionadas no pedido (como verde e vermelho) são aplicadas ao número; outros pedidos continuam sendo gerados pela IA.
 
 ---
 
